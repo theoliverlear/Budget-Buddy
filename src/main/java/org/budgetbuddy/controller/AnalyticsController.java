@@ -16,7 +16,7 @@ public class AnalyticsController extends BudgetBuddyController {
     //=============================-Methods-==================================
 
     //-----------------------------Analytics----------------------------------
-    @RequestMapping("/")
+    @RequestMapping("/view")
     public String analytics() {
         return "analytics";
     }
