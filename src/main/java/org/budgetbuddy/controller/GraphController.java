@@ -16,7 +16,7 @@ public class GraphController extends BudgetBuddyController {
     //=============================-Methods-==================================
 
     //-------------------------------Graph------------------------------------
-    @RequestMapping("/")
+    @RequestMapping("/view")
     public String graph() {
         return "graph";
     }
