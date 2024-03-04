@@ -10,6 +10,7 @@ import org.budgetbuddy.entity.finance.FinanceHistory;
 import org.budgetbuddy.entity.purchase.PurchaseHistory;
 import org.budgetbuddy.entity.savings.Saving;
 import org.budgetbuddy.entity.savings.SavingHistory;
+import org.budgetbuddy.entity.tax.TaxHistory;
 
 @Entity
 @Table(name = "users")
@@ -41,6 +42,8 @@ public class User {
     Saving currentSavings;
     @Transient // TODO: Create a converter for this, then remove annotation.
     SavingHistory savingHistory;
+    @Transient
+    TaxHistory taxHistory;
     //===========================-Constructors-===============================
     public User() {
         this.username = "Unknown User";
@@ -65,7 +68,8 @@ public class User {
                 FinanceHistory financeHistory,
                 PurchaseHistory purchaseHistory,
                 Saving currentSavings,
-                SavingHistory savingHistory) {
+                SavingHistory savingHistory,
+                TaxHistory taxHistory) {
         this.username = username;
         this.password = password;
         this.budget = budget;
@@ -77,6 +81,7 @@ public class User {
         this.purchaseHistory = purchaseHistory;
         this.currentSavings = currentSavings;
         this.savingHistory = savingHistory;
+        this.taxHistory = taxHistory;
     }
     //=============================-Methods-==================================
 
