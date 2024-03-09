@@ -31,7 +31,7 @@ public class BudgetBuddyController {
 
     //=============================-Getters-==================================
     public User getCurrentUser() {
-        return currentUser;
+        return this.currentUser;
     }
     //=============================-Setters-==================================
     public void setCurrentUser(User currentUser) {
