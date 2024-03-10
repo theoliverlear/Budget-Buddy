@@ -10,11 +10,19 @@ public class PieGraph extends Graph<String, Double>{
     public PieGraph() {
         this.itemsAsPercentages = new HashMap<>();
     }
-    public PieGraph(HashMap<HashMap<String, Double>, Double> itemsAsPercentages) {
-        this.itemsAsPercentages = itemsAsPercentages;
+    public PieGraph(HashMap<String, Double> itemsWithoutPercentages) {
+        this.itemsAsPercentages = new HashMap<>();
+        this.addAllItemsToGraph(itemsWithoutPercentages);
     }
     //=============================-Methods-==================================
 
+    //-----------------------Add-All-Items-To-Graph---------------------------
+    public void addAllItemsToGraph(HashMap<String, Double> itemsWithoutPercentages) {
+        for (Map.Entry<String, Double> item : itemsWithoutPercentages.entrySet()) {
+            this.addItemToGraph(item.getKey(), item.getValue());
+        }
+        this.calculatePercentages();
+    }
     //-------------------------Add-Item-To-Graph------------------------------
     public void addItemToGraph(String item, Double cost) {
         HashMap<String, Double> itemAsPercentage = new HashMap<>();
