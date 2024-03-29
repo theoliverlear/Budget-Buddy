@@ -13,7 +13,6 @@ public class Category {
     Long id;
     String title;
     //============================-Constants-=================================
-    // TODO: Implement values for each category
     public static final Category HOUSING = new Category("Housing");
     public static final Category TRANSPORTATION = new Category("Transportation");
     public static final Category FOOD = new Category("Food");
