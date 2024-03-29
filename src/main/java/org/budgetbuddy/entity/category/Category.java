@@ -11,20 +11,26 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    String title;
     //============================-Constants-=================================
     // TODO: Implement values for each category
-    public static final Category HOUSING = null;
-    public static final Category TRANSPORTATION = null;
-    public static final Category FOOD = null;
-    public static final Category UTILITIES = null;
-    public static final Category HEALTH = null;
-    public static final Category INSURANCE = null;
-    public static final Category SAVINGS = null;
-    public static final Category PERSONAL_SPENDING = null;
-    public static final Category ENTERTAINMENT = null;
-    public static final Category MISCELLANEOUS = null;
+    public static final Category HOUSING = new Category("Housing");
+    public static final Category TRANSPORTATION = new Category("Transportation");
+    public static final Category FOOD = new Category("Food");
+    public static final Category UTILITIES = new Category("Utilities");
+    public static final Category HEALTH = new Category("Health");
+    public static final Category INSURANCE = new Category("Insurance");
+    public static final Category SAVINGS = new Category("Savings");
+    public static final Category PERSONAL_SPENDING = new Category("Personal Spending");
+    public static final Category ENTERTAINMENT = new Category("Entertainment");
+    public static final Category MISCELLANEOUS = new Category("Miscellaneous");
     //===========================-Constructors-===============================
-
+    public Category() {
+        this.title = "";
+    }
+    public Category(String title) {
+        this.title = title;
+    }
     //=============================-Methods-==================================
 
     //============================-Overrides-=================================
@@ -36,7 +42,17 @@ public class Category {
     //------------------------------To-String---------------------------------
 
     //=============================-Getters-==================================
-
+    public Long getId() {
+        return this.id;
+    }
+    public String getTitle() {
+        return this.title;
+    }
     //=============================-Setters-==================================
-
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
