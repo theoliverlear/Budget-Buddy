@@ -22,6 +22,10 @@ public class Budget {
     }
     //=============================-Methods-==================================
 
+    //--------------------------Add-Budget-Items------------------------------
+    public void addBudgetItem(BudgetItem budgetItem) {
+        this.budgetItems.add(budgetItem);
+    }
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
@@ -31,6 +35,17 @@ public class Budget {
     //------------------------------To-String---------------------------------
 
     //=============================-Getters-==================================
-
+    public Long getId() {
+        return this.id;
+    }
+    public ArrayList<BudgetItem> getBudgetItems() {
+        return this.budgetItems;
+    }
     //=============================-Setters-==================================
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setBudgetItems(ArrayList<BudgetItem> budgetItems) {
+        this.budgetItems = budgetItems;
+    }
 }
