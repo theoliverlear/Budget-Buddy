@@ -16,6 +16,8 @@ public class PieGraph extends Graph<String, Double>{
     }
     //=============================-Methods-==================================
 
+    // TODO: Add a getter method where a given key matches a HashMap and
+    //       returns the value of the key in the HashMap.
     //-----------------------Add-All-Items-To-Graph---------------------------
     public void addAllItemsToGraph(HashMap<String, Double> itemsWithoutPercentages) {
         for (Map.Entry<String, Double> item : itemsWithoutPercentages.entrySet()) {

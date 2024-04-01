@@ -27,17 +27,20 @@ public class GraphController extends BudgetBuddyController {
     }
     //-----------------------------Pie-Graph----------------------------------
     @RequestMapping("/view/pie/{dataType}")
-    public ResponseEntity<PieGraph> pieGraph(@PathVariable String dataType) {
+    public ResponseEntity<String> pieGraph(@PathVariable String dataType) {
         if (this.getCurrentUser() == null) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         // TODO: Generalize this method to work with all kinds of user's data.
         // Let's say the user wants to see their budget breakdown in a pie
         // graph.
+        if (this.currentUser == null) {
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+        }
         Long userId = this.getCurrentUser().getId();
         Budget userBudget = this.userService.getUserRepository().getBudgetById(userId);
         PieGraph pieGraph = this.graphService.buildPieGraph(userBudget);
-        return new ResponseEntity<>(pieGraph, HttpStatus.OK);
+        return new ResponseEntity<>(pieGraph.toString(), HttpStatus.OK);
     }
     //============================-Overrides-=================================
 
