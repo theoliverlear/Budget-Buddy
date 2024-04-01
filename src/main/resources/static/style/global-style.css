@@ -15,6 +15,12 @@ body {
     font-family: "Roboto Light", sans-serif;
     padding: 0;
     margin: 0;
+    background-color: var(--off-white);
+    /*background-color: var(--lighter-off-white);*/
+    /*background-image: url("../images/budget_buddy_logo_cropped.jpg");*/
+
+    background-repeat: no-repeat;
+
 }
 h1 {
     font-size: calc(((6vw + 6vh) / 2) + 12px);
@@ -35,7 +41,7 @@ h6 {
     font-size: calc(((0.5vw + 0.5vh) / 2) + 2px);
 }
 p {
-    font-size: calc(((0.5vw + 0.5vh) / 2) + 2px);
+    font-size: calc(((1.25vw + 1.25vh) / 2) + 4px);
 }
 nav {
     width: 100%;
@@ -62,6 +68,9 @@ nav {
     margin: 0;
     color: var(--off-white);
 }
+#background-logo {
+
+}
 .stripe {
     width: 100%;
     margin: calc(((5vw + 5vh) / 2)) 0;
@@ -71,18 +80,9 @@ nav {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
 }
-#promo-logo {
-    border-radius: 20%;
-    width: calc(((15vw + 15vh) / 2) + 3em);
-    /*margin: 0 calc((((15vw + 15vh) / 2) + 3em) * 1) 0 0;*/
-    box-shadow: var(--off-black) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;
-    transition: box-shadow 0.25s;
-}
-#promo-logo:hover {
-    /*box-shadow: var(--leaf-green) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;*/
-    box-shadow: var(--off-black) calc(((0.35vw + 0.35vh) / 2) + 0.35em) calc(((0.35vw + 0.35vh) / 2) + 0.35em) 0 0;
-}
+
 #title-motto-div {
     display: flex;
     justify-content: space-around;
@@ -124,4 +124,52 @@ nav {
     color: var(--off-white);
     padding: 0;
     margin: 0;
+}
+#promo-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+#promo-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 80%;
+}
+#promo-text-div {
+    width: 65%;
+    padding: calc(((2vw + 2vh) / 2) + 2em);
+    border-radius: calc(((1vw + 1vh) / 2) + 1em);
+    border: var(--leaf-green) solid calc(((0.05vw + 0.05vh) / 2) + 0.05em);
+    margin: 0;
+    background-color: var(--lighter-off-white);
+    /*box-shadow: var(--off-black) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;*/
+    box-shadow: var(--accent-green) 0 0 calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.15vw + 0.15vh) / 2) + 0.15em);
+}
+#promo-logo-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    padding: 0;
+    margin: 0;
+}
+#promo-logo {
+    border-radius: 20%;
+    width: calc(((15vw + 15vh) / 2) + 3em);
+    /*margin: 0 calc((((15vw + 15vh) / 2) + 3em) * 1) 0 0;*/
+    box-shadow: var(--off-black) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;
+    transition: box-shadow 0.25s;
+    padding: 0;
+    margin: 0;
+    border: var(--leaf-green) solid calc(((0.05vw + 0.05vh) / 2) + 0.05em);
+}
+#promo-logo:hover {
+    /*box-shadow: var(--leaf-green) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;*/
+    box-shadow: var(--off-black) calc(((0.35vw + 0.35vh) / 2) + 0.35em) calc(((0.35vw + 0.35vh) / 2) + 0.35em) 0 0;
 }
