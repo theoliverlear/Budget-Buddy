@@ -24,6 +24,12 @@ public class BudgetTest {
         budgetTest.addBudgetItem(budgetTestItem3);
         assertTrue(budgetTest.getBudgetItems().contains(budgetTestItem3));
     }
+    @Test
+    public void testAddNullItem() {
+        budgetTest = new Budget(budgetListTest);
+        budgetTest.addBudgetItem(null);
+        assertEquals( 0, budgetTest.getBudgetItems().size());
+    }
 
     //----------------------------Test-Getters--------------------------------
     @Test
@@ -34,6 +40,13 @@ public class BudgetTest {
         budgetTest = new Budget(budgetListTest);
         ArrayList<BudgetItem> actualItems = budgetTest.getBudgetItems();
         assertEquals(budgetListTest, actualItems);
+        assertNotNull(budgetTest.getBudgetItems());
+    }
+    @Test
+    public void testGetIdNotNull(){
+        budgetTest = new Budget();
+        budgetTest.setId(34867893567L);
+        assertNotNull(budgetTest.getBudgetItems());
     }
 
 
