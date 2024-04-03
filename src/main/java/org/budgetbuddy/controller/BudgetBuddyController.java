@@ -21,8 +21,8 @@ public class BudgetBuddyController {
 
     //-------------------------------Index------------------------------------
     @RequestMapping("/")
-    public String index() {
-        return "index";
+    public String home() {
+        return "home";
     }
     //============================-Overrides-=================================
 
