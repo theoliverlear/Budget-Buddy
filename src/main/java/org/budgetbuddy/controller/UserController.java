@@ -18,12 +18,12 @@ public class UserController extends BudgetBuddyController {
     //-------------------------------Login------------------------------------
     @RequestMapping("/login")
     public String login() {
-        return "index";
+        return "home";
     }
     //------------------------------Sign-Up-----------------------------------
     @RequestMapping("/signup")
     public String signup() {
-        return "index";
+        return "home";
     }
     //============================-Overrides-=================================
 
