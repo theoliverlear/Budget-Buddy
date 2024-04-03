@@ -11,11 +11,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BudgetTest {
     //============================-Variables-=================================
-    Budget budgetTest = new Budget();
+    Budget budgetTest;
     ArrayList<BudgetItem> budgetListTest = new ArrayList<>();
     BudgetItem  budgetTestItem1 = new BudgetItem("Starbucks Coffee", 3.99, Category.FOOD);
     BudgetItem budgetTestItem2 = new BudgetItem("Sneakers", 59.99, Category.PERSONAL_SPENDING);
     BudgetItem budgetTestItem3 = new BudgetItem("Television", 199.99, Category.ENTERTAINMENT);
+
+    //----------------------------Test-Methods--------------------------------
+    @Test
+    public void testAddBudgetItem () {
+        budgetTest = new Budget(budgetListTest);
+        budgetTest.addBudgetItem(budgetTestItem3);
+        assertTrue(budgetTest.getBudgetItems().contains(budgetTestItem3));
+    }
 
     //----------------------------Test-Getters--------------------------------
     @Test
@@ -23,19 +31,27 @@ public class BudgetTest {
         budgetListTest.add(budgetTestItem1);
         budgetListTest.add(budgetTestItem2);
         budgetListTest.add(budgetTestItem3);
-        budgetTest.setBudgetItems(budgetListTest);
+        budgetTest = new Budget(budgetListTest);
         ArrayList<BudgetItem> actualItems = budgetTest.getBudgetItems();
         assertEquals(budgetListTest, actualItems);
     }
 
 
+
     //----------------------------Test-Setters--------------------------------
     @Test
     public void testSetBudgetItems(){
+        budgetTest = new Budget();
         budgetListTest.add(budgetTestItem1);
         budgetListTest.add(budgetTestItem2);
-        budgetListTest.add(budgetTestItem3);
+        budgetListTest.add(new BudgetItem("Hamburger", 2, Category.FOOD));
         budgetTest.setBudgetItems(budgetListTest);
         assertSame(budgetListTest, budgetTest.getBudgetItems());
+    }
+    @Test
+    public void testSetId(){
+        budgetTest = new Budget();
+        budgetTest.setId(3113113L);
+        assertEquals(3113113L, budgetTest.getId());
     }
 }
