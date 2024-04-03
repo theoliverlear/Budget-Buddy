@@ -17,6 +17,18 @@ public class BudgetTest {
     BudgetItem budgetTestItem2 = new BudgetItem("Sneakers", 59.99, Category.PERSONAL_SPENDING);
     BudgetItem budgetTestItem3 = new BudgetItem("Television", 199.99, Category.ENTERTAINMENT);
 
+    //----------------------------Test-Getters--------------------------------
+    @Test
+    public void testGetBudgetItems(){
+        budgetListTest.add(budgetTestItem1);
+        budgetListTest.add(budgetTestItem2);
+        budgetListTest.add(budgetTestItem3);
+        budgetTest.setBudgetItems(budgetListTest);
+        ArrayList<BudgetItem> actualItems = budgetTest.getBudgetItems();
+        assertEquals(budgetListTest, actualItems);
+    }
+
+
     //----------------------------Test-Setters--------------------------------
     @Test
     public void testSetBudgetItems(){
