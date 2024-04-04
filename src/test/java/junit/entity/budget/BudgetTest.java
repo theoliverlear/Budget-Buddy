@@ -11,42 +11,42 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BudgetTest {
     //============================-Variables-=================================
-    Budget budgetTest;
-    ArrayList<BudgetItem> budgetListTest = new ArrayList<>();
-    BudgetItem  budgetItemTest1 = new BudgetItem("Starbucks Coffee", 3.99, Category.FOOD);
-    BudgetItem budgetItemTest2 = new BudgetItem("Sneakers", 59.99, Category.PERSONAL_SPENDING);
-    BudgetItem budgetItemTest3 = new BudgetItem("Television", 199.99, Category.ENTERTAINMENT);
+    Budget testBudget;
+    ArrayList<BudgetItem> testBudgetList = new ArrayList<>();
+    BudgetItem  testBudgetItem1 = new BudgetItem("Starbucks Coffee", 3.99, Category.FOOD);
+    BudgetItem testBudgetItem2 = new BudgetItem("Sneakers", 59.99, Category.PERSONAL_SPENDING);
+    BudgetItem testBudgetItem3 = new BudgetItem("Television", 199.99, Category.ENTERTAINMENT);
 
     //----------------------------Test-Methods--------------------------------
     @Test
     public void testAddBudgetItem () {
-        this.budgetTest = new Budget(this.budgetListTest);
-        this.budgetTest.addBudgetItem(this.budgetItemTest3);
-        assertTrue(this.budgetTest.getBudgetItems().contains(this.budgetItemTest3));
+        this.testBudget = new Budget(this.testBudgetList);
+        this.testBudget.addBudgetItem(this.testBudgetItem3);
+        assertTrue(this.testBudget.getBudgetItems().contains(this.testBudgetItem3));
     }
     @Test
     public void testAddNullItem() {
-        this.budgetTest = new Budget(this.budgetListTest);
-        this.budgetTest.addBudgetItem(null);
-        assertEquals( 0, this.budgetTest.getBudgetItems().size());
+        this.testBudget = new Budget(this.testBudgetList);
+        this.testBudget.addBudgetItem(null);
+        assertEquals( 0, this.testBudget.getBudgetItems().size());
     }
 
     //----------------------------Test-Getters--------------------------------
     @Test
     public void testGetBudgetItems(){
-        this.budgetListTest.add(this.budgetItemTest1);
-        this.budgetListTest.add(this.budgetItemTest2);
-        this.budgetListTest.add(this.budgetItemTest3);
-        this.budgetTest = new Budget(this.budgetListTest);
-        ArrayList<BudgetItem> actualItems = this.budgetTest.getBudgetItems();
-        assertEquals(this.budgetListTest, actualItems);
-        assertNotNull(this.budgetTest.getBudgetItems());
+        this.testBudgetList.add(this.testBudgetItem1);
+        this.testBudgetList.add(this.testBudgetItem2);
+        this.testBudgetList.add(this.testBudgetItem3);
+        this.testBudget = new Budget(this.testBudgetList);
+        ArrayList<BudgetItem> actualItems = this.testBudget.getBudgetItems();
+        assertEquals(this.testBudgetList, actualItems);
+        assertNotNull(this.testBudget.getBudgetItems());
     }
     @Test
     public void testGetIdNotNull(){
-        this.budgetTest = new Budget();
-        this.budgetTest.setId(34867893567L);
-        assertNotNull(this.budgetTest.getBudgetItems());
+        this.testBudget = new Budget();
+        this.testBudget.setId(34867893567L);
+        assertNotNull(this.testBudget.getBudgetItems());
     }
 
 
@@ -54,17 +54,17 @@ public class BudgetTest {
     //----------------------------Test-Setters--------------------------------
     @Test
     public void testSetBudgetItems(){
-        this.budgetTest = new Budget();
-        this.budgetListTest.add(this.budgetItemTest1);
-        this.budgetListTest.add(this.budgetItemTest2);
-        this.budgetListTest.add(new BudgetItem("Hamburger", 2, Category.FOOD));
-        this.budgetTest.setBudgetItems(this.budgetListTest);
-        assertSame(this.budgetListTest, this.budgetTest.getBudgetItems());
+        this.testBudget = new Budget();
+        this.testBudgetList.add(this.testBudgetItem1);
+        this.testBudgetList.add(this.testBudgetItem2);
+        this.testBudgetList.add(new BudgetItem("Hamburger", 2, Category.FOOD));
+        this.testBudget.setBudgetItems(this.testBudgetList);
+        assertSame(this.testBudgetList, this.testBudget.getBudgetItems());
     }
     @Test
     public void testSetId(){
-        this.budgetTest = new Budget();
-        this.budgetTest.setId(3113113L);
-        assertEquals(3113113L, this.budgetTest.getId());
+        this.testBudget = new Budget();
+        this.testBudget.setId(3113113L);
+        assertEquals(3113113L, this.testBudget.getId());
     }
 }
