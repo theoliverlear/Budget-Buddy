@@ -33,7 +33,7 @@ public class BudgetTest {
         assertEquals( 10000, this.testBudget.getBudgetItems().size());
     }
 
-    //----------------------------Test-Getters--------------------------------
+    //----------------------------Test-Instantiation--------------------------------
     @Test
     public void testGetIdNotNull(){
         this.testBudget = new Budget();
