@@ -33,6 +33,19 @@ public class BudgetTest {
 
     //----------------------------Test-Getters--------------------------------
     @Test
+    public void testGetIdNotNull(){
+        this.testBudget = new Budget();
+        this.testBudget.setId(34867893567L);
+        assertNotNull(this.testBudget.getBudgetItems());
+    }
+    @Test
+    public void testBudgetNotNull(){
+        this.testBudget = new Budget();
+        assertNotNull(this.testBudget);
+    }
+
+    //----------------------------Test-Getters--------------------------------
+    @Test
     public void testGetBudgetItems(){
         this.testBudgetList.add(this.testBudgetItem1);
         this.testBudgetList.add(this.testBudgetItem2);
@@ -42,12 +55,7 @@ public class BudgetTest {
         assertEquals(this.testBudgetList, actualItems);
         assertNotNull(this.testBudget.getBudgetItems());
     }
-    @Test
-    public void testGetIdNotNull(){
-        this.testBudget = new Budget();
-        this.testBudget.setId(34867893567L);
-        assertNotNull(this.testBudget.getBudgetItems());
-    }
+
 
 
 
