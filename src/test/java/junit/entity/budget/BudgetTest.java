@@ -25,10 +25,12 @@ public class BudgetTest {
         assertTrue(this.testBudget.getBudgetItems().contains(this.testBudgetItem3));
     }
     @Test
-    public void testAddNullItem() {
+    public void testBudgetListSize() {
         this.testBudget = new Budget(this.testBudgetList);
-        this.testBudget.addBudgetItem(null);
-        assertEquals( 0, this.testBudget.getBudgetItems().size());
+        for (int i = 0; i < 10000; i++) {
+            this.testBudgetList.add(new BudgetItem("TestObject" + i, i, Category.ENTERTAINMENT));
+        }
+        assertEquals( 10000, this.testBudget.getBudgetItems().size());
     }
 
     //----------------------------Test-Getters--------------------------------
