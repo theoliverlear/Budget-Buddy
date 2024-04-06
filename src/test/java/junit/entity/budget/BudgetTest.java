@@ -70,6 +70,7 @@ public class BudgetTest {
         this.testBudgetList.add(new BudgetItem("Hamburger", 2, Category.FOOD));
         this.testBudget.setBudgetItems(this.testBudgetList);
         assertSame(this.testBudgetList, this.testBudget.getBudgetItems());
+        assertEquals(this.testBudgetList, this.testBudget.getBudgetItems());
     }
     @Test
     public void testSetId(){
