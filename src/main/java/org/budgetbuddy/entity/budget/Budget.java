@@ -23,15 +23,49 @@ public class Budget {
     //=============================-Methods-==================================
 
     //--------------------------Add-Budget-Items------------------------------
-    public void addBudgetItem(BudgetItem budgetItem) {
+    public void addBudgetItem(BudgetItem budgetItem) { //adding Budget Item method
         this.budgetItems.add(budgetItem);
+    }
+    public void removeBudgetItem(BudgetItem budgetItem) {//removing Budget Item
+        this.budgetItems.remove(budgetItem);
+    }
+    public void updateBudgetItem(BudgetItem budgetItem){ //update Budget Item
+        int budgetItemIndex = this.getBudgetItems().indexOf(budgetItem);
+        if(budgetItemIndex != -1){//checks if budget item is found
+            this.getBudgetItems().remove(budgetItemIndex);
+            this.getBudgetItems().add(budgetItemIndex, budgetItem);
+        }
+        else{
+            System.out.println(budgetItem.getName()+" is not found");
+        }
+    }
+    public BudgetItem getBudgetItemByTitle(String budgetItemName){//gets item by title
+        BudgetItem budgetItemFound=null;
+        for(BudgetItem budgetItem : this.getBudgetItems()){
+            if(budgetItem.getName().equals(budgetItemName)){
+                return budgetItem;
+            }
+        }
+         return null;
     }
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
-
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) return true;
+        if (obj instanceof Budget budget){
+            boolean sameId = this.id.equals(budget.getId());
+            boolean sameBudgetItems = this.budgetItems.equals(budget.getBudgetItems());
+            return sameId && sameBudgetItems;
+        }
+        return false;
+    }
     //------------------------------Hash-Code---------------------------------
-
+    @Override
+    public int hashCode() {
+        return this.id.hashCode();
+    }
     //------------------------------To-String---------------------------------
 
     //=============================-Getters-==================================
