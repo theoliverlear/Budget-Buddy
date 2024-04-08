@@ -1,0 +1,13 @@
+<svg width="200" height="1000" xmlns="http://www.w3.org/2000/svg">
+    <!-- Enhanced Vine stem with more sway -->
+    <path d="M100,0
+           C150,250 50,250 100,500
+           C150,750 50,750 100,1000"
+          stroke="darkgreen" stroke-width="2" fill="none"/>
+
+    <!-- Improved Leaves -->
+    <path d="M100,200 q10,0 15,-10 q5,10 15,10 q-10,5 -15,15 q-5,-10 -15,-15" fill="lightgreen"/>
+    <path d="M100,400 q-10,0 -15,-10 q-5,10 -15,10 q10,5 15,15 q5,-10 15,-15" fill="lightgreen"/>
+    <path d="M100,600 q10,0 15,-10 q5,10 15,10 q-10,5 -15,15 q-5,-10 -15,-15" fill="lightgreen"/>
+    <path d="M100,800 q-10,0 -15,-10 q-5,10 -15,10 q10,5 15,15 q5,-10 15,-15" fill="lightgreen"/>
+</svg>
