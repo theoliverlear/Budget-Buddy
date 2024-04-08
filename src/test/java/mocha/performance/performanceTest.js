@@ -17,13 +17,13 @@ describe('Web Performance Test', function () {
     });
     // Test the memory usage of a given page.
     describe('Memory Test', function () {
-        // Test the memory usage of the index.html page.
-        describe('index.html memory', function () {
+        // Test the memory usage of the home.html page.
+        describe('home.html memory', function () {
             it('should use less than 250MB of memory', async function () {
-                // Get the path of the index.html page.
-                const localIndexPagePath = '../../../../main/resources/templates/index.html';
+                // Get the path of the home.html page.
+                const localIndexPagePath = '../../../../main/resources/templates/home.html';
                 const indexPagePath = path.join(__dirname, localIndexPagePath);
-                // Go to the index.html page and get the memory usage.
+                // Go to the home.html page and get the memory usage.
                 await testPage.goto(`file://${indexPagePath}`);
                 const performanceMetrics = await testPage.metrics();
                 // Calculate the memory usage in MB.
