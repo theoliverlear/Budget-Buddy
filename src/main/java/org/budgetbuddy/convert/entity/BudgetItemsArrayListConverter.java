@@ -23,7 +23,7 @@ public class BudgetItemsArrayListConverter implements AttributeConverter<ArrayLi
     @Override
     public String convertToDatabaseColumn(ArrayList<BudgetItem> budgetItems) {
         try {
-            return objectMapper.writeValueAsString(budgetItems);
+            return this.objectMapper.writeValueAsString(budgetItems);
         } catch (JsonProcessingException ex) {
             final String EXCEPTION_MESSAGE = "Error converting budget items to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
@@ -36,7 +36,7 @@ public class BudgetItemsArrayListConverter implements AttributeConverter<ArrayLi
             if (budgetItemsJson == null) {
                 return new ArrayList<>();
             }
-            return objectMapper.readValue(budgetItemsJson, new TypeReference<>() {});
+            return this.objectMapper.readValue(budgetItemsJson, new TypeReference<>() {});
         } catch (JsonProcessingException ex) {
             final String EXCEPTION_MESSAGE = "Error converting JSON to budget items.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
