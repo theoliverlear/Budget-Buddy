@@ -9,7 +9,7 @@ import org.budgetbuddy.entity.category.Category;
 @Converter(autoApply = true)
 public class CategoryConverter implements AttributeConverter<Category, String> {
     //============================-Variables-=================================
-    ObjectMapper objectMapper = new ObjectMapper();
+    ObjectMapper objectMapper;
     //===========================-Constructors-===============================
     public CategoryConverter() {
         this.objectMapper = new ObjectMapper();
