@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @Converter(autoApply = true)
 public class BudgetItemsArrayListConverter implements AttributeConverter<ArrayList<BudgetItem>, String> {
     //============================-Variables-=================================
-    ObjectMapper objectMapper = new ObjectMapper();
+    ObjectMapper objectMapper;
     //===========================-Constructors-===============================
     public BudgetItemsArrayListConverter() {
         this.objectMapper = new ObjectMapper();
