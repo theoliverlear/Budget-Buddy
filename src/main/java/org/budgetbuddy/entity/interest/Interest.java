@@ -1,8 +1,8 @@
 package org.budgetbuddy.entity.interest;
 
 import jakarta.persistence.*;
-import org.budgetbuddy.entity.debt.Debt;
-import org.budgetbuddy.entity.savings.Saving;
+import org.budgetbuddy.entity.holding.debt.Debt;
+import org.budgetbuddy.entity.holding.savings.Saving;
 import org.budgetbuddy.entity.time.TimeInterval;
 
 //=================================-Imports-==================================
@@ -42,7 +42,11 @@ public abstract class Interest {
     //------------------------------Hash-Code---------------------------------
 
     //------------------------------To-String---------------------------------
-
+    @Override
+    public String toString() {
+        return "%.2f%% - %s%n".formatted(this.rateAsDecimal,
+                                         this.chargeInterestInterval);
+    }
     //=============================-Getters-==================================
 
     //=============================-Setters-==================================
