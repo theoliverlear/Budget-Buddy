@@ -26,4 +26,12 @@ public class ExpenseTest {
     }
 
     //----------------------------Test-Setters--------------------------------
+    public void testSetName(){
+        this.testExpense.setName("T-Shirt");
+        assertEquals("T-Shirt", this.testExpense.getName());
+    }
+    public void testSetAmount(){
+        this.testExpense.setAmount(20);
+        assertEquals(20, this.testExpense.getAmount());
+    }
 }
