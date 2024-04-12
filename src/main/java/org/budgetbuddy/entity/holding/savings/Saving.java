@@ -1,26 +1,35 @@
-package org.budgetbuddy.entity.revenue;
+package org.budgetbuddy.entity.holding.savings;
 //=================================-Imports-==================================
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.budgetbuddy.entity.interest.Interest;
+
+import java.util.Optional;
 
 @Entity
-public class Revenue {
+public class Saving {
     //============================-Variables-=================================
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     String name;
     double amount;
+    @Transient // TODO: Create a converter for this, then remove annotation.
+    Optional<Interest> interest;
     //===========================-Constructors-===============================
-    public Revenue() {
-        this.name = "Unnamed Revenue";
+    public Saving() {
+        this.name = "Unnamed Saving";
         this.amount = 0;
+        this.interest = Optional.empty();
     }
-    public Revenue(String name, double amount) {
+    public Saving(String name, double amount) {
         this.name = name;
         this.amount = amount;
+        this.interest = Optional.empty();
+    }
+    public Saving(String name, double amount, Interest interest) {
+        this.name = name;
+        this.amount = amount;
+        this.interest = Optional.of(interest);
     }
     //=============================-Methods-==================================
 
@@ -30,8 +39,8 @@ public class Revenue {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj instanceof Revenue comparedRevenue) {
-            return this.id.equals(comparedRevenue.id);
+        if (obj instanceof Saving comparedSaving) {
+            return this.id.equals(comparedSaving.id);
         }
         return false;
     }
@@ -43,7 +52,11 @@ public class Revenue {
     //------------------------------To-String---------------------------------
     @Override
     public String toString() {
-        return "%s: $%.2f".formatted(this.name, this.amount);
+        if (this.interest.isEmpty()) {
+            return "%s: $%.2f".formatted(this.name, this.amount);
+        } else {
+            return "%s: $%.2f - %s".formatted(this.name, this.amount, this.interest.get());
+        }
     }
     //=============================-Getters-==================================
     public Long getId() {
@@ -55,6 +68,9 @@ public class Revenue {
     public double getAmount() {
         return this.amount;
     }
+    public Optional<Interest> getInterest() {
+        return this.interest;
+    }
     //=============================-Setters-==================================
     public void setId(Long id) {
         this.id = id;
@@ -64,5 +80,8 @@ public class Revenue {
     }
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+    public void setInterest(Interest interest) {
+        this.interest = Optional.of(interest);
     }
 }

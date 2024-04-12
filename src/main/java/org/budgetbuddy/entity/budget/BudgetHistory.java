@@ -26,14 +26,19 @@ public class BudgetHistory {
     }
     //=============================-Methods-==================================
 
+    //-----------------------------Add-Budget---------------------------------
     public void addBudget(Budget budget, LocalDateTime dateTime){
         this.budgetHistoryMap.put(budget,dateTime);
     }
-
+    //---------------------------Add-Budget-Now-------------------------------
     public void addBudgetNow(Budget budget){
         this.budgetHistoryMap.put(budget, LocalDateTime.now());
     }
-
+    //---------------------------Remove-Budget--------------------------------
+    public void removeBudget(Budget budget){
+        this.budgetHistoryMap.remove(budget);
+    }
+    //-------------------------Get-Budget-By-Time-----------------------------
     public Budget getBudgetByTime(LocalDateTime dateTime ){
         for(Map.Entry<Budget,LocalDateTime> budgetEntry : this.budgetHistoryMap.entrySet() ){
             LocalDateTime entryDateTime = budgetEntry.getValue();
@@ -43,15 +48,26 @@ public class BudgetHistory {
         }
         return null;
     }
+    //-------------------------Get-Date-By-Budget-----------------------------
     public LocalDateTime getDateTimeByBudget(Budget budget){
         return this.budgetHistoryMap.get(budget);
     }
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
-
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) return true;
+        if (obj instanceof BudgetHistory comparedBudgetHistory){
+            return this.id.equals(comparedBudgetHistory.id);
+        }
+        return false;
+    }
     //------------------------------Hash-Code---------------------------------
-
+    @Override
+    public int hashCode(){
+        return this.id.hashCode();
+    }
     //------------------------------To-String---------------------------------
 
     //=============================-Getters-==================================
