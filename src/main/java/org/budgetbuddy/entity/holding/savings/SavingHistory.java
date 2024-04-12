@@ -1,4 +1,4 @@
-package org.budgetbuddy.entity.savings;
+package org.budgetbuddy.entity.holding.savings;
 //============================-Variables-=================================
 import jakarta.persistence.*;
 import org.budgetbuddy.model.format.FormattedDate;
