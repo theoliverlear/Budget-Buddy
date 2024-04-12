@@ -8,6 +8,21 @@ public class Category {
     @Id
     String title;
     //============================-Constants-=================================
+
+    //------------------------------Holdings----------------------------------
+    @Transient
+    public static final Category CHECKING = new Category("Checking");
+    @Transient
+    public static final Category SAVINGS = new Category("Savings");
+    @Transient
+    public static final Category INVESTMENTS = new Category("Investments");
+    @Transient
+    public static final Category EMERGENCY_FUND = new Category("Emergency Fund");
+    @Transient
+    public static final Category RETIREMENT = new Category("Retirement");
+    @Transient
+    public static final Category DEBT = new Category("Debt");
+    //------------------------------Expenses----------------------------------
     @Transient
     public static final Category HOUSING = new Category("Housing");
     @Transient
@@ -21,11 +36,21 @@ public class Category {
     @Transient
     public static final Category INSURANCE = new Category("Insurance");
     @Transient
-    public static final Category SAVINGS = new Category("Savings");
-    @Transient
     public static final Category PERSONAL_SPENDING = new Category("Personal Spending");
     @Transient
     public static final Category ENTERTAINMENT = new Category("Entertainment");
+    @Transient
+    public static final Category TAXES = new Category("Taxes");
+    //------------------------------Revenues----------------------------------
+    @Transient
+    public static final Category SALARY = new Category("Salary");
+    @Transient
+    public static final Category GIFTS = new Category("Gifts");
+    @Transient
+    public static final Category TAX_REFUND = new Category("Tax Refund");
+    //---------------------Both-Expenses-And-Revenue--------------------------
+    @Transient
+    public static final Category INTEREST = new Category("Interest");
     @Transient
     public static final Category MISCELLANEOUS = new Category("Miscellaneous");
     //===========================-Constructors-===============================
