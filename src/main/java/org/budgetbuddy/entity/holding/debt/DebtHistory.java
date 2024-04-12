@@ -1,8 +1,7 @@
-package org.budgetbuddy.entity.debt;
+package org.budgetbuddy.entity.holding.debt;
 
 import jakarta.persistence.*;
 import org.budgetbuddy.model.format.FormattedDate;
-import org.budgetbuddy.model.format.FormattedTime;
 
 import java.util.HashMap;
 
