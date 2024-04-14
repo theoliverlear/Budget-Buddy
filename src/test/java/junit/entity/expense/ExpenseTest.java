@@ -63,7 +63,7 @@ public class ExpenseTest {
         assertEquals(20, this.testExpense.getAmount());
     }
     @Test
-    public void testSetExpense() {
+    public void testSetCategory() {
         this.testExpense.setCategory(Category.ENTERTAINMENT);
         assertEquals(Category.ENTERTAINMENT, this.testExpense.getCategory());
     }
