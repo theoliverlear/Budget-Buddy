@@ -48,4 +48,9 @@ public class ExpenseTest {
         this.testExpense.setCategory(Category.ENTERTAINMENT);
         assertEquals(Category.ENTERTAINMENT, this.testExpense.getCategory());
     }
+    @Test
+    public void testSetId(){
+        this.testExpense.setId(100123L);
+        assertEquals(100123L, this.testExpense.getId());
+    }
 }
