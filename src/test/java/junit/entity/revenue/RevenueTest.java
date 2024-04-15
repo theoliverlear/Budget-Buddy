@@ -1,5 +1,6 @@
 package junit.entity.revenue;
 
+import org.budgetbuddy.entity.budget.BudgetItem;
 import org.budgetbuddy.entity.category.Category;
 import org.budgetbuddy.entity.revenue.Revenue;
 import org.budgetbuddy.entity.revenue.Revenues;
@@ -33,6 +34,15 @@ public class RevenueTest {
         this.testRevenues.addRevenue(this.testRevenue);
         this.testRevenues.removeRevenue(this.testRevenue);
         assertEquals(0, this.testRevenues.getRevenues().size());
+    }
+
+    //----------------------------Test-Load--------------------------------
+    @Test
+    public void testRevenuesSize(){
+        for (int i = 0; i < 10000; i++) {
+            this.testRevenues.addRevenue(new Revenue("TestObject" + i, i));
+        }
+        assertEquals( 10000, this.testRevenues.getRevenues().size());
     }
 
     //----------------------------Test-Getters--------------------------------
