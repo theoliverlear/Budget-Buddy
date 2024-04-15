@@ -37,6 +37,15 @@ public class ExpenseTest {
         assertEquals(0, this.testExpenses.getExpenses().size());
     }
 
+    //----------------------------Test-Load--------------------------------
+    @Test
+    public void testRevenuesSize(){
+        for (int i = 0; i < 10000; i++) {
+            this.testExpenses.addExpense(new Expense("TestObject" + i, i));
+        }
+        assertEquals( 10000, this.testExpenses.getExpenses().size());
+    }
+
     //----------------------------Test-Getters--------------------------------
     @Test
     public void testGetName(){

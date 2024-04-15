@@ -1,7 +1,5 @@
 package junit.entity.revenue;
 
-import org.budgetbuddy.entity.budget.BudgetItem;
-import org.budgetbuddy.entity.category.Category;
 import org.budgetbuddy.entity.revenue.Revenue;
 import org.budgetbuddy.entity.revenue.Revenues;
 import org.junit.jupiter.api.Test;
