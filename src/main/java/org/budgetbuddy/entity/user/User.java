@@ -3,13 +3,13 @@ package org.budgetbuddy.entity.user;
 import jakarta.persistence.*;
 import org.budgetbuddy.entity.budget.Budget;
 import org.budgetbuddy.entity.budget.BudgetHistory;
-import org.budgetbuddy.entity.debt.Debt;
-import org.budgetbuddy.entity.debt.DebtHistory;
+import org.budgetbuddy.entity.holding.debt.Debt;
+import org.budgetbuddy.entity.holding.debt.DebtHistory;
 import org.budgetbuddy.entity.finance.Finance;
 import org.budgetbuddy.entity.finance.FinanceHistory;
 import org.budgetbuddy.entity.purchase.PurchaseHistory;
-import org.budgetbuddy.entity.savings.Saving;
-import org.budgetbuddy.entity.savings.SavingHistory;
+import org.budgetbuddy.entity.holding.savings.Saving;
+import org.budgetbuddy.entity.holding.savings.SavingHistory;
 import org.budgetbuddy.entity.tax.TaxHistory;
 
 @Entity

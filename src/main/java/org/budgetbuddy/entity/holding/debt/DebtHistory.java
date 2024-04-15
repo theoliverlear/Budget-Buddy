@@ -1,24 +1,25 @@
-package org.budgetbuddy.entity.savings;
-//============================-Variables-=================================
+package org.budgetbuddy.entity.holding.debt;
+
 import jakarta.persistence.*;
 import org.budgetbuddy.model.format.FormattedDate;
 
 import java.util.HashMap;
 
+//=================================-Imports-==================================
 @Entity
-public class SavingHistory {
+public class DebtHistory {
     //============================-Variables-=================================
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @Transient // TODO: Create a converter for this, then remove annotation.
-    HashMap<Saving, FormattedDate> savingHistoryMap;
+    HashMap<Debt, FormattedDate> debtHistoryMap;
     //===========================-Constructors-===============================
-    public SavingHistory() {
-        this.savingHistoryMap = new HashMap<>();
+    public DebtHistory() {
+        this.debtHistoryMap = new HashMap<>();
     }
-    public SavingHistory(HashMap<Saving, FormattedDate> savingHistoryMap) {
-        this.savingHistoryMap = savingHistoryMap;
+    public DebtHistory(HashMap<Debt, FormattedDate> debtHistoryMap) {
+        this.debtHistoryMap = debtHistoryMap;
     }
     //=============================-Methods-==================================
 

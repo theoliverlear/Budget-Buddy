@@ -1,4 +1,4 @@
-package org.budgetbuddy.entity.debt;
+package org.budgetbuddy.entity.holding.debt;
 //=================================-Imports-==================================
 import jakarta.persistence.*;
 import org.budgetbuddy.entity.interest.Interest;

@@ -1,46 +1,39 @@
 package org.budgetbuddy.convert.entity;
 //=================================-Imports-==================================
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-import org.budgetbuddy.entity.budget.BudgetItem;
-
-import java.util.ArrayList;
+import org.budgetbuddy.entity.expense.Expense;
 
 @Converter(autoApply = true)
-public class BudgetItemsArrayListConverter implements AttributeConverter<ArrayList<BudgetItem>, String> {
+public class ExpenseConverter implements AttributeConverter<Expense, String> {
     //============================-Variables-=================================
     ObjectMapper objectMapper;
     //===========================-Constructors-===============================
-    public BudgetItemsArrayListConverter() {
+    public ExpenseConverter() {
         this.objectMapper = new ObjectMapper();
     }
     //============================-Methods-===================================
 
     //---------------------Convert-To-Database-Column-------------------------
     @Override
-    public String convertToDatabaseColumn(ArrayList<BudgetItem> budgetItems) {
+    public String convertToDatabaseColumn(Expense expense) {
         try {
-            return this.objectMapper.writeValueAsString(budgetItems);
+            return this.objectMapper.writeValueAsString(expense);
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting budget items to JSON.";
+            final String EXCEPTION_MESSAGE = "Error converting expense to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }
     //--------------------Convert-From-Database-Column------------------------
     @Override
-    public ArrayList<BudgetItem> convertToEntityAttribute(String budgetItemsJson) {
+    public Expense convertToEntityAttribute(String expenseJson) {
         try {
-            if (budgetItemsJson == null) {
-                return new ArrayList<>();
-            }
-            return this.objectMapper.readValue(budgetItemsJson, new TypeReference<>() {});
+            return this.objectMapper.readValue(expenseJson, Expense.class);
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting JSON to budget items.";
+            final String EXCEPTION_MESSAGE = "Error converting JSON to expense.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }
-
 }
