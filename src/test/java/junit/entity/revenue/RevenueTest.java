@@ -23,6 +23,17 @@ public class RevenueTest {
     }
 
     //----------------------------Test-Methods--------------------------------
+    @Test
+    public void testAddExpense(){
+        this.testRevenues.addRevenue(this.testRevenue);
+        assertTrue(this.testRevenues.getRevenues().contains(this.testRevenue));
+    }
+    @Test
+    public void testRemoveExpense(){
+        this.testRevenues.addRevenue(this.testRevenue);
+        this.testRevenues.removeRevenue(this.testRevenue);
+        assertEquals(0, this.testRevenues.getRevenues().size());
+    }
 
     //----------------------------Test-Getters--------------------------------
     @Test
