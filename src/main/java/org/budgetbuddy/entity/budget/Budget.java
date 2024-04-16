@@ -1,7 +1,7 @@
 package org.budgetbuddy.entity.budget;
 //=================================-Imports-==================================
 import jakarta.persistence.*;
-import org.budgetbuddy.convert.entity.BudgetItemsArrayListConverter;
+import org.budgetbuddy.convert.entity.budget.BudgetItemsArrayListConverter;
 
 import java.util.ArrayList;
 
