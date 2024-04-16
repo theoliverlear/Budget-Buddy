@@ -2,7 +2,7 @@
 package org.budgetbuddy.entity.expense;
 
 import jakarta.persistence.*;
-import org.budgetbuddy.convert.entity.CategoryConverter;
+import org.budgetbuddy.convert.entity.category.CategoryConverter;
 import org.budgetbuddy.entity.category.Category;
 
 @Entity
