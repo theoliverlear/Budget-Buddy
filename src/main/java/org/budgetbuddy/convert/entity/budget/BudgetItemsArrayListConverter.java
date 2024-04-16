@@ -1,4 +1,4 @@
-package org.budgetbuddy.convert.entity;
+package org.budgetbuddy.convert.entity.budget;
 //=================================-Imports-==================================
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
