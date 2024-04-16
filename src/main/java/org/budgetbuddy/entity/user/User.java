@@ -1,6 +1,11 @@
 package org.budgetbuddy.entity.user;
 //=================================-Imports-==================================
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.budgetbuddy.convert.entity.budget.BudgetConverter;
+import org.budgetbuddy.convert.entity.budget.BudgetHistoryConverter;
+import org.budgetbuddy.convert.entity.user.SafePasswordConverter;
 import org.budgetbuddy.entity.budget.Budget;
 import org.budgetbuddy.entity.budget.BudgetHistory;
 import org.budgetbuddy.entity.holding.debt.Debt;
@@ -14,6 +19,8 @@ import org.budgetbuddy.entity.tax.TaxHistory;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
 public class User {
     //============================-Variables-=================================
     @Id
@@ -22,11 +29,13 @@ public class User {
     Long id;
     @Column(name = "username")
     String username;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = SafePasswordConverter.class)
+    @Column(name = "hashed_password")
     SafePassword password;
-    @Transient // TODO: Create a converter for this, then remove annotation.
-    Budget budget;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = BudgetConverter.class)
+    @Column(name = "current_budget")
+    Budget currentBudget;
+    @Convert(converter = BudgetHistoryConverter.class)
     BudgetHistory budgetHistory;
     @Transient // TODO: Create a converter for this, then remove annotation.
     Debt currentDebt;
@@ -48,7 +57,7 @@ public class User {
     public User() {
         this.username = "Unknown User";
         this.password = new SafePassword();
-        this.budget = new Budget();
+        this.currentBudget = new Budget();
         this.budgetHistory = new BudgetHistory();
         this.currentDebt = new Debt();
         this.debtHistory = new DebtHistory();
@@ -60,7 +69,7 @@ public class User {
     }
     public User(String username,
                 SafePassword password,
-                Budget budget,
+                Budget currentBudget,
                 BudgetHistory budgetHistory,
                 Debt currentDebt,
                 DebtHistory debtHistory,
@@ -72,7 +81,7 @@ public class User {
                 TaxHistory taxHistory) {
         this.username = username;
         this.password = password;
-        this.budget = budget;
+        this.currentBudget = currentBudget;
         this.budgetHistory = budgetHistory;
         this.currentDebt = currentDebt;
         this.debtHistory = debtHistory;
@@ -88,17 +97,37 @@ public class User {
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj instanceof User comparedUser) {
+            boolean sameId = this.id.equals(comparedUser.id);
+            boolean sameUsername = this.username.equals(comparedUser.username);
+            boolean samePassword = this.password.equals(comparedUser.password);
+            boolean sameCurrentBudget = this.currentBudget.equals(comparedUser.currentBudget);
+            boolean sameBudgetHistory = this.budgetHistory.equals(comparedUser.budgetHistory);
+            boolean sameCurrentDebt = this.currentDebt.equals(comparedUser.currentDebt);
+            boolean sameDebtHistory = this.debtHistory.equals(comparedUser.debtHistory);
+            boolean sameCurrentFinance = this.currentFinance.equals(comparedUser.currentFinance);
+            boolean sameFinanceHistory = this.financeHistory.equals(comparedUser.financeHistory);
+            boolean samePurchaseHistory = this.purchaseHistory.equals(comparedUser.purchaseHistory);
+            boolean sameCurrentSavings = this.currentSavings.equals(comparedUser.currentSavings);
+            boolean sameSavingHistory = this.savingHistory.equals(comparedUser.savingHistory);
+            boolean sameTaxHistory = this.taxHistory.equals(comparedUser.taxHistory);
+            return sameId && sameUsername && samePassword &&
+                    sameCurrentBudget && sameBudgetHistory &&
+                    sameCurrentDebt && sameDebtHistory && sameCurrentFinance
+                    && sameFinanceHistory && samePurchaseHistory &&
+                    sameCurrentSavings && sameSavingHistory && sameTaxHistory;
+        }
+        return false;
+    }
     //------------------------------Hash-Code---------------------------------
 
     //------------------------------To-String---------------------------------
 
     //=============================-Getters-==================================
-    public Long getId() {
-        return this.id;
-    }
+    // Due to the extensive number of fields, getters are created with Lombok.
     //=============================-Setters-==================================
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // Due to the extensive number of fields, setters are created with Lombok.
 }
