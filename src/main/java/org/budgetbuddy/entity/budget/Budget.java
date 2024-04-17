@@ -26,17 +26,16 @@ public class Budget {
     public void addBudgetItem(BudgetItem budgetItem) { //adding Budget Item method
         this.budgetItems.add(budgetItem);
     }
-    public void removeBudgetItem(BudgetItem budgetItem) {//removing Budget Item
-        this.budgetItems.remove(budgetItem);
+    public boolean removeBudgetItem(BudgetItem budgetItem) {//removing Budget Item
+        return this.budgetItems.remove(budgetItem);
     }
-    public void updateBudgetItem(BudgetItem budgetItem){ //update Budget Item
-        int budgetItemIndex = this.getBudgetItems().indexOf(budgetItem);
-        if(budgetItemIndex != -1){//checks if budget item is found
-            this.getBudgetItems().remove(budgetItemIndex);
-            this.getBudgetItems().add(budgetItemIndex, budgetItem);
+    public void updateBudgetItem(BudgetItem newBudgetItem){ //update Budget Item
+        BudgetItem updateBudgetItem = this.getBudgetItemByTitle(newBudgetItem.getName());
+        if(updateBudgetItem != null){//checks if budget item is found
+            updateBudgetItem = newBudgetItem;
         }
         else{
-            System.out.println(budgetItem.getName()+" is not found");
+            System.out.println(newBudgetItem.getName()+" is not found");
         }
     }
     public BudgetItem getBudgetItemByTitle(String budgetItemName){//gets item by title
