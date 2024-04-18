@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.budgetbuddy.convert.entity.budget.BudgetConverter;
 import org.budgetbuddy.convert.entity.budget.BudgetHistoryConverter;
+import org.budgetbuddy.convert.entity.debt.DebtConverter;
+import org.budgetbuddy.convert.entity.debt.DebtHistoryConverter;
 import org.budgetbuddy.convert.entity.user.SafePasswordConverter;
 import org.budgetbuddy.entity.budget.Budget;
 import org.budgetbuddy.entity.budget.BudgetHistory;
@@ -31,15 +33,15 @@ public class User {
     String username;
     @Convert(converter = SafePasswordConverter.class)
     @Column(name = "hashed_password")
-    SafePassword password;
+    SafePassword safePassword;
     @Convert(converter = BudgetConverter.class)
     @Column(name = "current_budget")
     Budget currentBudget;
     @Convert(converter = BudgetHistoryConverter.class)
     BudgetHistory budgetHistory;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = DebtConverter.class)
     Debt currentDebt;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = DebtHistoryConverter.class)
     DebtHistory debtHistory;
     @Transient // TODO: Create a converter for this, then remove annotation.
     Finance currentFinance;
@@ -56,7 +58,20 @@ public class User {
     //===========================-Constructors-===============================
     public User() {
         this.username = "Unknown User";
-        this.password = new SafePassword();
+        this.safePassword = new SafePassword();
+        this.currentBudget = new Budget();
+        this.budgetHistory = new BudgetHistory();
+        this.currentDebt = new Debt();
+        this.debtHistory = new DebtHistory();
+        this.currentFinance = new Finance();
+        this.financeHistory = new FinanceHistory();
+        this.purchaseHistory = new PurchaseHistory();
+        this.currentSavings = new Saving();
+        this.savingHistory = new SavingHistory();
+    }
+    public User(String username, SafePassword safePassword) {
+        this.username = username;
+        this.safePassword = safePassword;
         this.currentBudget = new Budget();
         this.budgetHistory = new BudgetHistory();
         this.currentDebt = new Debt();
@@ -68,7 +83,7 @@ public class User {
         this.savingHistory = new SavingHistory();
     }
     public User(String username,
-                SafePassword password,
+                SafePassword safePassword,
                 Budget currentBudget,
                 BudgetHistory budgetHistory,
                 Debt currentDebt,
@@ -80,7 +95,7 @@ public class User {
                 SavingHistory savingHistory,
                 TaxHistory taxHistory) {
         this.username = username;
-        this.password = password;
+        this.safePassword = safePassword;
         this.currentBudget = currentBudget;
         this.budgetHistory = budgetHistory;
         this.currentDebt = currentDebt;
@@ -103,7 +118,7 @@ public class User {
         if (obj instanceof User comparedUser) {
             boolean sameId = this.id.equals(comparedUser.id);
             boolean sameUsername = this.username.equals(comparedUser.username);
-            boolean samePassword = this.password.equals(comparedUser.password);
+            boolean samePassword = this.safePassword.equals(comparedUser.safePassword);
             boolean sameCurrentBudget = this.currentBudget.equals(comparedUser.currentBudget);
             boolean sameBudgetHistory = this.budgetHistory.equals(comparedUser.budgetHistory);
             boolean sameCurrentDebt = this.currentDebt.equals(comparedUser.currentDebt);
