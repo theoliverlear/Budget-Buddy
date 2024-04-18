@@ -27,7 +27,7 @@ public class SafePassword {
         return this.passwordEncoder.encode(unencodedPassword);
     }
     //--------------------Compare-Unencoded-To-Encoded------------------------
-    public boolean comparePassword(String unencodedPassword) {
+    public boolean compareUnencodedPassword(String unencodedPassword) {
         return this.passwordEncoder.matches(unencodedPassword, this.encodedPassword);
     }
     //============================-Overrides-=================================
@@ -52,5 +52,11 @@ public class SafePassword {
         throw new UnauthorizedPasswordAccessException();
     }
     //=============================-Getters-==================================
+    public String getEncodedPassword() {
+        return this.encodedPassword;
+    }
     //=============================-Setters-==================================
+    public void setEncodedPassword(String encodedPassword) {
+        this.encodedPassword = encodedPassword;
+    }
 }
