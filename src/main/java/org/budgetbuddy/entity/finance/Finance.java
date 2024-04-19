@@ -1,9 +1,11 @@
 package org.budgetbuddy.entity.finance;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+//=================================-Imports-==================================
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.budgetbuddy.convert.entity.expense.RecurringExpenseArrayListConverter;
+import org.budgetbuddy.convert.entity.revenue.RecurringRevenueArrayListConverter;
+import org.budgetbuddy.convert.entity.revenue.RecurringRevenueConverter;
 import org.budgetbuddy.entity.expense.RecurringExpense;
 import org.budgetbuddy.entity.revenue.RecurringRevenue;
 
@@ -11,16 +13,18 @@ import java.util.ArrayList;
 
 //=================================-Imports-==================================
 @Entity
+@Getter
+@Setter
 public class Finance {
     //============================-Variables-=================================
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = RecurringRevenueConverter.class)
     RecurringRevenue income;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = RecurringExpenseArrayListConverter.class)
     ArrayList<RecurringExpense> bills;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = RecurringRevenueArrayListConverter.class)
     ArrayList<RecurringRevenue> otherRevenueStreams;
     //===========================-Constructors-===============================
     public Finance() {
@@ -43,7 +47,18 @@ public class Finance {
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj instanceof Finance finance) {
+            boolean idIsSame = this.id.equals(finance.id);
+            boolean incomeIsSame = this.income.equals(finance.income);
+            boolean billsAreSame = this.bills.equals(finance.bills);
+            boolean otherRevenueStreamsAreSame = this.otherRevenueStreams.equals(finance.otherRevenueStreams);
+            return idIsSame && incomeIsSame && billsAreSame && otherRevenueStreamsAreSame;
+        }
+        return false;
+    }
     //------------------------------Hash-Code---------------------------------
 
     //------------------------------To-String---------------------------------
