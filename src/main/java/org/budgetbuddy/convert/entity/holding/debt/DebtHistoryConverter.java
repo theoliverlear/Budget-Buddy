@@ -1,4 +1,4 @@
-package org.budgetbuddy.convert.entity.debt;
+package org.budgetbuddy.convert.entity.holding.debt;
 //=================================-Imports-==================================
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
