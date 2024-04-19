@@ -3,7 +3,7 @@ package org.budgetbuddy.entity.interest;
 import jakarta.persistence.*;
 import org.budgetbuddy.convert.entity.time.TimeIntervalConverter;
 import org.budgetbuddy.entity.holding.debt.Debt;
-import org.budgetbuddy.entity.holding.savings.Saving;
+import org.budgetbuddy.entity.holding.saving.Saving;
 import org.budgetbuddy.entity.time.TimeInterval;
 
 //=================================-Imports-==================================
