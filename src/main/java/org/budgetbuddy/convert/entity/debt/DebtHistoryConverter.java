@@ -1,46 +1,39 @@
-package org.budgetbuddy.convert.entity;
+package org.budgetbuddy.convert.entity.debt;
 //=================================-Imports-==================================
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-import org.budgetbuddy.entity.budget.BudgetItem;
-
-import java.util.ArrayList;
+import org.budgetbuddy.entity.holding.debt.DebtHistory;
 
 @Converter(autoApply = true)
-public class BudgetItemsArrayListConverter implements AttributeConverter<ArrayList<BudgetItem>, String> {
+public class DebtHistoryConverter implements AttributeConverter<DebtHistory, String> {
     //============================-Variables-=================================
     ObjectMapper objectMapper;
     //===========================-Constructors-===============================
-    public BudgetItemsArrayListConverter() {
+    public DebtHistoryConverter() {
         this.objectMapper = new ObjectMapper();
     }
-    //============================-Methods-===================================
+    //============================-Overrides-=================================
 
     //---------------------Convert-To-Database-Column-------------------------
     @Override
-    public String convertToDatabaseColumn(ArrayList<BudgetItem> budgetItems) {
+    public String convertToDatabaseColumn(DebtHistory debtHistory) {
         try {
-            return this.objectMapper.writeValueAsString(budgetItems);
+            return this.objectMapper.writeValueAsString(debtHistory);
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting budget items to JSON.";
+            final String EXCEPTION_MESSAGE = "Error converting debt history to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }
     //--------------------Convert-From-Database-Column------------------------
     @Override
-    public ArrayList<BudgetItem> convertToEntityAttribute(String budgetItemsJson) {
+    public DebtHistory convertToEntityAttribute(String debtHistoryJson) {
         try {
-            if (budgetItemsJson == null) {
-                return new ArrayList<>();
-            }
-            return this.objectMapper.readValue(budgetItemsJson, new TypeReference<>() {});
+            return this.objectMapper.readValue(debtHistoryJson, DebtHistory.class);
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting JSON to budget items.";
+            final String EXCEPTION_MESSAGE = "Error converting JSON to debt history.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }
-
 }

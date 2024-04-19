@@ -1,10 +1,7 @@
 //=================================-Imports-==================================
 package org.budgetbuddy.entity.budget;
 import jakarta.persistence.*;
-import org.budgetbuddy.model.format.FormattedDate;
-import org.springframework.cglib.core.Local;
-
-import java.time.LocalDate;
+import org.budgetbuddy.convert.entity.budget.BudgetHistoryHashMapConverter;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +12,7 @@ public class BudgetHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = BudgetHistoryHashMapConverter.class)
     HashMap<Budget, LocalDateTime> budgetHistoryMap;
     //===========================-Constructors-===============================
     public BudgetHistory() {

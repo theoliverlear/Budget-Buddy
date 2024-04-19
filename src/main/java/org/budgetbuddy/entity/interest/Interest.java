@@ -1,6 +1,7 @@
 package org.budgetbuddy.entity.interest;
 
 import jakarta.persistence.*;
+import org.budgetbuddy.convert.entity.time.TimeIntervalConverter;
 import org.budgetbuddy.entity.holding.debt.Debt;
 import org.budgetbuddy.entity.holding.savings.Saving;
 import org.budgetbuddy.entity.time.TimeInterval;
@@ -13,7 +14,7 @@ public abstract class Interest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     double rateAsDecimal;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = TimeIntervalConverter.class)
     TimeInterval chargeInterestInterval;
     //===========================-Constructors-===============================
     public Interest() {

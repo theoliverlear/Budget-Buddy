@@ -1,4 +1,4 @@
-package org.budgetbuddy.convert.entity;
+package org.budgetbuddy.convert.entity.category;
 //=================================-Imports-==================================
 
 import com.fasterxml.jackson.databind.ObjectMapper;
