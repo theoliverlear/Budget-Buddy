@@ -1,38 +1,38 @@
-package org.budgetbuddy.convert.entity;
-//=================================-Imports-==================================
+package org.budgetbuddy.convert.entity.time;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-import org.budgetbuddy.entity.expense.Expense;
+import org.budgetbuddy.entity.time.TimeInterval;
 
 @Converter(autoApply = true)
-public class ExpenseConverter implements AttributeConverter<Expense, String> {
+public class TimeIntervalConverter implements AttributeConverter<TimeInterval, String> {
     //============================-Variables-=================================
     ObjectMapper objectMapper;
     //===========================-Constructors-===============================
-    public ExpenseConverter() {
+    public TimeIntervalConverter() {
         this.objectMapper = new ObjectMapper();
     }
-    //============================-Methods-===================================
+    //============================-Overrides-=================================
 
     //---------------------Convert-To-Database-Column-------------------------
     @Override
-    public String convertToDatabaseColumn(Expense expense) {
+    public String convertToDatabaseColumn(TimeInterval timeInterval) {
         try {
-            return this.objectMapper.writeValueAsString(expense);
+            return this.objectMapper.writeValueAsString(timeInterval);
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting expense to JSON.";
+            final String EXCEPTION_MESSAGE = "Error converting TimeInterval to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }
     //--------------------Convert-From-Database-Column------------------------
     @Override
-    public Expense convertToEntityAttribute(String expenseJson) {
+    public TimeInterval convertToEntityAttribute(String timeIntervalJson) {
         try {
-            return this.objectMapper.readValue(expenseJson, Expense.class);
+            return this.objectMapper.readValue(timeIntervalJson, TimeInterval.class);
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting JSON to expense.";
+            final String EXCEPTION_MESSAGE = "Error converting JSON to TimeInterval.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }
