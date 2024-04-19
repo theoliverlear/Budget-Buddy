@@ -1,6 +1,7 @@
-package org.budgetbuddy.entity.holding.savings;
+package org.budgetbuddy.entity.holding.saving;
 //=================================-Imports-==================================
 import jakarta.persistence.*;
+import org.budgetbuddy.convert.entity.interest.OptionalInterestConverter;
 import org.budgetbuddy.entity.interest.Interest;
 
 import java.util.Optional;
@@ -13,7 +14,7 @@ public class Saving {
     Long id;
     String name;
     double amount;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = OptionalInterestConverter.class)
     Optional<Interest> interest;
     //===========================-Constructors-===============================
     public Saving() {
