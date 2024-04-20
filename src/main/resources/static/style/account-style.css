@@ -1,5 +1,84 @@
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#user-info-type-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: calc(((1vw + 1vh) / 2) + 1em) 0 0 0;
+    background-color: var(--accent-green);
+    border-radius: calc(((2vw + 2vh) / 2) + 2em);
+    width: 50%;
+}
+.user-info-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--off-black);
+    border-radius: calc(((2vw + 2vh) / 2) + 2em);
+    margin: 0;
+    width: calc(((10vw + 10vh) / 2) + 10em);
+}
+.user-info-type:hover {
+    cursor: pointer;
+}
+#sign-up-type {
+    background-color: var(--leaf-green);
+    border-radius: calc(((2vw + 2vh) / 2) + 2em);
+}
 #user-info-section {
-    width: 90%;
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--off-black);
+    padding: calc(((0.5vw + 0.5vh) / 2) + 0.5em);
+    border-radius: calc(((2vw + 2vh) / 2) + 2em);
+    color: var(--off-white);
+    margin: calc(((1vw + 1vh) / 2) + 1em) 0 0 0;
+}
+.user-info-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: calc(((1.5vw + 1.5vh) / 2) + 1.5em);
+}
+.user-info-input-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input-title-with-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+#terms-agree-text {
+    text-decoration: underline;
+}
+.user-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--off-white);
+    border-radius: calc(((2vw + 2vh) / 2) + 2em);
+    margin: 0 0 calc(((1vw + 1vh) / 2) + 1em) 0;
+}
+.user-popup-text {
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+    color: var(--leaf-green);
+}
+#login-popup {
+    margin: calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 calc(((0.55vw + 0.5vh) / 2) + 0.5em) 0;
 }
 .account-button {
     background-color: var(--accent-green);
@@ -11,10 +90,21 @@
     justify-content: center;
     align-items: center;
     box-shadow: var(--leaf-green) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;
-    transition: background-color, box-shadow, 0.25s;
+    transition: box-shadow, margin-top, margin-left, 0.25s;
 }
-
 .account-button-text {
     color: var(--off-black);
     margin: 0;
+}
+.account-button:hover {
+    box-shadow: var(--leaf-green) calc(((0.35vw + 0.35vh) / 2) + 0.35em) calc(((0.35vw + 0.35vh) / 2) + 0.35em) 0 0;
+    cursor: pointer;
+}
+.account-button:active {
+    margin-left: calc(((0.25vw + 0.25vh) / 2) + 0.25em);
+    margin-top: calc(((0.25vw + 0.25vh) / 2) + 0.25em);
+    box-shadow: none;
+}
+#login-section {
+    display: none;
 }
