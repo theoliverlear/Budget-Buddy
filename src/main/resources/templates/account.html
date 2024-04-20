@@ -1,10 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html"
+      dir="ltr">
 <head>
     <meta charset="UTF-8">
     <title>Budget Buddy</title>
+    <link rel="stylesheet" href="../static/style/global-style.css">
+    <link rel="stylesheet" href="../static/style/account-style.css">
 </head>
 <body>
+<nav>
+    <section id="nav-items">
+        <a class="link-no-style" href="/">
+            <div class="nav-item">
+                <h4 class="nav-text">
+                    Home
+                </h4>
+            </div>
+        </a>
+        <div class="nav-item">
+            <h4 class="nav-text">
+                Premium
+            </h4>
+        </div>
+        <div class="nav-item">
+            <h4 class="nav-text">
+                Budget
+            </h4>
+        </div>
+        <a class="link-no-style" href="/account">
+            <div class="nav-item">
+                <h4 class="nav-text">
+                    Account
+                </h4>
+            </div>
+        </a>
+    </section>
+</nav>
+<main>
+    <section id="user-info-section">
+        <section id="sign-up-section">
+            <section class="user-info-input-section" id="sign-up-info-section">
 
+            </section>
+            <div id="sign-up-button" class="account-button">
+                <h4 class="account-button-text">
+                    Sign Up
+                </h4>
+            </div>
+        </section>
+        <section id="login-section">
+            <section class="user-info-input-section" id="login-info-section">
+
+            </section>
+            <div id="login-button" class="account-button">
+                <h4 class="account-button-text">
+                    Log In
+                </h4>
+            </div>
+        </section>
+    </section>
+</main>
+<script src="../static/script/globalScript.js" type="module"></script>
+<script src="../static/script/accountScript.js" type="module"></script>
 </body>
 </html>
