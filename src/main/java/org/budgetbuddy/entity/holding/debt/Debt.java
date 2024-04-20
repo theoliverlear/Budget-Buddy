@@ -1,6 +1,7 @@
 package org.budgetbuddy.entity.holding.debt;
 //=================================-Imports-==================================
 import jakarta.persistence.*;
+import org.budgetbuddy.convert.entity.interest.InterestConverter;
 import org.budgetbuddy.entity.interest.Interest;
 
 @Entity
@@ -10,7 +11,7 @@ public class Debt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     double debtAmount;
-    @Transient
+    @Convert(converter = InterestConverter.class)
     Interest interest;
     int monthsRemaining;
     double monthlyPayment;
