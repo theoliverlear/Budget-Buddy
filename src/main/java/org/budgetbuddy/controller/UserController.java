@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/user")
-public class UserController extends BudgetBuddyController {
+public class UserController {
     //============================-Variables-=================================
     @Autowired
     UserService userService;
