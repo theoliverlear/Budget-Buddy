@@ -44,6 +44,9 @@ h6 {
 p {
     font-size: calc(((1.25vw + 1.25vh) / 2) + 4px);
 }
+.link-no-style {
+    text-decoration: none;
+}
 #vine-navigator {
     position: absolute;
     top: 0;
@@ -97,8 +100,8 @@ nav {
     /*padding: calc(((0.68vw + 0.68vh) / 2) + 0.68em) 0;*/
     padding: 0 0 calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0;
     margin: 0;
-
 }
+
 .nav-item {
     display: flex;
     justify-content: space-around;
@@ -142,7 +145,9 @@ nav {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
+}
+.indented {
+    text-indent: calc(((1vw + 1vh) / 2) + 1em);
 }
 @keyframes float {
     0% {
