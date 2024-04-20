@@ -1,0 +1,20 @@
+#user-info-section {
+    width: 90%;
+}
+.account-button {
+    background-color: var(--accent-green);
+    padding: calc(((1vw + 1vh) / 2) + 1em) 0;
+    margin: 0;
+    border-radius: calc(((5vw + 5vh) / 2) + 5em);
+    width: calc(((10vw + 10vh) / 2) + 10em);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--leaf-green) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;
+    transition: background-color, box-shadow, 0.25s;
+}
+
+.account-button-text {
+    color: var(--off-black);
+    margin: 0;
+}
