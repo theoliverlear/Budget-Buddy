@@ -1,10 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html"
+      dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Budget | Budget Buddy</title>
+    <link rel="stylesheet" href="../static/style/global-style.css">
+    <link rel="stylesheet" href="../static/style/budget-style.css">
 </head>
 <body>
-<p>Hello Martha</p>
+<nav>
+    <section id="nav-items">
+        <a class="link-no-style" href="/">
+            <div class="nav-item">
+                <h4 class="nav-text">
+                    Home
+                </h4>
+            </div>
+        </a>
+        <div class="nav-item">
+            <h4 class="nav-text">
+                Premium
+            </h4>
+        </div>
+        <a class="link-no-style" href="/budget">
+            <div class="nav-item">
+                <h4 class="nav-text">
+                    Budget
+                </h4>
+            </div>
+        </a>
+        <a class="link-no-style" href="/account">
+            <div class="nav-item">
+                <h4 class="nav-text">
+                    Account
+                </h4>
+            </div>
+        </a>
+    </section>
+</nav>
+<main>
+    <!--
+    Title
+    List of Budget Items - Each item has a name, amount, and category. A button for edit and remove at the end
+    Add Budget Item - Input section for name, amount, and category with a button to add
+    -->
+    <section id="title-section" class="stripe">
+        <div id="title-text-div">
+            <h2 id="title-text">
+                BUDGET
+            </h2>
+        </div>
+    </section>
+    <section id="budget-items-section">
+        <div id="budget-items-container">
+            <div class="budget-item">
+                <div class="budget-item-button" id="add-button">
+                    <h4 class="budget-item-button-text">
+                        Add Item
+                    </h4>
+                </div>
+            </div>
+            <div class="item-input">
+                <div class="budget-input-info">
+                    <div class="input-with-title">
+                        <div class="input-title-div">
+                            <h4 class="input-title-text">Item Name</h4>
+                        </div>
+                        <div class="budget-item-input-div">
+                            <input type="text" class="budget-item-input" id="item-name-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="budget-item">
+                <div class="budget-item-info">
+                    <div class="budget-item-name">
+                        <h4 class="budget-item-name-text">
+                            Item Name
+                        </h4>
+                    </div>
+                    <div class="budget-item-amount">
+                        <h4 class="budget-item-amount-text">
+                            $0.00
+                        </h4>
+                    </div>
+                    <div class="budget-item-category">
+                        <h4 class="budget-item-category-text">
+                            Category
+                        </h4>
+                    </div>
+                </div>
+                <div class="budget-item-buttons">
+                    <div class="budget-item-button">
+                        <h4 class="budget-item-button-text">
+                            Edit
+                        </h4>
+                    </div>
+                    <div class="budget-item-button">
+                        <h4 class="budget-item-button-text">
+                            Remove
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="../static/script/globalScript.js" type="module"></script>
+<script src="../static/script/accountScript.js" type="module"></script>
 </body>
 </html>
