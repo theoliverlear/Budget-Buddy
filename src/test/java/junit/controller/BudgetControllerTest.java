@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,6 +20,7 @@ public class BudgetControllerTest {
     //============================-Variables-=================================
 
     BudgetController testBudgetController = new BudgetController();
+
     private MockMvc mockMvc;
     @BeforeEach
     public void setUp() {
@@ -33,9 +36,17 @@ public class BudgetControllerTest {
     //----------------------------Test-Methods--------------------------------
     @Test
     public void testBudget() throws Exception{
-        mockMvc.perform(get("/"))
+        mockMvc.perform(post("/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("budget"));
+
+    }
+    @Test
+    public void testAdd() throws Exception{
+        mockMvc.perform(get("/add")
+                .param("food", "50"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Sucsess"));
 
     }
 
