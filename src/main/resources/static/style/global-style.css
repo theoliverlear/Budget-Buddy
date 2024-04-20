@@ -2,25 +2,9 @@
     --darker-off-black: #000909;
     --off-black: #000E14;
     --blue-black: #002E44;
-    @keyframes sway {
-        0% {
-            transform-origin: top;
-            transform: rotate(0deg);
-        }
-        30% {
-            transform-origin: top;
-            transform: rotate(-5deg);
-        }
-        60% {
-            transform-origin: top;
-            transform: rotate(3deg);
-        }
-        100% {
-            transform-origin: top;
-            transform: rotate(0deg);
-        }
-    }    --darker-blue: #033B48;
+    --darker-blue: #033B48;
     --accent-blue: #125C5C;
+    --ocean-blue: #8dc7d5;
     --darker-green: #47974E;
     --accent-green: #8BC387;
     --leaf-green: #2d850e;
@@ -37,7 +21,7 @@ body {
     /*background-image: url("../images/budget_buddy_logo_cropped.jpg");*/
 
     background-repeat: no-repeat;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 h1 {
     font-size: calc(((6vw + 6vh) / 2) + 12px);
@@ -65,7 +49,7 @@ p {
     top: 0;
     right: calc((((2.55vw + 2.55vh) / 2) + 2.5em) * -1);
     /*margin: 0 0 0 calc(((50vw + 50vh) / 2) + 50em);*/
-    overflow: hidden;
+    /*overflow: hidden;*/
     z-index: 0;
     animation: sway 15s cubic-bezier(0.19, 0.57, 0.49, 0.96) infinite;
     height: 100%;
@@ -151,7 +135,7 @@ nav {
 }
 .stripe {
     width: 100%;
-    margin: calc(((5vw + 5vh) / 2)) 0;
+    margin: calc(((4vw + 4vh) / 2) + 2em) 0;
     padding: 0;
     height: calc(((18vw + 18vh) / 2) + 3em);
     background-color: var(--accent-green);
@@ -159,4 +143,15 @@ nav {
     justify-content: space-evenly;
     align-items: center;
 
+}
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(calc((0.5vw + 0.5vh) / 2));
+    }
+    100% {
+        transform: translateY(0);
+    }
 }

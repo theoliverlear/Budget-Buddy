@@ -22,7 +22,9 @@ public class UserService {
     //===========================-Constructors-===============================
 
     //=============================-Methods-==================================
-
+    public boolean userExists(String username) {
+        return this.userRepository.existsByUsername(username);
+    }
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------

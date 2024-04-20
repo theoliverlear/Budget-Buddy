@@ -1,46 +1,47 @@
-package org.budgetbuddy.convert.entity;
+package org.budgetbuddy.convert.entity.tax;
+
 //=================================-Imports-==================================
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-import org.budgetbuddy.entity.budget.BudgetItem;
+import org.budgetbuddy.entity.tax.Tax;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.util.HashMap;
 
 @Converter(autoApply = true)
-public class BudgetItemsArrayListConverter implements AttributeConverter<ArrayList<BudgetItem>, String> {
+public class TaxHistoryHashMapConverter implements AttributeConverter<HashMap<Tax, LocalDateTime>, String> {
     //============================-Variables-=================================
-    ObjectMapper objectMapper = new ObjectMapper();
+    ObjectMapper objectMapper;
     //===========================-Constructors-===============================
-    public BudgetItemsArrayListConverter() {
+    public TaxHistoryHashMapConverter() {
         this.objectMapper = new ObjectMapper();
     }
-    //============================-Methods-===================================
+    //============================-Overrides-=================================
 
     //---------------------Convert-To-Database-Column-------------------------
     @Override
-    public String convertToDatabaseColumn(ArrayList<BudgetItem> budgetItems) {
+    public String convertToDatabaseColumn(HashMap<Tax, LocalDateTime> taxHistoryMap) {
         try {
-            return objectMapper.writeValueAsString(budgetItems);
+            return this.objectMapper.writeValueAsString(taxHistoryMap);
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting budget items to JSON.";
+            final String EXCEPTION_MESSAGE = "Error converting tax history map to JSON";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }
     //--------------------Convert-From-Database-Column------------------------
     @Override
-    public ArrayList<BudgetItem> convertToEntityAttribute(String budgetItemsJson) {
+    public HashMap<Tax, LocalDateTime> convertToEntityAttribute(String taxHistoryMapJson) {
         try {
-            if (budgetItemsJson == null) {
-                return new ArrayList<>();
+            if (taxHistoryMapJson == null) {
+                return new HashMap<>();
             }
-            return objectMapper.readValue(budgetItemsJson, new TypeReference<>() {});
+            return this.objectMapper.readValue(taxHistoryMapJson, new TypeReference<>() {});
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting JSON to budget items.";
+            final String EXCEPTION_MESSAGE = "Error converting JSON to tax history map";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }
-
 }

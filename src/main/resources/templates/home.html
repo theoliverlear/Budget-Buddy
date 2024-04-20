@@ -41,7 +41,7 @@
 <!--         alt="Budget Buddy Logo"-->
 <!--         id="background-logo">-->
 <!--</div>-->
-<section class="stripe">
+<section id="headline-section" class="stripe">
     <!--    <div>-->
     <!--        <img src="../static/images/budget_buddy_logo_cropped.jpg"-->
     <!--             alt="Budget Buddy Logo"-->
@@ -79,10 +79,98 @@
         </div>
     </div>
 </section>
-<section id="features-section">
-<div id="view-statistics-feature">
 
-</div>
+<section id="features-section">
+    <div id="visualize-feature-with-product-name">
+        <div class="stripe" id="visualize-feature-stripe">
+            <div id="visualize-data-title-div">
+                <h3 id="visualize-data-title-text">VISUALIZE YOUR DATA</h3>
+            </div>
+        </div>
+        <div id="visualize-product-name-div">
+            <h4 id="product-name-visualize-text">Buddy Breakdown</h4>
+        </div>
+    </div>
+    <div id="graph-with-text">
+        <div id="pie-chart-container">
+            <div id="feature-pie-chart-div">
+                <canvas id="feature-pie-chart">
+                    Your browser does not support Chart.js.
+                </canvas>
+            </div>
+        </div>
+        <div>
+            <div id="buddy-breakdown-text-div">
+                <p id="buddy-breakdown-text">
+                    Unlock your potential with <b>Buddy Breakdown</b>. A feature
+                    that allows members to see where all of their money is
+                    going! Knowing where your money goes plays a huge part into
+                    how you spend your money. A personal pie chart can show a
+                    user what categories their money is going into and how much
+                    is going to each one. This is a great way to see where most
+                    of your money ends up. Not happy about where you money goes?
+                    Let us talk about budgeting!
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--    <div id="buddy-breakdown-div">-->
+    <!--        <div id="buddy-breakdown-text-div">-->
+
+    <!--        </div>-->
+    <!--        <div id="buddy-breakdown-graph-div">-->
+    <!--            <img src=""-->
+    <!--                 alt="Pie Chart that breaks down where expenses go."-->
+    <!--                 id="buddy-breakdown-graph">-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+    <!--    <div id="budgeting-div">-->
+    <!--        <div id="budgeting-text-div-1">-->
+    <!--            <p id="budgeting-text-1">-->
+    <!--                Our goal is to help you grow in your own walk with money. One-->
+    <!--                way we can do this is through talking about budgeting. Budgeting-->
+    <!--                is a great way to tell yourself where money should be going each-->
+    <!--                month, but it is only up to you to hold yourself accountable to-->
+    <!--                that budget. Just because something is on sale or clearance,-->
+    <!--                does not mean that you can afford it in this month's budget. We-->
+    <!--                provide an easy spreadsheet for members that can help them plan-->
+    <!--                out where money should be going each month. Maybe even help them-->
+    <!--                start to stash a little something on the side!-->
+    <!--            </p>-->
+    <!--        </div>-->
+    <!--        <div id="spreadsheet-example-div">-->
+    <!--            <img src=""-->
+    <!--                 alt="Showing what a budgeting spreadsheet will look like when in use."-->
+    <!--                 id="spreadsheet-example">-->
+    <!--        </div>-->
+    <!--        <div id="budgeting-text-div-2">-->
+    <!--            <p id="budgeting-text-2">-->
+    <!--                "A budget tells us what we can't afford, but it doesn't keep us-->
+    <!--                from buying it." -William Feather-->
+    <!--            </p>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+    <!--    <div id="history-div">-->
+    <!--        <div id="history-text-div">-->
+    <!--            <p id="history-text">-->
+    <!--                Want to know how things are progressing? Now you can! Becoming a-->
+    <!--                member will let a user be able to see where they started and-->
+    <!--                where they are now. They will be able to see a history of their-->
+    <!--                income; expense entries; money spent in different categories;-->
+    <!--                and money saved each month in the different categories. Together,-->
+    <!--                we can learn from your history to help you grow better tomorrow.-->
+    <!--            </p>-->
+    <!--        </div>-->
+    <!--        <div id="history-example-div">-->
+    <!--            <img src=""-->
+    <!--                 alt="Showing what a history database will look like."-->
+    <!--                 id="history-example">-->
+    <!--        </div>-->
+    <!--    </div>-->
 </section>
+<script src="../static/script/homeScript.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
