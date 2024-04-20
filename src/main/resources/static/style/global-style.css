@@ -25,6 +25,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    min-height: 100vh;
 }
 h1 {
     font-size: calc(((6vw + 6vh) / 2) + 12px);
@@ -49,6 +50,7 @@ p {
 }
 .link-no-style {
     text-decoration: none;
+    color: inherit;
 }
 #vine-navigator {
     position: absolute;
@@ -202,4 +204,34 @@ nav {
 }
 .user-input-checkbox:checked {
     box-shadow: var(--leaf-green) calc(((0.2vw + 0.2vh) / 2) + 0.2em) calc(((0.2vw + 0.2vh) / 2) + 0.2em) 0 0;
+}
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--off-black);
+    color: var(--off-white);
+    padding: calc(((0.5vw + 0.5vh) / 2) + 0.5em) 0;
+    /*margin: 0;*/
+    margin-top: auto;
+}
+#footer-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+}
+#footer-text-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+#footer-links-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    border-left: var(--off-white) solid calc(((0.05vw + 0.05vh) / 2) + 0.05em);
 }
