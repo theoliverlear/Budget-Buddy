@@ -5,8 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.budgetbuddy.convert.entity.budget.BudgetConverter;
 import org.budgetbuddy.convert.entity.budget.BudgetHistoryConverter;
-import org.budgetbuddy.convert.entity.debt.DebtConverter;
-import org.budgetbuddy.convert.entity.debt.DebtHistoryConverter;
+import org.budgetbuddy.convert.entity.holding.debt.DebtConverter;
+import org.budgetbuddy.convert.entity.holding.debt.DebtHistoryConverter;
+import org.budgetbuddy.convert.entity.finance.FinanceHistoryConverter;
+import org.budgetbuddy.convert.entity.holding.saving.SavingConverter;
+import org.budgetbuddy.convert.entity.holding.saving.SavingHistoryConverter;
+import org.budgetbuddy.convert.entity.purchase.PurchaseHistoryConverter;
+import org.budgetbuddy.convert.entity.tax.TaxHistoryConverter;
 import org.budgetbuddy.convert.entity.user.SafePasswordConverter;
 import org.budgetbuddy.entity.budget.Budget;
 import org.budgetbuddy.entity.budget.BudgetHistory;
@@ -15,8 +20,8 @@ import org.budgetbuddy.entity.holding.debt.DebtHistory;
 import org.budgetbuddy.entity.finance.Finance;
 import org.budgetbuddy.entity.finance.FinanceHistory;
 import org.budgetbuddy.entity.purchase.PurchaseHistory;
-import org.budgetbuddy.entity.holding.savings.Saving;
-import org.budgetbuddy.entity.holding.savings.SavingHistory;
+import org.budgetbuddy.entity.holding.saving.Saving;
+import org.budgetbuddy.entity.holding.saving.SavingHistory;
 import org.budgetbuddy.entity.tax.TaxHistory;
 
 @Entity
@@ -25,35 +30,58 @@ import org.budgetbuddy.entity.tax.TaxHistory;
 @Setter
 public class User {
     //============================-Variables-=================================
+
+    //---------------------------------Id-------------------------------------
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     Long id;
+    //------------------------------Username----------------------------------
     @Column(name = "username")
     String username;
+    //---------------------------Safe-Password--------------------------------
     @Convert(converter = SafePasswordConverter.class)
     @Column(name = "hashed_password")
     SafePassword safePassword;
+    //---------------------------Current-Budget-------------------------------
     @Convert(converter = BudgetConverter.class)
     @Column(name = "current_budget")
     Budget currentBudget;
+    //---------------------------Budget-History-------------------------------
     @Convert(converter = BudgetHistoryConverter.class)
+    @Column(name = "budget_history")
     BudgetHistory budgetHistory;
+    //---------------------------Current-Debt---------------------------------
     @Convert(converter = DebtConverter.class)
+    @Column(name = "current_debt")
     Debt currentDebt;
+    //---------------------------Debt-History---------------------------------
     @Convert(converter = DebtHistoryConverter.class)
+    @Column(name = "debt_history")
     DebtHistory debtHistory;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    //---------------------------Current-Finance------------------------------
+    @Convert(converter = FinanceConverter.class)
+    @Column(name = "current_finance")
     Finance currentFinance;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    //---------------------------Finance-History------------------------------
+    @Convert(converter = FinanceHistoryConverter.class)
+    @Column(name = "finance_history")
     FinanceHistory financeHistory;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    //---------------------------Purchase-History-----------------------------
+    @Convert(converter = PurchaseHistoryConverter.class)
+    @Column(name = "purchase_history")
     PurchaseHistory purchaseHistory;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    //---------------------------Current-Savings-------------------------------
+    @Convert(converter = SavingConverter.class)
+    @Column(name = "current_savings")
     Saving currentSavings;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    //---------------------------Saving-History-------------------------------
+    @Convert(converter = SavingHistoryConverter.class)
+    @Column(name = "saving_history")
     SavingHistory savingHistory;
-    @Transient
+    //---------------------------Tax-History----------------------------------
+    @Convert(converter = TaxHistoryConverter.class)
+    @Column(name = "tax_history")
     TaxHistory taxHistory;
     //===========================-Constructors-===============================
     public User() {

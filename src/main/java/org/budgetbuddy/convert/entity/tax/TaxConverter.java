@@ -1,38 +1,39 @@
-package org.budgetbuddy.convert.entity.interest;
+package org.budgetbuddy.convert.entity.tax;
+
 //=================================-Imports-==================================
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-import org.budgetbuddy.entity.interest.Interest;
+import org.budgetbuddy.entity.tax.Tax;
 
 @Converter(autoApply = true)
-public class InterestConverter implements AttributeConverter<Interest, String> {
+public class TaxConverter implements AttributeConverter<Tax, String> {
     //============================-Variables-=================================
     ObjectMapper objectMapper;
     //===========================-Constructors-===============================
-    public InterestConverter() {
+    public TaxConverter() {
         this.objectMapper = new ObjectMapper();
     }
     //============================-Overrides-=================================
 
     //---------------------Convert-To-Database-Column-------------------------
     @Override
-    public String convertToDatabaseColumn(Interest interest) {
+    public String convertToDatabaseColumn(Tax tax) {
         try {
-            return this.objectMapper.writeValueAsString(interest);
+            return this.objectMapper.writeValueAsString(tax);
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting interest to JSON.";
+            final String EXCEPTION_MESSAGE = "Error converting Tax entity to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }
     //--------------------Convert-From-Database-Column------------------------
     @Override
-    public Interest convertToEntityAttribute(String interestJson) {
+    public Tax convertToEntityAttribute(String taxJson) {
         try {
-            return this.objectMapper.readValue(interestJson, Interest.class);
+            return this.objectMapper.readValue(taxJson, Tax.class);
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting JSON to interest.";
+            final String EXCEPTION_MESSAGE = "Error converting JSON to Tax entity.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }

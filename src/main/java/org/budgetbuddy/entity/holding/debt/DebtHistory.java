@@ -1,8 +1,7 @@
 package org.budgetbuddy.entity.holding.debt;
 
 import jakarta.persistence.*;
-import org.budgetbuddy.convert.entity.debt.DebtHistoryHashMapConverter;
-import org.budgetbuddy.model.format.FormattedDate;
+import org.budgetbuddy.convert.entity.holding.debt.DebtHistoryHashMapConverter;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;

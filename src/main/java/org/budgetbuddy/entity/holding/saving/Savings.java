@@ -1,4 +1,4 @@
-package org.budgetbuddy.entity.holding.savings;
+package org.budgetbuddy.entity.holding.saving;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
