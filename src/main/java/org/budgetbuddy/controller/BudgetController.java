@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BudgetController {
     //===============================-Variables-=============================
     User currentUser;
-    Budget currentBudget;
+    Budget currentBudget = new Budget();
     //===============================-Methods-=============================
     @RequestMapping("/")
     public String budget(){
