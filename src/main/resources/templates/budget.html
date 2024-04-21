@@ -45,6 +45,7 @@
     List of Budget Items - Each item has a name, amount, and category. A button for edit and remove at the end
     Add Budget Item - Input section for name, amount, and category with a button to add
     -->
+    <!----------------------------Budget-Title------------------------------->
     <section id="title-section" class="stripe">
         <div id="title-text-div">
             <h2 id="title-text">
@@ -52,8 +53,10 @@
             </h2>
         </div>
     </section>
+    <!----------------------------Budget-Items------------------------------->
     <section id="budget-items-section">
         <div id="budget-items-container">
+            <!---------------Add-Budget-Item-Button-------------------------->
             <div class="budget-item">
                 <div class="budget-item-button" id="add-item-button">
                     <h4 class="budget-item-button-text">
@@ -61,14 +64,16 @@
                     </h4>
                 </div>
             </div>
-            <div class="item-input">
+            <!-----------------Input-Budget-Item----------------------------->
+            <div class="item-input" id="item-inputer">
                 <div class="budget-input-info">
                     <div class="input-with-title">
                         <div class="budget-input-title-div">
                             <h4 class="input-title-text">Item Name</h4>
                         </div>
                         <div class="budget-item-input-div">
-                            <input type="text" class="budget-item-input" id="item-name-input">
+                            <input type="text" class="budget-item-input"
+                                   id="item-name-input">
                         </div>
                     </div>
                 </div>
@@ -78,7 +83,8 @@
                             <h4 class="input-title-text">Cost</h4>
                         </div>
                         <div class="budget-item-input-div">
-                            <input type="text" class="budget-item-input" id="item-cost-input">
+                            <input type="text" class="budget-item-input"
+                                   id="item-cost-input">
                         </div>
                     </div>
                 </div>
@@ -88,7 +94,8 @@
                             <h4 class="input-title-text">Category</h4>
                         </div>
                         <div class="budget-item-input-div">
-                            <input type="text" class="budget-item-input" id="item-category-input">
+                            <input type="text" class="budget-item-input"
+                                   id="item-category-input">
                         </div>
                     </div>
                 </div>
@@ -98,7 +105,8 @@
                     </h4>
                 </div>
             </div>
-            <div class="budget-item">
+            <!-----------------Budget-Item-List------------------------------>
+            <div class="budget-item" id="template-item">
                 <div class="budget-item-info">
                     <div class="budget-item-name">
                         <h4 class="budget-item-name-text">
@@ -122,7 +130,7 @@
                             Edit
                         </h4>
                     </div>
-                    <div class="budget-item-button">
+                    <div class="budget-item-button remove-budget-item-button">
                         <h4 class="budget-item-button-text">
                             Remove
                         </h4>
@@ -148,7 +156,12 @@
         </div>
     </section>
 </footer>
-<script src="../static/script/globalScript.js" type="module"></script>
-<script src="../static/script/accountScript.js" type="module"></script>
+<script src="../static/script/globalScript.js"
+        th:src="@{/script/globalScript.js}"
+        type="module"></script>
+<script src="../static/script/budgetScript.js"
+        th:src="@{/script/budgetScript.js}"
+        type="module"
+        ></script>
 </body>
 </html>
