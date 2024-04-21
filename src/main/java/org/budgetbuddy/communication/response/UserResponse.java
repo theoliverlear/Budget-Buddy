@@ -1,13 +1,13 @@
 package org.budgetbuddy.communication.response;
 //=================================-Imports-==================================
-public class AccountResponse {
+public class UserResponse {
     //============================-Variables-=================================
     boolean isAuthorized;
     //===========================-Constructors-===============================
-    public AccountResponse() {
+    public UserResponse() {
         this.isAuthorized = false;
     }
-    public AccountResponse(boolean isAuthorized) {
+    public UserResponse(boolean isAuthorized) {
         this.isAuthorized = isAuthorized;
     }
     //=============================-Methods-==================================
