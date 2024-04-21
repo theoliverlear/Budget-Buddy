@@ -55,7 +55,7 @@
     <section id="budget-items-section">
         <div id="budget-items-container">
             <div class="budget-item">
-                <div class="budget-item-button" id="add-button">
+                <div class="budget-item-button" id="add-item-button">
                     <h4 class="budget-item-button-text">
                         Add Item
                     </h4>
@@ -64,13 +64,38 @@
             <div class="item-input">
                 <div class="budget-input-info">
                     <div class="input-with-title">
-                        <div class="input-title-div">
+                        <div class="budget-input-title-div">
                             <h4 class="input-title-text">Item Name</h4>
                         </div>
                         <div class="budget-item-input-div">
                             <input type="text" class="budget-item-input" id="item-name-input">
                         </div>
                     </div>
+                </div>
+                <div class="budget-input-info">
+                    <div class="input-with-title">
+                        <div class="budget-input-title-div">
+                            <h4 class="input-title-text">Cost</h4>
+                        </div>
+                        <div class="budget-item-input-div">
+                            <input type="text" class="budget-item-input" id="item-cost-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="budget-input-info">
+                    <div class="input-with-title">
+                        <div class="budget-input-title-div">
+                            <h4 class="input-title-text">Category</h4>
+                        </div>
+                        <div class="budget-item-input-div">
+                            <input type="text" class="budget-item-input" id="item-category-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="budget-item-button" id="add-button">
+                    <h4 class="budget-item-button-text">
+                        Add
+                    </h4>
                 </div>
             </div>
             <div class="budget-item">
@@ -107,6 +132,22 @@
         </div>
     </section>
 </main>
+<footer id="footer">
+    <section id="footer-section">
+        <div id="footer-text-div">
+            <p id="footer-text">
+                &copy; 2024 Budget Buddy. <br> All rights reserved.
+            </p>
+        </div>
+        <div id="footer-links-div">
+            <a href="/terms" class="link-no-style">
+                <div id="terms-link-div">
+                    <h5 id="terms-link-text">Terms of Service</h5>
+                </div>
+            </a>
+        </div>
+    </section>
+</footer>
 <script src="../static/script/globalScript.js" type="module"></script>
 <script src="../static/script/accountScript.js" type="module"></script>
 </body>
