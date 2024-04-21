@@ -1,15 +1,15 @@
 package org.budgetbuddy.communication.request;
 //=================================-Imports-==================================
-public class AccountRequest {
+public class UserRequest {
     //============================-Variables-=================================
     String username;
     String password;
     //===========================-Constructors-===============================
-    public AccountRequest() {
+    public UserRequest() {
         this.username = "";
         this.password = "";
     }
-    public AccountRequest(String username, String password) {
+    public UserRequest(String username, String password) {
         this.username = username;
         this.password = password;
     }
