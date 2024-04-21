@@ -58,6 +58,9 @@ main {
     width: 90%;
     height: calc(((5vw + 5vh) / 2) + 5em);
 }
+#template-item {
+    display: none;
+}
 #add-item-button {
     width: calc(((10vw + 10vh) / 2) + 10em);
 }
@@ -70,6 +73,9 @@ main {
     margin: calc(((1vw + 1vh) / 2) + 1em) 0;
     width: 90%;
     height: calc(((7vw + 7vh) / 2) + 7em);
+}
+#item-inputer {
+    display: none;
 }
 .budget-input-info {
     width: 25%;
