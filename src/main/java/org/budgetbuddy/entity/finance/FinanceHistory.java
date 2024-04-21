@@ -1,27 +1,30 @@
 package org.budgetbuddy.entity.finance;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.budgetbuddy.convert.entity.finance.FinanceHistoryHashMapConverter;
 import org.budgetbuddy.model.format.FormattedTime;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 //=================================-Imports-==================================
 @Entity
+@Getter
+@Setter
 public class FinanceHistory {
     //============================-Variables-=================================
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Transient // TODO: Create a converter for this, then remove annotation.
-    HashMap<FormattedTime, Finance> financeHistoryMap;
+    @Convert(converter = FinanceHistoryHashMapConverter.class)
+    HashMap<Finance, LocalDateTime> financeHistoryMap;
     //===========================-Constructors-===============================
     public FinanceHistory() {
         this.financeHistoryMap = new HashMap<>();
     }
-    public FinanceHistory(HashMap<FormattedTime, Finance> financeHistoryMap) {
+    public FinanceHistory(HashMap<Finance, LocalDateTime> financeHistoryMap) {
         this.financeHistoryMap = financeHistoryMap;
     }
     //=============================-Methods-==================================

@@ -1,8 +1,8 @@
 package org.budgetbuddy.entity.interest;
 //=================================-Imports-==================================
 import jakarta.persistence.Entity;
-import org.budgetbuddy.entity.debt.Debt;
-import org.budgetbuddy.entity.savings.Saving;
+import org.budgetbuddy.entity.holding.debt.Debt;
+import org.budgetbuddy.entity.holding.saving.Saving;
 import org.budgetbuddy.entity.time.TimeInterval;
 
 @Entity

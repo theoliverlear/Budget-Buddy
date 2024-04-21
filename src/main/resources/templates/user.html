@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html"
+      dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Buddy</title>
+    <link rel="stylesheet" href="../static/style/global-style.css">
+    <link rel="stylesheet" href="../static/style/account-style.css">
+</head>
+<body>
+<nav>
+    <section id="nav-items">
+        <a class="link-no-style" href="/">
+            <div class="nav-item">
+                <h4 class="nav-text">
+                    Home
+                </h4>
+            </div>
+        </a>
+        <div class="nav-item">
+            <h4 class="nav-text">
+                Premium
+            </h4>
+        </div>
+        <a class="link-no-style" href="/budget">
+            <div class="nav-item">
+                <h4 class="nav-text">
+                    Budget
+                </h4>
+            </div>
+        </a>
+        <a class="link-no-style" href="/account">
+            <div class="nav-item">
+                <h4 class="nav-text">
+                    Account
+                </h4>
+            </div>
+        </a>
+    </section>
+</nav>
+<main>
+    <section id="user-info-type-section">
+        <div class="user-info-type" id="sign-up-type">
+            <h3 class="user-info-type-text">
+                Sign Up
+            </h3>
+        </div>
+        <div class="user-info-type" id="login-type">
+            <h3 class="user-info-type-text">
+                Log In
+            </h3>
+        </div>
+    </section>
+    <section id="user-info-section">
+        <section class="user-info-section" id="sign-up-section">
+            <section class="user-info-input-section" id="sign-up-info-section">
+                <div class="input-title-with-input" id="sign-up-username-div">
+                    <div class="input-title-div">
+                        <h4 class="input-title-text">
+                            Username:
+                        </h4>
+                    </div>
+                    <div class="input-div" id="sign-up-username-input-div">
+                        <input type="text" class="user-input" id="sign-up-username-input">
+                    </div>
+                </div>
+                <div class="input-title-with-input" id="sign-up-password-div">
+                    <div class="input-title-div">
+                        <h4 class="input-title-text">
+                            Password:
+                        </h4>
+                    </div>
+                    <div class="input-div" id="sign-up-password-input-div">
+                        <input type="password" class="user-input" id="sign-up-password-input">
+                    </div>
+                </div>
+                <div class="input-title-with-input" id="sign-up-confirm-password-div">
+                    <div class="input-title-div">
+                        <h4 class="input-title-text">
+                            Confirm Password:
+                        </h4>
+                    </div>
+                    <div class="input-div" id="sign-up-confirm-password-input-div">
+                        <input type="password" class="user-input" id="sign-up-confirm-password-input">
+                    </div>
+                </div>
+                <div class="input-title-with-input" id="sign-up-terms-agree-div">
+                    <div class="input-title-div">
+                        <h5 class="input-title-text" id="terms-agree-text">
+                            I agree to the terms and conditions:
+                        </h5>
+                    </div>
+                    <div class="input-div" id="sign-up-terms-agree-input-div">
+                        <input type="checkbox" class="user-input-checkbox" id="sign-up-terms-agree-input">
+                    </div>
+                </div>
+                <div class="user-popup" id="sign-up-popup">
+                    <h5 class="user-popup-text" id="sign-up-user-popup-text"></h5>
+                </div>
+            </section>
+            <div id="sign-up-button" class="account-button">
+                <h4 class="account-button-text">
+                    Sign Up
+                </h4>
+            </div>
+        </section>
+        <section class="user-info-section" id="login-section">
+            <section class="user-info-input-section" id="login-info-section">
+                <div class="input-title-with-input" id="login-username-div">
+                    <div class="input-title-div">
+                        <h4 class="input-title-text">
+                            Username:
+                        </h4>
+                    </div>
+                    <div class="input-div" id="login-username-input-div">
+                        <input type="text" class="user-input" id="login-username-input">
+                    </div>
+                </div>
+                <div class="input-title-with-input" id="login-password-div">
+                    <div class="input-title-div">
+                        <h4 class="input-title-text">
+                            Password:
+                        </h4>
+                    </div>
+                    <div class="input-div" id="login-password-input-div">
+                        <input type="password" class="user-input" id="login-password-input">
+                    </div>
+                </div>
+                <div class="user-popup" id="login-popup">
+                    <h5 class="user-popup-text" id="login-user-popup-text"></h5>
+                </div>
+            </section>
+            <div id="login-button" class="account-button">
+                <h4 class="account-button-text">
+                    Log In
+                </h4>
+            </div>
+        </section>
+    </section>
+</main>
+<footer id="footer">
+    <section id="footer-section">
+        <div id="footer-text-div">
+            <p id="footer-text">
+                &copy; 2024 Budget Buddy. <br> All rights reserved.
+            </p>
+        </div>
+        <div id="footer-links-div">
+            <a href="/terms" class="link-no-style">
+                <div id="terms-link-div">
+                    <h5 id="terms-link-text">Terms of Service</h5>
+                </div>
+            </a>
+        </div>
+    </section>
+</footer>
+<script src="../static/script/globalScript.js" type="module"></script>
+<script src="../static/script/accountScript.js" type="module"></script>
+</body>
+</html>
