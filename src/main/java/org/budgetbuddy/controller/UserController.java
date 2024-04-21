@@ -1,7 +1,7 @@
 package org.budgetbuddy.controller;
 //=================================-Imports-==================================
-import org.budgetbuddy.communication.request.AccountRequest;
-import org.budgetbuddy.communication.response.AccountResponse;
+import org.budgetbuddy.communication.request.UserRequest;
+import org.budgetbuddy.communication.response.UserResponse;
 import org.budgetbuddy.entity.user.SafePassword;
 import org.budgetbuddy.entity.user.User;
 import org.budgetbuddy.service.UserService;
@@ -25,32 +25,32 @@ public class UserController {
     //------------------------------Account-----------------------------------
     @RequestMapping("/")
     public String account() {
-        return "account";
+        return "user";
     }
     //-------------------------------Login------------------------------------
     @RequestMapping("/login")
-    public ResponseEntity<AccountResponse> login(@ModelAttribute AccountRequest accountRequest) {
-        boolean userExists = this.userService.userExists(accountRequest.getUsername());
+    public ResponseEntity<UserResponse> login(@ModelAttribute UserRequest userRequest) {
+        boolean userExists = this.userService.userExists(userRequest.getUsername());
         if (userExists) {
-            User user = this.userService.getUserRepository().findByUsername(accountRequest.getUsername());
+            User user = this.userService.getUserRepository().findByUsername(userRequest.getUsername());
             SafePassword safePassword = user.getSafePassword();
-            boolean isAuthorized = safePassword.compareUnencodedPassword(accountRequest.getPassword());
-            return new ResponseEntity<>(new AccountResponse(isAuthorized), HttpStatus.OK);
+            boolean isAuthorized = safePassword.compareUnencodedPassword(userRequest.getPassword());
+            return new ResponseEntity<>(new UserResponse(isAuthorized), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new AccountResponse(false), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new UserResponse(false), HttpStatus.NOT_FOUND);
         }
     }
     //------------------------------Sign-Up-----------------------------------
     @RequestMapping("/signup")
-    public ResponseEntity<AccountResponse> signup(@ModelAttribute AccountRequest accountRequest) {
-        boolean userExists = this.userService.userExists(accountRequest.getUsername());
+    public ResponseEntity<UserResponse> signup(@ModelAttribute UserRequest userRequest) {
+        boolean userExists = this.userService.userExists(userRequest.getUsername());
         if (!userExists) {
-            SafePassword newSafePassword = new SafePassword(accountRequest.getPassword());
-            User newUser = new User(accountRequest.getUsername(), newSafePassword);
+            SafePassword newSafePassword = new SafePassword(userRequest.getPassword());
+            User newUser = new User(userRequest.getUsername(), newSafePassword);
             this.userService.getUserRepository().save(newUser);
-            return new ResponseEntity<>(new AccountResponse(true), HttpStatus.CREATED);
+            return new ResponseEntity<>(new UserResponse(true), HttpStatus.CREATED);
         } else {
-            return new ResponseEntity<>(new AccountResponse(false), HttpStatus.CONFLICT);
+            return new ResponseEntity<>(new UserResponse(false), HttpStatus.CONFLICT);
         }
     }
     //============================-Overrides-=================================

@@ -14,26 +14,32 @@
 <!--</div>-->
 <nav>
     <section id="nav-items">
-        <div class="nav-item">
-            <h4 class="nav-text">
-                Home
-            </h4>
-        </div>
+        <a class="link-no-style" href="/">
+            <div class="nav-item">
+                <h4 class="nav-text">
+                    Home
+                </h4>
+            </div>
+        </a>
         <div class="nav-item">
             <h4 class="nav-text">
                 Premium
             </h4>
         </div>
-        <div class="nav-item">
-            <h4 class="nav-text">
-                Help
-            </h4>
-        </div>
-        <div class="nav-item">
-            <h4 class="nav-text">
-                Account
-            </h4>
-        </div>
+        <a class="link-no-style" href="/budget">
+            <div class="nav-item">
+                <h4 class="nav-text">
+                    Budget
+                </h4>
+            </div>
+        </a>
+        <a class="link-no-style" href="/account">
+            <div class="nav-item">
+                <h4 class="nav-text">
+                    Account
+                </h4>
+            </div>
+        </a>
     </section>
 </nav>
 <!--<div>-->
@@ -63,7 +69,7 @@
 <section id="promo-section">
     <div id="promo-div">
         <div id="promo-text-div">
-            <p id="promo-text">
+            <p id="promo-text" class="indented">
                 Budget Buddy is a website that will be a service to anyone who
                 wants to manage their money. Anybody will be able to track
                 their expenses they have each month and create a budget. This
@@ -170,6 +176,22 @@
     <!--        </div>-->
     <!--    </div>-->
 </section>
+<footer id="footer">
+    <section id="footer-section">
+        <div id="footer-text-div">
+            <p id="footer-text">
+                &copy; 2024 Budget Buddy. <br> All rights reserved.
+            </p>
+        </div>
+        <div id="footer-links-div">
+            <a href="/terms" class="link-no-style">
+                <div id="terms-link-div">
+                    <h5 id="terms-link-text">Terms of Service</h5>
+                </div>
+            </a>
+        </div>
+    </section>
+</footer>
 <script src="../static/script/homeScript.js" type="module"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>

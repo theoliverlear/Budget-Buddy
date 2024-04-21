@@ -1,38 +1,38 @@
-package org.budgetbuddy.convert.entity.debt;
+package org.budgetbuddy.convert.entity.expense;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-import org.budgetbuddy.entity.holding.debt.Debt;
+import org.budgetbuddy.entity.expense.RecurringExpense;
 
 @Converter(autoApply = true)
-public class DebtConverter implements AttributeConverter<Debt, String> {
+public class RecurringExpenseConverter implements AttributeConverter<RecurringExpense, String> {
     //============================-Variables-=================================
     ObjectMapper objectMapper;
     //===========================-Constructors-===============================
-    public DebtConverter() {
+    public RecurringExpenseConverter() {
         this.objectMapper = new ObjectMapper();
     }
     //============================-Overrides-=================================
 
     //---------------------Convert-To-Database-Column-------------------------
     @Override
-    public String convertToDatabaseColumn(Debt debt) {
+    public String convertToDatabaseColumn(RecurringExpense recurringExpense) {
         try {
-            return this.objectMapper.writeValueAsString(debt);
+            return this.objectMapper.writeValueAsString(recurringExpense);
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting debt to JSON.";
+            final String EXCEPTION_MESSAGE = "Error converting recurring expense to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }
     //--------------------Convert-From-Database-Column------------------------
     @Override
-    public Debt convertToEntityAttribute(String debtJson) {
+    public RecurringExpense convertToEntityAttribute(String recurringExpenseJson) {
         try {
-            return this.objectMapper.readValue(debtJson, Debt.class);
+            return this.objectMapper.readValue(recurringExpenseJson, RecurringExpense.class);
         } catch (JsonProcessingException ex) {
-            final String EXCEPTION_MESSAGE = "Error converting JSON to debt.";
+            final String EXCEPTION_MESSAGE = "Error converting JSON to recurring expense.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }

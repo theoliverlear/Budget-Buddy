@@ -19,9 +19,13 @@ body {
     background-color: var(--off-white);
     /*background-color: var(--lighter-off-white);*/
     /*background-image: url("../images/budget_buddy_logo_cropped.jpg");*/
-
     background-repeat: no-repeat;
     /*overflow: hidden;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
 }
 h1 {
     font-size: calc(((6vw + 6vh) / 2) + 12px);
@@ -36,13 +40,17 @@ h4 {
     font-size: calc(((2vw + 2vh) / 2) + 6px);
 }
 h5 {
-    font-size: calc(((1vw + 1vh) / 2) + 4px);
+    font-size: calc(((1.25vw + 1.25vh) / 2) + 4px);
 }
 h6 {
     font-size: calc(((0.5vw + 0.5vh) / 2) + 2px);
 }
 p {
     font-size: calc(((1.25vw + 1.25vh) / 2) + 4px);
+}
+.link-no-style {
+    text-decoration: none;
+    color: inherit;
 }
 #vine-navigator {
     position: absolute;
@@ -97,8 +105,8 @@ nav {
     /*padding: calc(((0.68vw + 0.68vh) / 2) + 0.68em) 0;*/
     padding: 0 0 calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0;
     margin: 0;
-
 }
+
 .nav-item {
     display: flex;
     justify-content: space-around;
@@ -142,7 +150,9 @@ nav {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
+}
+.indented {
+    text-indent: calc(((1vw + 1vh) / 2) + 1em);
 }
 @keyframes float {
     0% {
@@ -154,4 +164,74 @@ nav {
     100% {
         transform: translateY(0);
     }
+}
+.input-title-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: calc(((1vw + 1vh) / 2) + 1em) 0;
+}
+.input-title-text {
+    margin: 0;
+    padding: 0;
+}
+.input-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+}
+.user-input {
+    width: calc(((10vw + 10vh) / 2) + 5em);
+    padding: calc(((0.5vw + 0.5vh) / 2) + 0.5em);
+    margin: 0 0 0 calc(((0.5vw + 0.5vh) / 2) + 0.5em);
+    border-radius: calc(((2vw + 2vh) / 2) + 2em);
+    border: none;
+    background-color: var(--off-white);
+    color: var(--off-black);
+    font-size: calc(((1.25vw + 1.25vh) / 2) + 4px);
+    box-shadow: var(--leaf-green) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;
+    transition: box-shadow, 0.25s;
+}
+.user-input:focus {
+    box-shadow: var(--leaf-green) calc(((0.35vw + 0.35vh) / 2) + 0.35em) calc(((0.35vw + 0.35vh) / 2) + 0.35em) 0 0;
+}
+.user-input-checkbox {
+    width: calc(((1.25vw + 1.25vh) / 2) + 4px);
+    height: calc(((1.25vw + 1.25vh) / 2) + 4px);
+    margin: 0;
+    box-shadow: var(--leaf-green) calc(((0.15vw + 0.15vh) / 2) + 0.15em) calc(((0.15vw + 0.15vh) / 2) + 0.15em) 0 0;
+}
+.user-input-checkbox:checked {
+    box-shadow: var(--leaf-green) calc(((0.2vw + 0.2vh) / 2) + 0.2em) calc(((0.2vw + 0.2vh) / 2) + 0.2em) 0 0;
+}
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--off-black);
+    color: var(--off-white);
+    padding: calc(((0.5vw + 0.5vh) / 2) + 0.5em) 0;
+    /*margin: 0;*/
+    margin-top: auto;
+}
+#footer-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+}
+#footer-text-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+#footer-links-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    border-left: var(--off-white) solid calc(((0.05vw + 0.05vh) / 2) + 0.05em);
 }

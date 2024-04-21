@@ -1,0 +1,155 @@
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#title-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent-green);
+    margin: calc(((1vw + 1vh) / 2) + 1em) 0;
+    padding: 0;
+    height: calc(((5vw + 5vh) / 2) + 5em);
+}
+#title-text-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+}
+#title-text {
+    color: var(--off-black);
+    margin: 0;
+    padding: 0;
+}
+#budget-items-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--off-black);
+    width: 100%;
+}
+#budget-items-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--ocean-blue);
+    width: 90%;
+    height: 90%;
+    box-shadow: var(--blue-black) 0 0 calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em);
+}
+#add-button {
+    margin: 0 0 0 calc(((1vw + 1vh) / 2) + 1em);
+}
+.budget-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--off-white);
+    border-radius: calc(((2vw + 2vh) / 2) + 2em);
+    margin: calc(((1vw + 1vh) / 2) + 1em) 0;
+    width: 90%;
+    height: calc(((5vw + 5vh) / 2) + 5em);
+}
+#template-item {
+    display: none;
+}
+#add-item-button {
+    width: calc(((10vw + 10vh) / 2) + 10em);
+}
+.item-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--off-white);
+    border-radius: calc(((2vw + 2vh) / 2) + 2em);
+    margin: calc(((1vw + 1vh) / 2) + 1em) 0;
+    width: 90%;
+    height: calc(((7vw + 7vh) / 2) + 7em);
+}
+#item-inputer {
+    display: none;
+}
+.budget-input-info {
+    width: 25%;
+}
+
+.budget-item-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--off-white);
+    border-radius: calc(((2vw + 2vh) / 2) + 2em);
+    margin: calc(((1vw + 1vh) / 2) + 1em) 0;
+    width: 90%;
+    height: calc(((5vw + 5vh) / 2) + 5em);
+}
+.budget-input-title-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 calc(((1vw + 1vh) / 2) + 1em) 0;
+}
+.budget-item-input-div {
+    width: 25%;
+}
+.budget-item-input {
+    width: calc(((7vw + 7vh) / 2) + 5em);
+    padding: calc(((0.5vw + 0.5vh) / 2) + 0.5em);
+    margin: 0 0 0 calc(((0.5vw + 0.5vh) / 2) + 0.5em);
+    border-radius: calc(((2vw + 2vh) / 2) + 2em);
+    border: none;
+    background-color: var(--off-white);
+    border-left: calc(((0.05vw + 0.05vh) / 2) + 0.05em) solid var(--off-black);
+    border-top: calc(((0.05vw + 0.05vh) / 2) + 0.05em) solid var(--off-black);
+    color: var(--off-black);
+    font-size: calc(((1.25vw + 1.25vh) / 2) + 4px);
+    box-shadow: var(--blue-black) calc(((0.15vw + 0.15vh) / 2) + 0.15em) calc(((0.15vw + 0.15vh) / 2) + 0.15em) 0 0;
+    transition: border-left-color, border-top-color, box-shadow, 0.25s;
+}
+.budget-item-input:hover {
+    border-left: calc(((0.05vw + 0.05vh) / 2) + 0.05em) solid var(--accent-blue);
+    border-top:  calc(((0.05vw + 0.05vh) / 2) + 0.05em) solid var(--accent-blue);
+}
+.budget-item-input:focus {
+    box-shadow: var(--blue-black) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;
+}
+.budget-item-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: auto;
+}
+.budget-item-button {
+    background-color: var(--accent-green);
+    padding: calc(((1vw + 1vh) / 2) + 1em) 0;
+    margin: 0 calc(((1vw + 1vh) / 2) + 1em) 0 0;
+    border-radius: calc(((5vw + 5vh) / 2) + 5em);
+    display: flex;
+    width: calc(((7vw + 7vh) / 2) + 5em);
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--leaf-green) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;
+    transition: box-shadow, margin-top, margin-left, 0.25s;
+}
+.budget-item-button:hover {
+    box-shadow: var(--blue-black) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;
+
+}
+.budget-item-button:active {
+    box-shadow: none;
+    margin-top: calc(((0.25vw + 0.25vh) / 2) + 0.25em);
+    margin-left: calc(((0.25vw + 0.25vh) / 2) + 0.25em);
+}
+.budget-item-button-text {
+    color: var(--off-black);
+    margin: 0;
+    padding: 0;
+}
