@@ -45,6 +45,9 @@ main {
     height: 90%;
     box-shadow: var(--blue-black) 0 0 calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em);
 }
+#add-button {
+    margin: 0 0 0 calc(((1vw + 1vh) / 2) + 1em);
+}
 .budget-item {
     display: flex;
     justify-content: center;
@@ -55,7 +58,7 @@ main {
     width: 90%;
     height: calc(((5vw + 5vh) / 2) + 5em);
 }
-#add-button {
+#add-item-button {
     width: calc(((10vw + 10vh) / 2) + 10em);
 }
 .item-input {
@@ -68,6 +71,10 @@ main {
     width: 90%;
     height: calc(((7vw + 7vh) / 2) + 7em);
 }
+.budget-input-info {
+    width: 25%;
+}
+
 .budget-item-info {
     display: flex;
     justify-content: space-around;
@@ -78,16 +85,17 @@ main {
     width: 90%;
     height: calc(((5vw + 5vh) / 2) + 5em);
 }
-.budget-item-info-div {
+.budget-input-title-div {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    margin: 0;
-    padding: 0;
-
+    margin: 0 0 calc(((1vw + 1vh) / 2) + 1em) 0;
+}
+.budget-item-input-div {
+    width: 25%;
 }
 .budget-item-input {
-    width: calc(((10vw + 10vh) / 2) + 5em);
+    width: calc(((7vw + 7vh) / 2) + 5em);
     padding: calc(((0.5vw + 0.5vh) / 2) + 0.5em);
     margin: 0 0 0 calc(((0.5vw + 0.5vh) / 2) + 0.5em);
     border-radius: calc(((2vw + 2vh) / 2) + 2em);
