@@ -48,6 +48,10 @@ h6 {
 p {
     font-size: calc(((1.25vw + 1.25vh) / 2) + 4px);
 }
+blockquote {
+    font-size: calc(((1.25vw + 1.25vh) / 2) + 4px);
+    font-style: italic;
+}
 .link-no-style {
     text-decoration: none;
     color: inherit;
