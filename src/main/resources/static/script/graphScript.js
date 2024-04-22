@@ -34,7 +34,7 @@ const pieChart = new Chart(pieChartElement, {
 });
 
 
-const barChartElement = document.getElementById('feature-bar-chart').getContext('2d');
+const barChartElement = document.getElementById('bar-chart').getContext('2d');
 const barChart = new Chart(barChartElement, {
     type: 'bar',
     data: {
@@ -68,7 +68,7 @@ const barChart = new Chart(barChartElement, {
 });
 
 
-const lineChartElement = document.getElementById('feature-line-chart').getContext('2d');
+const lineChartElement = document.getElementById('line-chart').getContext('2d');
 const lineChart = new Chart(lineChartElement, {
     type: 'line',
     data: {
