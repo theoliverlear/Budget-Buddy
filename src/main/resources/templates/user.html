@@ -5,8 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Budget Buddy</title>
-    <link rel="stylesheet" href="../static/style/global-style.css">
-    <link rel="stylesheet" href="../static/style/account-style.css">
+    <link rel="stylesheet" href="../static/style/global-style.css"
+          th:href="@{/static/style/global-style.css}">
+    <link rel="stylesheet" href="../static/style/account-style.css"
+          th:href="@{/static/style/account-style.css}">
+    <link rel="icon" href="../static/images/favicon/budget_buddy_favicon.ico"
+          th:href="@{/static/images/favicon/budget_buddy_favicon.ico}">
 </head>
 <body>
 <nav>
@@ -155,7 +159,9 @@
         </div>
     </section>
 </footer>
-<script src="../static/script/globalScript.js" type="module"></script>
-<script src="../static/script/accountScript.js" type="module"></script>
+<script src="../static/script/globalScript.js" type="module"
+        th:src="@{/script/globalScript.js}"></script>
+<script src="../static/script/accountScript.js" type="module"
+        th:src="@{/script/accountScript.js}"></script>
 </body>
 </html>
