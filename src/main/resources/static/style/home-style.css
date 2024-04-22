@@ -212,7 +212,7 @@
     margin: calc(((2vw + 2vh) / 2) + 2em);
     width: 90%;
 }
-#budgeting-text-div-1 {
+#budget-text-div {
     width: calc(((20vw + 20vh) / 2) + 10em);
     padding: calc(((2vw + 2vh) / 2) + 2em);
     border-radius: calc(((1vw + 1vh) / 2) + 1em);
@@ -230,13 +230,15 @@
     box-shadow: var(--accent-green) 0 0 calc(((0.15vw + 0.15vh) / 2) + 0.15em) calc(((0.15vw + 0.15vh) / 2) + 0.15em);
     border-radius: calc(((1vw + 1vh) / 2) + 1em);
 }
-#budgeting-text-div-2 {
+#quote-text-div {
     width: calc(((10vw + 10vh) / 2) + 15em);
     padding: calc(((1vw + 1vh) / 1) + 1em);
     border-radius: calc(((1vw + 1vh) / 2) + 1em);
-    background-color: var(--ocean-blue);
+    background-color: var(--lighter-off-white);
     margin: calc(((2vw + 2vh) / 2) + 2em);
-    box-shadow: var(--off-black) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;
+    box-shadow: var(--accent-green) calc(((0.25vw + 0.25vh) / 2) + 0.25em) calc(((0.25vw + 0.25vh) / 2) + 0.25em) 0 0;
+    border-top: calc(((0.05vw + 0.05vh) / 2) + 0.05em) solid var(--ocean-blue);
+    border-left: calc(((0.05vw + 0.05vh) / 2) + 0.05em) solid var(--ocean-blue);
 }
 #history-feature-with-product-name {
     width: 100%;
