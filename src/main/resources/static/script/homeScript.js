@@ -69,3 +69,44 @@ const barChart = new Chart(barChartElement, {
         }
     }
 });
+
+
+const lineChartElement = document.getElementById('feature-line-chart').getContext('2d');
+const lineChart = new Chart(lineChartElement, {
+    type: 'line',
+    data: {
+        labels: ['MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB'],
+        datasets: [{
+            label: 'Savings',
+            data: [5, 27, 20, 30, 26, 58, 29, 42, 60, 94, 102, 115],
+            backgroundColor: [
+                'rgb(0, 255, 192)',
+                'rgb(0, 255, 192)',
+                'rgb(0, 100, 0)',
+                'rgb(0, 255, 192)',
+                'rgb(0, 100, 0)',
+                'rgb(0, 255, 192)',
+                'rgb(0, 100, 0)',
+                'rgb(0, 255, 192)',
+                'rgb(0, 255, 192)',
+                'rgb(0, 255, 192)',
+                'rgb(0, 255, 192)',
+                'rgb(0, 255, 192)',
+            ],
+            hoverOffset: 4
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'History of Saving'
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top'
+            }
+        }
+    }
+});
