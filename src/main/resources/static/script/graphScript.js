@@ -32,3 +32,37 @@ const pieChart = new Chart(pieChartElement, {
         }
     }
 });
+
+
+const barChartElement = document.getElementById('feature-bar-chart').getContext('2d');
+const barChart = new Chart(barChartElement, {
+    type: 'bar',
+    data: {
+        labels: ['House', 'Food', 'Bills', 'Transportation', 'Miscellaneous'],
+        datasets: [{
+            label: 'Budget',
+            data: [1400, 150, 475, 100, 50],
+            backgroundColor: [
+                'rgb(0, 100, 0)',
+                'rgb(0, 100, 0)',
+                'rgb(0, 100, 0)',
+                'rgb(0, 100, 0)',
+                'rgb(0, 100, 0)'
+            ],
+            hoverOffset: 4
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Budget For The Month'
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top'
+            }
+        }
+    }
+});
