@@ -1,6 +1,7 @@
 package org.budgetbuddy.entity.budget;
 
 import jakarta.persistence.*;
+import org.budgetbuddy.convert.entity.category.CategoryConverter;
 import org.budgetbuddy.entity.category.Category;
 
 //=================================-Imports-==================================
@@ -12,7 +13,7 @@ public class BudgetItem {
     Long id;
     String name;
     double amount;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = CategoryConverter.class)
     Category category;
     //===========================-Constructors-===============================
     public BudgetItem() {
