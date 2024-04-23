@@ -24,6 +24,11 @@ public class BudgetBuddyController {
     public String home() {
         return "home";
     }
+
+    @RequestMapping("/terms")
+    public String terms() {
+        return "terms";
+    }
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------

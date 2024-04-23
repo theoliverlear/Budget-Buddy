@@ -1,11 +1,14 @@
 package org.budgetbuddy.entity.budget;
 //=================================-Imports-==================================
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import org.budgetbuddy.convert.entity.budget.BudgetItemsArrayListConverter;
+import org.budgetbuddy.convert.entity.budget.BudgetKeyDeserializer;
 
 import java.util.ArrayList;
 
 @Entity
+@JsonDeserialize(keyUsing = BudgetKeyDeserializer.class)
 public class Budget {
     //============================-Variables-=================================
     @Id
@@ -53,10 +56,14 @@ public class Budget {
     @Override
     public boolean equals(Object obj){
         if (this == obj) return true;
-        if (obj instanceof Budget budget){
-            boolean sameId = this.id.equals(budget.getId());
+        if (obj instanceof Budget budget) {
             boolean sameBudgetItems = this.budgetItems.equals(budget.getBudgetItems());
-            return sameId && sameBudgetItems;
+            if (this.id != null) {
+                boolean sameId = this.id.equals(budget.getId());
+                return sameId && sameBudgetItems;
+            } else {
+                return sameBudgetItems;
+            }
         }
         return false;
     }

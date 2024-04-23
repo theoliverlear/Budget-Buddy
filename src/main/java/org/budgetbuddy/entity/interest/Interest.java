@@ -1,5 +1,7 @@
 package org.budgetbuddy.entity.interest;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 import org.budgetbuddy.convert.entity.time.TimeIntervalConverter;
 import org.budgetbuddy.entity.holding.debt.Debt;
@@ -8,6 +10,16 @@ import org.budgetbuddy.entity.time.TimeInterval;
 
 //=================================-Imports-==================================
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "interest_type")
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = SimpleInterest.class, name = "simple"),
+        @JsonSubTypes.Type(value = CompoundInterest.class, name = "compound")
+})
 public abstract class Interest {
     //============================-Variables-=================================
     @Id

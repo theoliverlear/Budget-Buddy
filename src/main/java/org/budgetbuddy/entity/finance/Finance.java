@@ -1,9 +1,11 @@
 package org.budgetbuddy.entity.finance;
 //=================================-Imports-==================================
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.budgetbuddy.convert.entity.expense.RecurringExpenseArrayListConverter;
+import org.budgetbuddy.convert.entity.finance.FinanceKeyDeserializer;
 import org.budgetbuddy.convert.entity.revenue.RecurringRevenueArrayListConverter;
 import org.budgetbuddy.convert.entity.revenue.RecurringRevenueConverter;
 import org.budgetbuddy.entity.expense.RecurringExpense;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 @Entity
 @Getter
 @Setter
+@JsonDeserialize(keyUsing = FinanceKeyDeserializer.class)
 public class Finance {
     //============================-Variables-=================================
     @Id
@@ -51,11 +54,15 @@ public class Finance {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj instanceof Finance finance) {
-            boolean idIsSame = this.id.equals(finance.id);
             boolean incomeIsSame = this.income.equals(finance.income);
             boolean billsAreSame = this.bills.equals(finance.bills);
             boolean otherRevenueStreamsAreSame = this.otherRevenueStreams.equals(finance.otherRevenueStreams);
-            return idIsSame && incomeIsSame && billsAreSame && otherRevenueStreamsAreSame;
+            if (this.id != null) {
+                boolean idIsSame = this.id.equals(finance.id);
+                return idIsSame && incomeIsSame && billsAreSame && otherRevenueStreamsAreSame;
+            } else {
+                return incomeIsSame && billsAreSame && otherRevenueStreamsAreSame;
+            }
         }
         return false;
     }

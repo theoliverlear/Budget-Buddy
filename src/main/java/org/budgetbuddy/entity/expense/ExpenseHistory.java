@@ -1,9 +1,8 @@
 package org.budgetbuddy.entity.expense;
 //=================================-Imports-==================================
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
+import org.budgetbuddy.convert.entity.expense.ExpenseHistoryHashMapConverter;
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,9 +11,9 @@ import java.util.Map;
 public class ExpenseHistory {
     //============================-Variables-=================================
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = ExpenseHistoryHashMapConverter.class)
     HashMap<Expense, LocalDateTime> expenseHistoryMap;
     //===========================-Constructors-===============================
     public ExpenseHistory() {

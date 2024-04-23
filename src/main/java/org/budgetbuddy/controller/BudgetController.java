@@ -11,8 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -43,7 +42,7 @@ public class BudgetController {
     }
     //--------------------------Add-Budget-Item-------------------------------
     @RequestMapping("/add")
-    public ResponseEntity<String> add(@ModelAttribute BudgetItemRequest budgetItemRequest){
+    public ResponseEntity<String> add(@RequestBody BudgetItemRequest budgetItemRequest){
     Category category = new Category(budgetItemRequest.getCategory());
         BudgetItem newBudgetItem = new BudgetItem(budgetItemRequest.getName(),budgetItemRequest.getAmount(),category);
         if (this.currentBudget != null){
@@ -55,7 +54,7 @@ public class BudgetController {
     }
     //--------------------------Edit-Budget-Item------------------------------
     @RequestMapping("/edit")
-    public ResponseEntity<String> editItem(@ModelAttribute BudgetItemRequest budgetItemRequest){
+    public ResponseEntity<String> editItem(@RequestBody BudgetItemRequest budgetItemRequest){
         Category category = new Category(budgetItemRequest.getCategory());
         BudgetItem updatedBudgetItem = new BudgetItem(budgetItemRequest.getName(),budgetItemRequest.getAmount(),category);
         if (this.currentBudget != null){
@@ -67,7 +66,7 @@ public class BudgetController {
     }
     //--------------------------Remove-Budget-Item----------------------------
     @RequestMapping("/remove")
-    public ResponseEntity<String> removeItem(@ModelAttribute BudgetItemRequest budgetItemRequest){
+    public ResponseEntity<String> removeItem(@RequestBody BudgetItemRequest budgetItemRequest){
         Category category = new Category(budgetItemRequest.getCategory());
         BudgetItem removeBudgetItem = new BudgetItem(budgetItemRequest.getName(),budgetItemRequest.getAmount(),category);
         if (this.currentBudget.removeBudgetItem(removeBudgetItem)) {

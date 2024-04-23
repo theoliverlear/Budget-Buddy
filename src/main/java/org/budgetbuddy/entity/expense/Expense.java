@@ -1,11 +1,14 @@
 //=================================-Imports-==================================
 package org.budgetbuddy.entity.expense;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import org.budgetbuddy.convert.entity.category.CategoryConverter;
+import org.budgetbuddy.convert.entity.expense.ExpenseKeyDeserializer;
 import org.budgetbuddy.entity.category.Category;
 
 @Entity
+@JsonDeserialize(keyUsing = ExpenseKeyDeserializer.class)
 public class Expense {
     //============================-Variables-=================================
     @Id
@@ -40,7 +43,14 @@ public class Expense {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj instanceof Expense expense) {
-            return this.id.equals(expense.id);
+            if (this.id != null) {
+                return this.id.equals(expense.id);
+            } else {
+                boolean nameIsSame = this.name.equals(expense.name);
+                boolean amountIsSame = this.amount == expense.amount;
+                boolean categoryIsSame = this.category.equals(expense.category);
+                return nameIsSame && amountIsSame && categoryIsSame;
+            }
         }
         return false;
     }
