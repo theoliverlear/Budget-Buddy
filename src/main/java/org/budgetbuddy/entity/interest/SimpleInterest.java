@@ -1,16 +1,26 @@
 package org.budgetbuddy.entity.interest;
 //=================================-Imports-==================================
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import org.budgetbuddy.entity.holding.debt.Debt;
 import org.budgetbuddy.entity.holding.saving.Saving;
 import org.budgetbuddy.entity.time.TimeInterval;
 
 @Entity
+@DiscriminatorValue("simple")
 public class SimpleInterest extends Interest {
     //============================-Variables-=================================
 
     //===========================-Constructors-===============================
-
+    public SimpleInterest() {
+        super();
+    }
+    public SimpleInterest(double rateAsDecimal) {
+        super(rateAsDecimal);
+    }
+    public SimpleInterest(double rateAsDecimal, TimeInterval chargeInterestInterval) {
+        super(rateAsDecimal, chargeInterestInterval);
+    }
     //=============================-Methods-==================================
 
     //============================-Overrides-=================================
