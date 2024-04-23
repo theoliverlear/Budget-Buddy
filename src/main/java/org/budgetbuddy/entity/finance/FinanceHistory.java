@@ -32,9 +32,23 @@ public class FinanceHistory {
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj instanceof FinanceHistory financeHistory) {
+            if (this.id != null) {
+                return this.id.equals(financeHistory.id);
+            } else {
+                return this.financeHistoryMap.equals(financeHistory.financeHistoryMap);
+            }
+        }
+        return false;
+    }
     //------------------------------Hash-Code---------------------------------
-
+    @Override
+    public int hashCode() {
+        return this.id.hashCode();
+    }
     //------------------------------To-String---------------------------------
 
     //=============================-Getters-==================================
