@@ -40,9 +40,23 @@ public class SavingHistory {
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj instanceof SavingHistory comparedSavingHistory) {
+            if (this.id != null) {
+                return this.id.equals(comparedSavingHistory.id);
+            } else {
+                return this.savingHistoryMap.equals(comparedSavingHistory.savingHistoryMap);
+            }
+        }
+        return false;
+    }
     //------------------------------Hash-Code---------------------------------
-
+    @Override
+    public int hashCode() {
+        return this.id.hashCode();
+    }
     //------------------------------To-String---------------------------------
 
     //=============================-Getters-==================================
