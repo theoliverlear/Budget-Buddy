@@ -40,9 +40,23 @@ public class PurchaseHistory {
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj instanceof PurchaseHistory purchaseHistory) {
+            if (this.id != null) {
+                return this.id.equals(purchaseHistory.id);
+            } else {
+                return this.purchasesHistoryMap.equals(purchaseHistory.purchasesHistoryMap);
+            }
+        }
+        return false;
+    }
     //------------------------------Hash-Code---------------------------------
-
+    @Override
+    public int hashCode() {
+        return this.id.hashCode();
+    }
     //------------------------------To-String---------------------------------
 
     //=============================-Getters-==================================
