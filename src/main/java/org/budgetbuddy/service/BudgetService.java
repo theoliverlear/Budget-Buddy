@@ -3,12 +3,18 @@ package org.budgetbuddy.service;
 import org.budgetbuddy.entity.budget.Budget;
 import org.budgetbuddy.entity.user.User;
 import org.budgetbuddy.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BudgetService {
     //============================-Variables-=================================
     UserRepository userRepository;
+    //===========================-Constructors-===============================
+    @Autowired
+    public BudgetService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
     //=============================-Methods-==================================
 
     //-------------------------Get-Budget-By-User-----------------------------
