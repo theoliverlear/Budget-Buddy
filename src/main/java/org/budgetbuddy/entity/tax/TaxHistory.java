@@ -28,21 +28,39 @@ public class TaxHistory {
         this.taxHistoryMap = taxHistoryMap;
     }
     //=============================-Methods-==================================
+
+    //------------------------------Add-Tax-----------------------------------
     public void addTax(Tax tax, LocalDateTime time) {
         this.taxHistoryMap.put(tax, time);
     }
+    //---------------------------Add-Tax-Now----------------------------------
     public void addTaxNow(Tax tax) {
         this.taxHistoryMap.put(tax, LocalDateTime.now());
     }
+    //-------------------------Remove-Tax-------------------------------------
     public void removeTax(Tax tax) {
         this.taxHistoryMap.remove(tax);
     }
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj instanceof TaxHistory comparedTaxHistory) {
+            if (this.id != null) {
+                return this.id.equals(comparedTaxHistory.id);
+            } else {
+                return this.taxHistoryMap.equals(comparedTaxHistory.taxHistoryMap);
+            }
+        }
+        return false;
+    }
     //------------------------------Hash-Code---------------------------------
-
+    @Override
+    public int hashCode() {
+        return this.id.hashCode();
+    }
     //------------------------------To-String---------------------------------
 
     //=============================-Getters-==================================

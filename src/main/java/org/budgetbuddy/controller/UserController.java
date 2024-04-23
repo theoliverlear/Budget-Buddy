@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -30,7 +30,7 @@ public class UserController {
     }
     //-------------------------------Login------------------------------------
     @RequestMapping("/login")
-    public ResponseEntity<UserResponse> login(@ModelAttribute UserRequest userRequest, HttpSession session) {
+    public ResponseEntity<UserResponse> login(@RequestBody UserRequest userRequest, HttpSession session) {
         boolean userExists = this.userService.userExists(userRequest.getUsername());
         if (userExists) {
             User user = this.userService.getUserRepository().findByUsername(userRequest.getUsername());
@@ -46,7 +46,7 @@ public class UserController {
     }
     //------------------------------Sign-Up-----------------------------------
     @RequestMapping("/signup")
-    public ResponseEntity<UserResponse> signup(@ModelAttribute UserRequest userRequest, HttpSession session) {
+    public ResponseEntity<UserResponse> signup(@RequestBody UserRequest userRequest, HttpSession session) {
         boolean userExists = this.userService.userExists(userRequest.getUsername());
         if (!userExists) {
             SafePassword newSafePassword = new SafePassword(userRequest.getPassword());

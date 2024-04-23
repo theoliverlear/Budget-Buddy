@@ -1,11 +1,14 @@
 package org.budgetbuddy.entity.revenue;
 //=================================-Imports-==================================
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.budgetbuddy.convert.entity.revenue.RevenueKeyDeserializer;
 
 @Entity
+@JsonDeserialize(keyUsing = RevenueKeyDeserializer.class)
 public class Revenue {
     //============================-Variables-=================================
     @Id
@@ -31,7 +34,13 @@ public class Revenue {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj instanceof Revenue comparedRevenue) {
-            return this.id.equals(comparedRevenue.id);
+            if (this.id != null) {
+                return this.id.equals(comparedRevenue.id);
+            } else {
+                boolean nameIsSame = this.name.equals(comparedRevenue.name);
+                boolean amountIsSame = this.amount == comparedRevenue.amount;
+                return nameIsSame && amountIsSame;
+            }
         }
         return false;
     }
