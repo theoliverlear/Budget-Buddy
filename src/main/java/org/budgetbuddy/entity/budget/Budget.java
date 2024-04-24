@@ -32,14 +32,26 @@ public class Budget {
     public boolean removeBudgetItem(BudgetItem budgetItem) {//removing Budget Item
         return this.budgetItems.remove(budgetItem);
     }
-    public void updateBudgetItem(BudgetItem newBudgetItem){ //update Budget Item
-        BudgetItem updateBudgetItem = this.getBudgetItemByTitle(newBudgetItem.getName());
-        if(updateBudgetItem != null){//checks if budget item is found
-            updateBudgetItem = newBudgetItem;
+    public boolean updateBudgetItem(BudgetItem updatedBudgetItem) {
+        for (BudgetItem budgetItem : this.budgetItems) {
+            if (budgetItem.getName().equals(updatedBudgetItem.getName())) {
+                budgetItem.setAmount(updatedBudgetItem.getAmount());
+                budgetItem.setCategory(updatedBudgetItem.getCategory());
+                return true;
+            }
         }
-        else{
-            System.out.println(newBudgetItem.getName()+" is not found");
+        return false;
+    }
+    public boolean updateBudgetItem(BudgetItem updatedBudgetItem, String newBudgetItemName) {
+        for (BudgetItem budgetItem : this.budgetItems) {
+            if (budgetItem.getName().equals(updatedBudgetItem.getName())) {
+                budgetItem.setName(newBudgetItemName);
+                budgetItem.setAmount(updatedBudgetItem.getAmount());
+                budgetItem.setCategory(updatedBudgetItem.getCategory());
+                return true;
+            }
         }
+        return false;
     }
     public BudgetItem getBudgetItemByTitle(String budgetItemName){//gets item by title
         BudgetItem budgetItemFound=null;
