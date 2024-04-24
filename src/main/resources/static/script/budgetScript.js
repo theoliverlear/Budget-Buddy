@@ -11,7 +11,7 @@ let budgetItemsSaveButtons = document.getElementsByClassName('save-budget-item-b
 let budgetItemsRemoveButtons = document.getElementsByClassName('remove-budget-item-button');
 let addItemButton = document.getElementById('add-item-button');
 let itemInputerDiv = document.getElementById('item-inputer');
-
+//------------------------------Get-Budget-Items------------------------------
 function getBudgetItems() {
     fetch('/budget/get', {
         method: 'GET',
@@ -31,6 +31,7 @@ function getBudgetItems() {
     });
 }
 getBudgetItems();
+//-------------------------Add-Budget-Item-To-Account-------------------------
 function addBudgetItemToAccount(name, amount, category) {
     fetch('/budget/add', {
         method: 'POST',
@@ -52,7 +53,15 @@ function addBudgetItemToAccount(name, amount, category) {
         console.error('Error:', error);
     });
 }
+function amountFloatArtifactRemover(amount) {
+    amount = amount.replace('$', '');
+    amount = parseFloat(amount);
+    return amount;
+}
+//----------------------Remove-Budget-Item-From-Account-----------------------
 function removeBudgetItemFromAccount(name, amount, category) {
+    console.log("Remove button clicked");
+    amount = amountFloatArtifactRemover(amount);
     fetch('/budget/remove', {
         method: 'POST',
         headers: {
@@ -63,10 +72,17 @@ function removeBudgetItemFromAccount(name, amount, category) {
             amount: amount,
             category: category
         })
-    }).then(response => {}).catch(error => {
+    }).then(response => {
+        if (response.status === 200) {
+            console.log('Item removed');
+        } else {
+            console.log('Error:', response.status);
+        }
+    }).catch(error => {
         console.error('Error:', error);
     });
 }
+//-------------------------Add-Budget-Item-From-Input-------------------------
 function addBudgetItemFromInput() {
     let budgetInputName = budgetItemNameInput.value;
     let budgetInputCost = budgetItemCostInput.value;
@@ -83,6 +99,7 @@ addBudgetItemToAccount(budgetInputName, budgetInputCost, budgetInputCategory);
     hideItemInputer();
     clearItemInputs();
 }
+//--------------------------Add-Budget-Item-To-Page---------------------------
 function addBudgetItemToPage(name, amount, category) {
     let budgetItem = new BudgetItem(name, amount, category);
     let budgetItemHtml = budgetItem.buildAddItemHtml();
@@ -95,19 +112,22 @@ function addBudgetItemToPage(name, amount, category) {
     hideItemInputer();
     clearItemInputs();
 }
-
+//-----------------------------Hide-Item-Inputter-----------------------------
 function hideItemInputer() {
     itemInputerDiv.style.display = 'none';
 }
+//-----------------------------Show-Item-Inputter-----------------------------
 function showItemInputer() {
     itemInputerDiv.style.display = 'flex';
 }
+//-----------------------------Clear-Item-Inputs------------------------------
 function clearItemInputs() {
     budgetItemNameInput.value = '';
     budgetItemCostInput.value = '';
     budgetItemCategoryInput.value = '';
 }
 addItemButton.addEventListener('click', showItemInputer);
+//-----------------------Attach-Remove-Button-Listener------------------------
 function attachRemoveButtonListener() {
     budgetItemsRemoveButtons = document.getElementsByClassName('remove-budget-item-button');
     Array.from(budgetItemsRemoveButtons).forEach(button => {
@@ -115,12 +135,14 @@ function attachRemoveButtonListener() {
     });
 }
 addButton.addEventListener('click', addBudgetItemFromInput);
-
+let lastEditedName = '';
+//------------------------------Edit-Budget-Item------------------------------
 function editBudgetItem() {
     console.log("Edit button clicked");
     let parent = this.parentElement.parentElement.parentElement;
     let name = parent.getElementsByClassName('budget-item-name-text')[0].innerText;
-    let amount = parent.getElementsByClassName('budget-item-amount-text')[0].innerText;
+    lastEditedName = name;
+    let amount = parent.getElementsByClassName('budget-item-amount-text')[0].innerText.replace('$', '');
     let category = parent.getElementsByClassName('budget-item-category-text')[0].innerText;
     let editBudgetItem = new BudgetItem(name, amount, category);
     let editBudgetItemHtml = editBudgetItem.buildEditItemHtml();
@@ -130,6 +152,7 @@ function editBudgetItem() {
     attachSaveButtonListener();
     attachEditButtonListener();
 }
+//------------------------Attach-Edit-Button-Listener-------------------------
 function attachEditButtonListener() {
     budgetItemsEditButtons = document.getElementsByClassName('edit-budget-item-button');
     Array.from(budgetItemsEditButtons).forEach(button => {
@@ -139,6 +162,7 @@ function attachEditButtonListener() {
 Array.from(budgetItemsEditButtons).forEach(button => {
     button.addEventListener('click', editBudgetItem);
 });
+//------------------------------Save-Budget-Item------------------------------
 function saveBudgetItem() {
     console.log("Save button clicked");
     let parent = this.parentElement.parentElement;
@@ -151,10 +175,59 @@ function saveBudgetItem() {
     tempDiv.classList.add('budget-item');
     tempDiv.innerHTML = saveBudgetItemHtml;
     parent.replaceWith(tempDiv);
-    addBudgetItemToAccount(name, amount, category);
+    if (name === lastEditedName) {
+        editBudgetItemToAccount(name, amount, category);
+    } else {
+        editBudgetItemToAccountWithNewName(name, amount, category);
+    }
     attachEditButtonListener();
     attachRemoveButtonListener();
 }
+function editBudgetItemToAccount(name, amount, category) {
+    amount = amountFloatArtifactRemover(amount);
+    fetch('/budget/edit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            amount: amount,
+            category: category
+        })
+    }).then(response => {
+        if (response.status === 200) {
+            console.log('Item edited');
+        } else {
+            console.log('Error:', response.status);
+        }
+    }).catch(error => {
+        console.error('Error:', error);
+    });
+}
+function editBudgetItemToAccountWithNewName(name, amount, category) {
+    amount = amountFloatArtifactRemover(amount);
+    fetch(`/budget/edit/${name}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: lastEditedName,
+            amount: amount,
+            category: category
+        })
+    }).then(response => {
+        if (response.status === 200) {
+            console.log('Item edited');
+        } else {
+            console.log('Error:', response.status);
+        }
+    }).catch(error => {
+        console.error('Error:', error);
+    });
+}
+//------------------------Attach-Save-Button-Listener-------------------------
 function attachSaveButtonListener() {
     budgetItemsSaveButtons = document.getElementsByClassName('save-budget-item-button');
     Array.from(budgetItemsSaveButtons).forEach(button => {
@@ -164,6 +237,7 @@ function attachSaveButtonListener() {
 Array.from(budgetItemsSaveButtons).forEach(button => {
     button.addEventListener('click', saveBudgetItem);
 });
+//-----------------------------Delete-Budget-Item-----------------------------
 function deleteBudgetItem() {
     console.log("Delete button clicked");
     if (this.classList.contains('remove-budget-item-button')) {
