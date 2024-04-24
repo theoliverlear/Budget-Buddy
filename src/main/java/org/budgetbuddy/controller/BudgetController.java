@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -58,9 +59,27 @@ public class BudgetController {
         Category category = new Category(budgetItemRequest.getCategory());
         BudgetItem updatedBudgetItem = new BudgetItem(budgetItemRequest.getName(),budgetItemRequest.getAmount(),category);
         if (this.currentBudget != null){
-            this.currentBudget.updateBudgetItem(updatedBudgetItem);
-            this.budgetService.updateBudgetByUser(this.currentUser, this.currentBudget);
-            return new ResponseEntity<>("Success", HttpStatus.OK);
+            if (this.currentBudget.updateBudgetItem(updatedBudgetItem)) {
+                this.budgetService.updateBudgetByUser(this.currentUser, this.currentBudget);
+                return new ResponseEntity<>("Success", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Failure", HttpStatus.NOT_ACCEPTABLE);
+            }
+        }
+        return new ResponseEntity<>("Failure", HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @RequestMapping("/edit/{newName}")
+    public ResponseEntity<String> editItemWithNewName(@RequestBody BudgetItemRequest budgetItemRequest, @PathVariable String newName) {
+        Category category = new Category(budgetItemRequest.getCategory());
+        BudgetItem updatedBudgetItem = new BudgetItem(budgetItemRequest.getName(),budgetItemRequest.getAmount(),category);
+        if (this.currentBudget != null){
+            if (this.currentBudget.updateBudgetItem(updatedBudgetItem, newName)) {
+                this.budgetService.updateBudgetByUser(this.currentUser, this.currentBudget);
+                return new ResponseEntity<>("Success", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Failure", HttpStatus.NOT_ACCEPTABLE);
+            }
         }
         return new ResponseEntity<>("Failure", HttpStatus.NOT_ACCEPTABLE);
     }
@@ -69,6 +88,7 @@ public class BudgetController {
     public ResponseEntity<String> removeItem(@RequestBody BudgetItemRequest budgetItemRequest){
         Category category = new Category(budgetItemRequest.getCategory());
         BudgetItem removeBudgetItem = new BudgetItem(budgetItemRequest.getName(),budgetItemRequest.getAmount(),category);
+        System.out.println(removeBudgetItem);
         if (this.currentBudget.removeBudgetItem(removeBudgetItem)) {
             this.budgetService.updateBudgetByUser(this.currentUser, this.currentBudget);
             return new ResponseEntity<>("Success", HttpStatus.OK);
