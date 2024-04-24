@@ -84,7 +84,7 @@ public class UserController {
         if (currentUser == null) {
             return new ResponseEntity<>("Not Logged In", HttpStatus.UNAUTHORIZED);
         } else {
-            return new ResponseEntity<>(currentUser.getUsername(), HttpStatus.OK);
+            return new ResponseEntity<>("@" + currentUser.getUsername(), HttpStatus.OK);
         }
     }
     //============================-Overrides-=================================
