@@ -1,10 +1,13 @@
 package org.budgetbuddy.entity.holding.debt;
 //=================================-Imports-==================================
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
+import org.budgetbuddy.convert.entity.holding.debt.DebtKeyDeserializer;
 import org.budgetbuddy.convert.entity.interest.InterestConverter;
 import org.budgetbuddy.entity.interest.Interest;
 
 @Entity
+@JsonDeserialize(keyUsing = DebtKeyDeserializer.class)
 public class Debt {
     //============================-Variables-=================================
     @Id
@@ -57,9 +60,41 @@ public class Debt {
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj instanceof Debt debt) {
+            boolean debtAmountIsSame = this.debtAmount == debt.debtAmount;
+            boolean monthlyPaymentIsSame = this.monthlyPayment == debt.monthlyPayment;
+            boolean monthsRemainingIsSame = this.monthsRemaining == debt.monthsRemaining;
+            if (this.interest != null) {
+                boolean interestIsSame = this.interest.equals(debt.interest);
+                if (this.id != null) {
+                    boolean idIsSame = this.id.equals(debt.id);
+                    return idIsSame && debtAmountIsSame && monthlyPaymentIsSame
+                            && monthsRemainingIsSame && interestIsSame;
+                } else {
+                    return debtAmountIsSame && monthlyPaymentIsSame &&
+                            monthsRemainingIsSame && interestIsSame;
+                }
+            } else {
+                if (this.id != null) {
+                    boolean idIsSame = this.id.equals(debt.id);
+                    return idIsSame && debtAmountIsSame && monthlyPaymentIsSame
+                            && monthsRemainingIsSame;
+                } else {
+                    return debtAmountIsSame && monthlyPaymentIsSame &&
+                            monthsRemainingIsSame;
+                }
+            }
+        }
+        return false;
+    }
     //------------------------------Hash-Code---------------------------------
-
+    @Override
+    public int hashCode() {
+        return this.id.hashCode();
+    }
     //------------------------------To-String---------------------------------
 
     //=============================-Getters-==================================

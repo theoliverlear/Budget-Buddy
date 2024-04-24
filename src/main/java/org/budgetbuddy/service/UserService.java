@@ -2,6 +2,7 @@ package org.budgetbuddy.service;
 //=================================-Imports-==================================
 import org.budgetbuddy.entity.finance.FinanceHistory;
 import org.budgetbuddy.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +21,21 @@ public class UserService {
     SavingHistoryRepository savingHistoryRepository;
     SavingRepository savingRepository;
     //===========================-Constructors-===============================
-
+    @Autowired
+    public UserService(UserRepository userRepository, BudgetHistoryRepository budgetHistoryRepository, BudgetRepository budgetRepository, DebtHistoryRepository debtHistoryRepository, DebtRepository debtRepository, ExpenseHistoryRepository expenseHistoryRepository, ExpenseRepository expenseRepository, FinanceHistoryRepository financeHistoryRepository, FinanceRepository financeRepository, PurchaseHistoryRepository purchaseHistoryRepository, SavingHistoryRepository savingHistoryRepository, SavingRepository savingRepository) {
+        this.userRepository = userRepository;
+        this.budgetHistoryRepository = budgetHistoryRepository;
+        this.budgetRepository = budgetRepository;
+        this.debtHistoryRepository = debtHistoryRepository;
+        this.debtRepository = debtRepository;
+        this.expenseHistoryRepository = expenseHistoryRepository;
+        this.expenseRepository = expenseRepository;
+        this.financeHistoryRepository = financeHistoryRepository;
+        this.financeRepository = financeRepository;
+        this.purchaseHistoryRepository = purchaseHistoryRepository;
+        this.savingHistoryRepository = savingHistoryRepository;
+        this.savingRepository = savingRepository;
+    }
     //=============================-Methods-==================================
     public boolean userExists(String username) {
         return this.userRepository.existsByUsername(username);

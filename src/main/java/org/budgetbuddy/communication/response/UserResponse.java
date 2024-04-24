@@ -4,9 +4,6 @@ public class UserResponse {
     //============================-Variables-=================================
     boolean isAuthorized;
     //===========================-Constructors-===============================
-    public UserResponse() {
-        this.isAuthorized = false;
-    }
     public UserResponse(boolean isAuthorized) {
         this.isAuthorized = isAuthorized;
     }

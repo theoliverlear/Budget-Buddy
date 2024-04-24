@@ -91,13 +91,13 @@ function signupChain() {
                 password: signupPasswordInput.value
             })
         }).then(response => {
-            if (response.status === 200) {
-                window.location.href = '/budget';
+            if (response.status === 201) {
+                window.location.href = '/budget/';
             } else {
                 signupPopupDiv.style.display = 'block';
                 signupPopupText.textContent = 'Username already exists.';
             }
-        });
+        })
     }
 }
 function loginEmptyInfo() {
@@ -114,9 +114,9 @@ function loginChain() {
                 username: loginUsernameInput.value,
                 password: loginPasswordInput.value
             })
-        }).then(response => {
-            if (response.status === 200) {
-                window.location.href = '/budget';
+        }).then(response => response.json()).then(jsonData => {
+            if (jsonData.isAuthorized) {
+                window.location.href = '/budget/';
             } else {
                 loginPopupDiv.style.display = 'block';
                 loginPopupText.textContent = 'Invalid username or password.';

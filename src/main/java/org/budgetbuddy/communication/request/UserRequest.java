@@ -1,14 +1,14 @@
 package org.budgetbuddy.communication.request;
+
+import lombok.Data;
+
 //=================================-Imports-==================================
+@Data
 public class UserRequest {
     //============================-Variables-=================================
     String username;
     String password;
     //===========================-Constructors-===============================
-    public UserRequest() {
-        this.username = "";
-        this.password = "";
-    }
     public UserRequest(String username, String password) {
         this.username = username;
         this.password = password;

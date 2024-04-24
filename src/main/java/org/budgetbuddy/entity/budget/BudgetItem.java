@@ -1,6 +1,7 @@
 package org.budgetbuddy.entity.budget;
 
 import jakarta.persistence.*;
+import org.budgetbuddy.convert.entity.category.CategoryConverter;
 import org.budgetbuddy.entity.category.Category;
 
 //=================================-Imports-==================================
@@ -12,7 +13,7 @@ public class BudgetItem {
     Long id;
     String name;
     double amount;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = CategoryConverter.class)
     Category category;
     //===========================-Constructors-===============================
     public BudgetItem() {
@@ -37,21 +38,35 @@ public class BudgetItem {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj instanceof BudgetItem budgetItem) {
-            boolean sameId = this.id.equals(budgetItem.id);
             boolean sameName = this.name.equals(budgetItem.name);
             boolean sameAmount = this.amount == budgetItem.amount;
             boolean sameCategory = this.category.equals(budgetItem.category);
-            return sameId && sameName && sameAmount && sameCategory;
+            if (this.id != null) {
+                boolean sameId = this.id.equals(budgetItem.id);
+                return sameId && sameName && sameAmount && sameCategory;
+            } else {
+                return sameName && sameAmount && sameCategory;
+            }
         }
         return false;
     }
     //------------------------------Hash-Code---------------------------------
     @Override
     public int hashCode() {
-        return this.id.hashCode();
+        if (this.id != null) {
+            return this.id.hashCode();
+        } else {
+            int combinedHashCode = this.name.hashCode();
+            combinedHashCode += Double.hashCode(this.amount);
+            combinedHashCode += this.category.hashCode();
+            return combinedHashCode;
+        }
     }
     //------------------------------To-String---------------------------------
-
+    @Override
+    public String toString() {
+        return this.name + " - " + this.amount + " - " + this.category;
+    }
     //=============================-Getters-==================================
     public Long getId() {
         return this.id;
