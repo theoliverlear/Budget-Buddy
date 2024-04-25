@@ -57,6 +57,13 @@
             </h2>
         </div>
     </section>
+    <section id="graph-section">
+        <div id="graph-container">
+            <div id="budget-graph-div">
+                <canvas id="budget-graph"></canvas>
+            </div>
+        </div>
+    </section>
     <!----------------------------Budget-Items------------------------------->
     <section id="budget-items-section">
         <div id="budget-items-container">
@@ -160,10 +167,15 @@
         </div>
     </section>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/chroma-js@2.1.2/chroma.min.js"></script>
+<script src="../static/script/colorScript.js"
+        type="module"
+        th:src="@{/script/colorScript.js}"></script>
 <script src="../static/script/globalScript.js"
         th:src="@{/script/globalScript.js}"></script>
 <script src="../static/script/budgetScript.js"
         th:src="@{/script/budgetScript.js}"
         type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
