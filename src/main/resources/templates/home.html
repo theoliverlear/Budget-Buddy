@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <title>Budget Buddy</title>
     <link rel="stylesheet" href="../static/style/global-style.css"
-          th:herf="@{/static/style/global-style.css}">
+          th:href="@{/style/global-style.css}">
     <link rel="stylesheet" href="../static/style/home-style.css"
-          th:href="@{/static/style/home-style.css}">
+          th:href="@{/style/home-style.css}">
     <link rel="icon" href="../static/images/favicon/budget_buddy_favicon.ico"
-          th:href="@{/static/images/favicon/budget_buddy_favicon.ico}">
+          th:href="@{/images/favicon/budget_buddy_favicon.ico}">
 </head>
 <body>
 <!--<div id="vine-navigator">-->
@@ -32,16 +32,16 @@
                 Premium
             </h4>
         </div>
-        <a class="link-no-style" href="/budget">
+        <a class="link-no-style" href="/budget/">
             <div class="nav-item">
                 <h4 class="nav-text">
                     Budget
                 </h4>
             </div>
         </a>
-        <a class="link-no-style" href="/account">
-            <div class="nav-item">
-                <h4 class="nav-text">
+        <a class="link-no-style" href="/user/">
+            <div class="nav-item account-name-div">
+                <h4 class="nav-text account-name-text">
                     Account
                 </h4>
             </div>
@@ -86,6 +86,7 @@
         </div>
         <div id="promo-logo-div">
             <img src="../static/images/budget_buddy_logo_cropped.jpg"
+                 th:src="@{/images/budget_buddy_logo_cropped.jpg}"
                  alt="Budget Buddy Logo"
                  id="promo-logo">
         </div>
@@ -216,7 +217,10 @@
         </div>
     </section>
 </footer>
-<script src="../static/script/homeScript.js" type="module"></script>
+<script src="../static/script/homeScript.js" type="module"
+        th:src="@{/script/homeScript.js}"></script>
+<script src="../static/script/globalScript.js"
+        th:src="@{/script/globalScript.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

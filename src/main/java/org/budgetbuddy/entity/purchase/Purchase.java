@@ -1,14 +1,17 @@
 package org.budgetbuddy.entity.purchase;
 //=================================-Imports-==================================
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.budgetbuddy.convert.entity.category.CategoryConverter;
+import org.budgetbuddy.convert.entity.purchase.PurchaseKeyDeserializer;
 import org.budgetbuddy.entity.category.Category;
 
 @Entity
 @Getter
 @Setter
+@JsonDeserialize(keyUsing = PurchaseKeyDeserializer.class)
 public class Purchase {
     //============================-Variables-=================================
     @Id

@@ -31,7 +31,11 @@ public class DebtHistory {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj instanceof DebtHistory debtHistory) {
-            return this.id.equals(debtHistory.id);
+            if (this.id != null) {
+                return this.id.equals(debtHistory.id);
+            } else {
+                return this.debtHistoryMap.equals(debtHistory.debtHistoryMap);
+            }
         }
         return false;
     }

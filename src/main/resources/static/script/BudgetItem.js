@@ -6,7 +6,7 @@ export class BudgetItem {
         this.category = category;
     }
     //=============================-Methods-==================================
-    buildOuterHtml() {
+    buildAddItemHtml() {
         return `
         <div class="budget-item">
                 <div class="budget-item-info">
@@ -27,7 +27,7 @@ export class BudgetItem {
                     </div>
                 </div>
                 <div class="budget-item-buttons">
-                    <div class="budget-item-button">
+                    <div class="budget-item-button edit-budget-item-button">
                         <h4 class="budget-item-button-text">
                             Edit
                         </h4>
@@ -39,13 +39,58 @@ export class BudgetItem {
                     </div>
                 </div>
             </div>
-        `
+        `;
     }
-
+    buildEditItemHtml() {
+        return `
+            <div class="item-input">
+                <div class="budget-input-info">
+                    <div class="input-with-title">
+                        <div class="budget-input-title-div">
+                            <h4 class="input-title-text">Item Name</h4>
+                        </div>
+                        <div class="budget-item-input-div">
+                            <input type="text" class="budget-item-input"
+                                   value="${this.name}"
+                                   id="item-name-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="budget-input-info">
+                    <div class="input-with-title">
+                        <div class="budget-input-title-div">
+                            <h4 class="input-title-text">Cost</h4>
+                        </div>
+                        <div class="budget-item-input-div">
+                            <input type="text" class="budget-item-input"
+                                   value="${this.amount}"
+                                   id="item-cost-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="budget-input-info">
+                    <div class="input-with-title">
+                        <div class="budget-input-title-div">
+                            <h4 class="input-title-text">Category</h4>
+                        </div>
+                        <div class="budget-item-input-div">
+                            <input type="text" class="budget-item-input"
+                                   value="${this.category}"
+                                   id="item-category-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="budget-item-button save-budget-item-button">
+                    <h4 class="budget-item-button-text">
+                        Save
+                    </h4>
+                </div>
+            </div>
+        `;
+    }
     toString() {
         return `Name: ${this.name}, Amount: ${this.amount}, Category: ${this.category}`;
     }
-
     //=============================-Getters-==================================
     get getName() {
         return this.name;

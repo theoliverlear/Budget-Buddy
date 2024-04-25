@@ -56,7 +56,11 @@ public class BudgetHistory {
     public boolean equals(Object obj){
         if (this == obj) return true;
         if (obj instanceof BudgetHistory comparedBudgetHistory){
-            return this.id.equals(comparedBudgetHistory.id);
+            if (this.id != null) {
+                return this.id.equals(comparedBudgetHistory.id);
+            } else {
+                return this.budgetHistoryMap.equals(comparedBudgetHistory.budgetHistoryMap);
+            }
         }
         return false;
     }
