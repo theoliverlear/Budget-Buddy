@@ -49,46 +49,57 @@ public class User {
     //---------------------------Current-Budget-------------------------------
     @Convert(converter = BudgetConverter.class)
     @Column(name = "current_budget")
+    @Lob
     Budget currentBudget;
     //---------------------------Budget-History-------------------------------
     @Convert(converter = BudgetHistoryConverter.class)
     @Column(name = "budget_history")
+    @Lob
     BudgetHistory budgetHistory;
     //---------------------------Current-Revenue------------------------------
     @Convert(converter = RevenueConverter.class)
     @Column(name = "current_revenue")
+    @Lob
     Revenue currentRevenue;
     //---------------------------Current-Debt---------------------------------
     @Convert(converter = DebtConverter.class)
     @Column(name = "current_debt")
+    @Lob
     Debt currentDebt;
     //---------------------------Debt-History---------------------------------
     @Convert(converter = DebtHistoryConverter.class)
     @Column(name = "debt_history")
+    @Lob
     DebtHistory debtHistory;
     //---------------------------Current-Finance------------------------------
     @Convert(converter = FinanceConverter.class)
     @Column(name = "current_finance")
+    @Lob
     Finance currentFinance;
     //---------------------------Finance-History------------------------------
     @Convert(converter = FinanceHistoryConverter.class)
     @Column(name = "finance_history")
+    @Lob
     FinanceHistory financeHistory;
     //---------------------------Purchase-History-----------------------------
     @Convert(converter = PurchaseHistoryConverter.class)
     @Column(name = "purchase_history")
+    @Lob
     PurchaseHistory purchaseHistory;
     //---------------------------Current-Savings-------------------------------
     @Convert(converter = SavingConverter.class)
     @Column(name = "current_savings")
+    @Lob
     Saving currentSavings;
     //---------------------------Saving-History-------------------------------
     @Convert(converter = SavingHistoryConverter.class)
     @Column(name = "saving_history")
+    @Lob
     SavingHistory savingHistory;
     //---------------------------Tax-History----------------------------------
     @Convert(converter = TaxHistoryConverter.class)
     @Column(name = "tax_history")
+    @Lob
     TaxHistory taxHistory;
     //===========================-Constructors-===============================
     public User() {
