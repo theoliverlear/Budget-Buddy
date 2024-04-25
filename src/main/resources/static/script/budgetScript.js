@@ -1,5 +1,5 @@
 import { BudgetItem } from './BudgetItem.js';
-
+import { colorPalette, colorPaletteBorders } from "./colorScript.js";
 let budgetItemNameInput = document.getElementById('item-name-input');
 let budgetItemCostInput = document.getElementById('item-cost-input');
 let budgetItemCategoryInput = document.getElementById('item-category-input');
@@ -12,7 +12,7 @@ let budgetItemsRemoveButtons = document.getElementsByClassName('remove-budget-it
 let addItemButton = document.getElementById('add-item-button');
 let itemInputerDiv = document.getElementById('item-inputer');
 //------------------------------Get-Budget-Items------------------------------
-function getBudgetItems() {
+function loadBudgetItemsToPage() {
     fetch('/budget/get', {
         method: 'GET',
         headers: {
@@ -30,7 +30,7 @@ function getBudgetItems() {
         console.error('Error:', error);
     });
 }
-getBudgetItems();
+loadBudgetItemsToPage();
 //-------------------------Add-Budget-Item-To-Account-------------------------
 function addBudgetItemToAccount(name, amount, category) {
     fetch('/budget/add', {
@@ -51,6 +51,9 @@ function addBudgetItemToAccount(name, amount, category) {
         }
     }).catch(error => {
         console.error('Error:', error);
+    });
+    buildCharts().then(() => {
+        console.log('Rebuilt Charts');
     });
 }
 function amountFloatArtifactRemover(amount) {
@@ -81,6 +84,9 @@ function removeBudgetItemFromAccount(name, amount, category) {
     }).catch(error => {
         console.error('Error:', error);
     });
+    buildCharts().then(() => {
+        console.log('Rebuilt Charts');
+    });
 }
 //-------------------------Add-Budget-Item-From-Input-------------------------
 function addBudgetItemFromInput() {
@@ -93,7 +99,7 @@ function addBudgetItemFromInput() {
     tempDiv.classList.add('budget-item');
     tempDiv.innerHTML = budgetItemHtml;
     budgetItemsContainer.appendChild(tempDiv);
-addBudgetItemToAccount(budgetInputName, budgetInputCost, budgetInputCategory);
+    addBudgetItemToAccount(budgetInputName, budgetInputCost, budgetInputCategory);
     attachEditButtonListener();
     attachRemoveButtonListener();
     hideItemInputer();
@@ -204,6 +210,9 @@ function editBudgetItemToAccount(name, amount, category) {
     }).catch(error => {
         console.error('Error:', error);
     });
+    buildCharts().then(() => {
+        console.log('Rebuilt Charts');
+    });
 }
 function editBudgetItemToAccountWithNewName(name, amount, category) {
     amount = amountFloatArtifactRemover(amount);
@@ -225,6 +234,9 @@ function editBudgetItemToAccountWithNewName(name, amount, category) {
         }
     }).catch(error => {
         console.error('Error:', error);
+    });
+    buildCharts().then(() => {
+        console.log('Rebuilt Charts');
     });
 }
 //------------------------Attach-Save-Button-Listener-------------------------
@@ -252,3 +264,53 @@ function deleteBudgetItem() {
 Array.from(budgetItemsRemoveButtons).forEach(button => {
     button.addEventListener('click', deleteBudgetItem);
 });
+async function getBudgetFromAccount() {
+    let budget = await fetch('/budget/get', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        return data.budgetItems;
+    }).catch(error => {
+        console.error('Error:', error);
+    });
+    return budget;
+}
+async function buildCharts() {
+    let budget = await getBudgetFromAccount();
+    buildPieChart(budget);
+}
+buildCharts().then(() => {
+    console.log('Charts built');
+});
+let pieChart = null;
+let budgetGraph = document.getElementById('budget-graph');
+function buildPieChart(budget) {
+    if (pieChart) {
+        pieChart.destroy();
+    }
+    let colors = colorPalette(budget.length);
+    let colorsPaletteBorders = colorPaletteBorders(colors);
+    pieChart = new Chart(budgetGraph, {
+        type: 'pie',
+        data: {
+            labels: budget.map(item => item.name),
+            datasets: [{
+                    label: 'Budget',
+                    data: budget.map(item => item.amount),
+                    backgroundColor: colors,
+                    borderColor: colorPaletteBorders,
+                    borderWidth: 1
+                }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Budget Items'
+            }
+        }
+    });
+}
