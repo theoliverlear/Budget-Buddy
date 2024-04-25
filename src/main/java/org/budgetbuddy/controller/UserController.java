@@ -1,5 +1,6 @@
 package org.budgetbuddy.controller;
 //=================================-Imports-==================================
+import jakarta.servlet.http.HttpSession;
 import org.budgetbuddy.communication.request.UserRequest;
 import org.budgetbuddy.communication.response.UserResponse;
 import org.budgetbuddy.entity.user.SafePassword;
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -29,12 +30,15 @@ public class UserController {
     }
     //-------------------------------Login------------------------------------
     @RequestMapping("/login")
-    public ResponseEntity<UserResponse> login(@ModelAttribute UserRequest userRequest) {
+    public ResponseEntity<UserResponse> login(@RequestBody UserRequest userRequest, HttpSession session) {
         boolean userExists = this.userService.userExists(userRequest.getUsername());
         if (userExists) {
             User user = this.userService.getUserRepository().findByUsername(userRequest.getUsername());
             SafePassword safePassword = user.getSafePassword();
             boolean isAuthorized = safePassword.compareUnencodedPassword(userRequest.getPassword());
+            if (isAuthorized) {
+                session.setAttribute("user", user);
+            }
             return new ResponseEntity<>(new UserResponse(isAuthorized), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(new UserResponse(false), HttpStatus.NOT_FOUND);
@@ -42,15 +46,45 @@ public class UserController {
     }
     //------------------------------Sign-Up-----------------------------------
     @RequestMapping("/signup")
-    public ResponseEntity<UserResponse> signup(@ModelAttribute UserRequest userRequest) {
+    public ResponseEntity<UserResponse> signup(@RequestBody UserRequest userRequest, HttpSession session) {
         boolean userExists = this.userService.userExists(userRequest.getUsername());
         if (!userExists) {
             SafePassword newSafePassword = new SafePassword(userRequest.getPassword());
             User newUser = new User(userRequest.getUsername(), newSafePassword);
             this.userService.getUserRepository().save(newUser);
+            session.setAttribute("user", newUser);
             return new ResponseEntity<>(new UserResponse(true), HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(new UserResponse(false), HttpStatus.CONFLICT);
+        }
+    }
+    //------------------------------Logout------------------------------------
+    @RequestMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session) {
+        User currentUser = (User) session.getAttribute("user");
+        if (currentUser == null) {
+            return new ResponseEntity<>("Not Logged In", HttpStatus.UNAUTHORIZED);
+        } else {
+            session.removeAttribute("user");
+            return new ResponseEntity<>("Success", HttpStatus.OK);
+        }
+    }
+    @RequestMapping("/loggedin")
+    public ResponseEntity<String> isLoggedIn(HttpSession session) {
+        User currentUser = (User) session.getAttribute("user");
+        if (currentUser == null) {
+            return new ResponseEntity<>("Not Logged In", HttpStatus.UNAUTHORIZED);
+        } else {
+            return new ResponseEntity<>("Logged In", HttpStatus.OK);
+        }
+    }
+    @RequestMapping("/current/username")
+    public ResponseEntity<String> getCurrentUsername(HttpSession session) {
+        User currentUser = (User) session.getAttribute("user");
+        if (currentUser == null) {
+            return new ResponseEntity<>("Not Logged In", HttpStatus.UNAUTHORIZED);
+        } else {
+            return new ResponseEntity<>("@" + currentUser.getUsername(), HttpStatus.OK);
         }
     }
     //============================-Overrides-=================================

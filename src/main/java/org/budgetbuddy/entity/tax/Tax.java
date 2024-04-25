@@ -1,15 +1,18 @@
 package org.budgetbuddy.entity.tax;
 //=================================-Imports-==================================
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import org.budgetbuddy.convert.entity.tax.TaxKeyDeserializer;
 
 @Entity
 @Getter
 @Setter
+@JsonDeserialize(keyUsing = TaxKeyDeserializer.class)
 public class Tax {
     //============================-Variables-=================================
     @Id

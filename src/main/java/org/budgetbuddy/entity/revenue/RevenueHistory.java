@@ -1,6 +1,7 @@
 //=================================-Imports-==================================
 package org.budgetbuddy.entity.revenue;
 import jakarta.persistence.*;
+import org.budgetbuddy.convert.entity.revenue.RevenueHistoryHashMapConverter;
 
 
 import java.time.LocalDate;
@@ -14,7 +15,7 @@ public class RevenueHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-    @Transient // TODO: Create a converter for this, then remove annotation.
+    @Convert(converter = RevenueHistoryHashMapConverter.class)
     HashMap<Revenue, LocalDateTime> revenueHistoryMap;
     //===========================-Constructors-===============================
     public RevenueHistory() {

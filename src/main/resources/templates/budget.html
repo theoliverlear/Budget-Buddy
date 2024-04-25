@@ -5,8 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Budget | Budget Buddy</title>
-    <link rel="stylesheet" href="../static/style/global-style.css">
-    <link rel="stylesheet" href="../static/style/budget-style.css">
+    <link rel="stylesheet" href="../static/style/global-style.css"
+          th:href="@{/style/global-style.css}">
+    <link rel="stylesheet" href="../static/style/budget-style.css"
+          th:href="@{/style/budget-style.css}">
+    <link rel="icon" href="../static/images/favicon/budget_buddy_favicon.ico"
+          th:href="@{/images/favicon/budget_buddy_favicon.ico}">
 </head>
 <body>
 <nav>
@@ -23,16 +27,16 @@
                 Premium
             </h4>
         </div>
-        <a class="link-no-style" href="/budget">
+        <a class="link-no-style" href="/budget/">
             <div class="nav-item">
                 <h4 class="nav-text">
                     Budget
                 </h4>
             </div>
         </a>
-        <a class="link-no-style" href="/account">
-            <div class="nav-item">
-                <h4 class="nav-text">
+        <a class="link-no-style" href="/user/">
+            <div class="nav-item account-name-div">
+                <h4 class="nav-text account-name-text">
                     Account
                 </h4>
             </div>
@@ -51,6 +55,13 @@
             <h2 id="title-text">
                 BUDGET
             </h2>
+        </div>
+    </section>
+    <section id="graph-section">
+        <div id="graph-container">
+            <div id="budget-graph-div">
+                <canvas id="budget-graph"></canvas>
+            </div>
         </div>
     </section>
     <!----------------------------Budget-Items------------------------------->
@@ -125,7 +136,7 @@
                     </div>
                 </div>
                 <div class="budget-item-buttons">
-                    <div class="budget-item-button">
+                    <div class="budget-item-button edit-budget-item-button">
                         <h4 class="budget-item-button-text">
                             Edit
                         </h4>
@@ -156,12 +167,15 @@
         </div>
     </section>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/chroma-js@2.1.2/chroma.min.js"></script>
+<script src="../static/script/colorScript.js"
+        type="module"
+        th:src="@{/script/colorScript.js}"></script>
 <script src="../static/script/globalScript.js"
-        th:src="@{/script/globalScript.js}"
-        type="module"></script>
+        th:src="@{/script/globalScript.js}"></script>
 <script src="../static/script/budgetScript.js"
         th:src="@{/script/budgetScript.js}"
-        type="module"
-        ></script>
+        type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
