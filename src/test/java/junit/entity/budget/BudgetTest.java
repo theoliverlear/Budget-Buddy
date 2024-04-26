@@ -22,8 +22,11 @@ public class BudgetTest {
     public void testAddBudgetItem () {
         this.testBudget = new Budget(this.testBudgetList);
         this.testBudget.addBudgetItem(this.testBudgetItem3);
+        //if the budgetList contains our item, the test passes
         assertTrue(this.testBudget.getBudgetItems().contains(this.testBudgetItem3));
     }
+
+    //this test ensures BudgetItem arraylist can handle 1000 BudgetItems
     @Test
     public void testBudgetListSize() {
         this.testBudget = new Budget(this.testBudgetList);
