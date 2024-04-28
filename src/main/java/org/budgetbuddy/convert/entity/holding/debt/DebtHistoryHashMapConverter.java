@@ -23,8 +23,11 @@ public class DebtHistoryHashMapConverter implements AttributeConverter<HashMap<D
     @Override
     public String convertToDatabaseColumn(HashMap<Debt, LocalDateTime> debtHistoryMap) {
         try {
+            // Convert the debt history map to a JSON string.
             return this.objectMapper.writeValueAsString(debtHistoryMap);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting debt history map to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
@@ -33,11 +36,16 @@ public class DebtHistoryHashMapConverter implements AttributeConverter<HashMap<D
     @Override
     public HashMap<Debt, LocalDateTime> convertToEntityAttribute(String debtHistoryMapJson) {
         try {
+            // If the JSON string is null, return an empty map to indicate an
+            // empty debt history.
             if (debtHistoryMapJson == null) {
                 return new HashMap<>();
             }
+            // Convert the JSON string to a debt history map.
             return this.objectMapper.readValue(debtHistoryMapJson, new TypeReference<>() {});
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting JSON to debt history map.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
