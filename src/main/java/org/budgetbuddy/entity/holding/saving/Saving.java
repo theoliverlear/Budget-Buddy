@@ -4,10 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import org.budgetbuddy.convert.entity.holding.saving.SavingKeyDeserializer;
 import org.budgetbuddy.convert.entity.interest.InterestConverter;
-import org.budgetbuddy.convert.entity.interest.OptionalInterestConverter;
 import org.budgetbuddy.entity.interest.Interest;
-
-import java.util.Optional;
 
 @Entity
 @JsonDeserialize(keyUsing = SavingKeyDeserializer.class)
