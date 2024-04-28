@@ -30,7 +30,6 @@ public class SavingConverter implements AttributeConverter<Saving, String> {
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
     }
-
     //--------------------Convert-From-Database-Column------------------------
     @Override
     public Saving convertToEntityAttribute(String savingJson) {
