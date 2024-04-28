@@ -20,8 +20,11 @@ public class PurchaseConverter implements AttributeConverter<Purchase, String> {
     @Override
     public String convertToDatabaseColumn(Purchase purchase) {
         try {
+            // Convert the Purchase to a JSON string.
             return this.objectMapper.writeValueAsString(purchase);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting purchase to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
@@ -30,8 +33,11 @@ public class PurchaseConverter implements AttributeConverter<Purchase, String> {
     @Override
     public Purchase convertToEntityAttribute(String purchaseJson) {
         try {
+            // Convert the JSON string to a Purchase object.
             return this.objectMapper.readValue(purchaseJson, Purchase.class);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting JSON to purchase.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
