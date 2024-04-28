@@ -16,6 +16,7 @@ public class SavingKeyDeserializer extends KeyDeserializer {
     //--------------------------Deserialize-Key-------------------------------
     @Override
     public Saving deserializeKey(String key, DeserializationContext context) {
+        // Use a SavingConverter to convert the key to a Saving object.
         return this.savingConverter.convertToEntityAttribute(key);
     }
 }
