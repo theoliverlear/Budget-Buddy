@@ -21,8 +21,11 @@ public class SavingConverter implements AttributeConverter<Saving, String> {
     @Override
     public String convertToDatabaseColumn(Saving saving) {
         try {
+            // Convert the Saving to a JSON string.
             return this.objectMapper.writeValueAsString(saving);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting saving to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
@@ -32,8 +35,11 @@ public class SavingConverter implements AttributeConverter<Saving, String> {
     @Override
     public Saving convertToEntityAttribute(String savingJson) {
         try {
+            // Convert the JSON string to a Saving object.
             return this.objectMapper.readValue(savingJson, Saving.class);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting JSON to saving.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
