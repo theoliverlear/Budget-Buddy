@@ -7,10 +7,10 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 import org.budgetbuddy.entity.expense.Expense;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 @Converter(autoApply = true)
-public class ExpenseHistoryHashMapConverter implements AttributeConverter<HashMap<Expense, LocalDate>, String> {
+public class ExpenseHistoryHashMapConverter implements AttributeConverter<HashMap<Expense, LocalDateTime>, String> {
     //============================-Variables-=================================
     ObjectMapper objectMapper;
     //===========================-Constructors-===============================
@@ -21,7 +21,7 @@ public class ExpenseHistoryHashMapConverter implements AttributeConverter<HashMa
 
     //---------------------Convert-To-Database-Column-------------------------
     @Override
-    public String convertToDatabaseColumn(HashMap<Expense, LocalDate> expenseHistory) {
+    public String convertToDatabaseColumn(HashMap<Expense, LocalDateTime> expenseHistory) {
         try {
             // Convert the expense history map to a JSON string.
             return this.objectMapper.writeValueAsString(expenseHistory);
@@ -34,7 +34,7 @@ public class ExpenseHistoryHashMapConverter implements AttributeConverter<HashMa
     }
     //--------------------Convert-From-Database-Column------------------------
     @Override
-    public HashMap<Expense, LocalDate> convertToEntityAttribute(String expenseHistoryJson) {
+    public HashMap<Expense, LocalDateTime> convertToEntityAttribute(String expenseHistoryJson) {
         try {
             // If the JSON string is null, return an empty map to indicate an
             // empty expense history.
