@@ -20,8 +20,11 @@ public class RecurringExpenseConverter implements AttributeConverter<RecurringEx
     @Override
     public String convertToDatabaseColumn(RecurringExpense recurringExpense) {
         try {
+            // Convert the RecurringExpense to a JSON string.
             return this.objectMapper.writeValueAsString(recurringExpense);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting recurring expense to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
@@ -30,8 +33,11 @@ public class RecurringExpenseConverter implements AttributeConverter<RecurringEx
     @Override
     public RecurringExpense convertToEntityAttribute(String recurringExpenseJson) {
         try {
+            // Convert the JSON string to a RecurringExpense object.
             return this.objectMapper.readValue(recurringExpenseJson, RecurringExpense.class);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting JSON to recurring expense.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
