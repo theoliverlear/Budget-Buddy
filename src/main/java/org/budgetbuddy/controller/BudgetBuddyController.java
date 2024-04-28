@@ -12,9 +12,6 @@ public class BudgetBuddyController {
     //============================-Variables-=================================
     @Autowired
     BudgetBuddyService budgetBuddyService;
-    @Autowired
-    UserService userService;
-    User currentUser;
     //===========================-Constructors-===============================
 
     //=============================-Methods-==================================
@@ -22,11 +19,13 @@ public class BudgetBuddyController {
     //-------------------------------Index------------------------------------
     @RequestMapping("/")
     public String home() {
+        // Return the home page.
         return "home";
     }
 
     @RequestMapping("/terms")
     public String terms() {
+        // Return the terms of service page.
         return "terms";
     }
     //============================-Overrides-=================================
@@ -38,11 +37,7 @@ public class BudgetBuddyController {
     //------------------------------To-String---------------------------------
 
     //=============================-Getters-==================================
-    public User getCurrentUser() {
-        return this.currentUser;
-    }
+
     //=============================-Setters-==================================
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
-    }
+
 }
