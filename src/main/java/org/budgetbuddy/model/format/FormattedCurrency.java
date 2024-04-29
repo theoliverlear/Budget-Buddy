@@ -13,18 +13,22 @@ public class FormattedCurrency {
 
     //--------------------------Format-Currency-------------------------------
     public double formatCurrency(double amount) {
+        // Apply formatting methods to the amount to ensure it is displayed as
+        // currency with two decimal places.
         double twoDecimalPlacesCutoff = this.limitTwoDecimalPlaces(amount);
         return twoDecimalPlacesCutoff;
     }
 
     //----------------------Limit-Two-Decimal-Places--------------------------
     public double limitTwoDecimalPlaces(double amount) {
+        // Convert the amount to a string, format it to two decimal places.
         String amountString = Double.toString(amount);
         String amountStringLimited = amountString.formatted("%.2f");
+        // Convert the formatted string back to a double.
         double amountLimited = Double.parseDouble(amountStringLimited);
+        // Return the formatted amount.
         return amountLimited;
     }
-
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------

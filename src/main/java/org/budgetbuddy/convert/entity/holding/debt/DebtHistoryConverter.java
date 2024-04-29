@@ -20,8 +20,11 @@ public class DebtHistoryConverter implements AttributeConverter<DebtHistory, Str
     @Override
     public String convertToDatabaseColumn(DebtHistory debtHistory) {
         try {
+            // Convert the DebtHistory to a JSON string.
             return this.objectMapper.writeValueAsString(debtHistory);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting debt history to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
@@ -30,8 +33,11 @@ public class DebtHistoryConverter implements AttributeConverter<DebtHistory, Str
     @Override
     public DebtHistory convertToEntityAttribute(String debtHistoryJson) {
         try {
+            // Convert the JSON string to a DebtHistory object.
             return this.objectMapper.readValue(debtHistoryJson, DebtHistory.class);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting JSON to debt history.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }

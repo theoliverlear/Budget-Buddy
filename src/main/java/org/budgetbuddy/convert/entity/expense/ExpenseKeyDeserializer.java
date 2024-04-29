@@ -16,6 +16,7 @@ public class ExpenseKeyDeserializer extends KeyDeserializer {
     //--------------------------Deserialize-Key-------------------------------
     @Override
     public Expense deserializeKey(String key, DeserializationContext context) {
+        // Use an ExpenseConverter to convert the key to an Expense object.
         return this.expenseConverter.convertToEntityAttribute(key);
     }
 }

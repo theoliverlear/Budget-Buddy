@@ -1,5 +1,5 @@
 package org.budgetbuddy.convert.entity.time;
-
+//=================================-Imports-==================================
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.AttributeConverter;
@@ -20,8 +20,11 @@ public class TimeIntervalConverter implements AttributeConverter<TimeInterval, S
     @Override
     public String convertToDatabaseColumn(TimeInterval timeInterval) {
         try {
+            // Convert the TimeInterval to a JSON string.
             return this.objectMapper.writeValueAsString(timeInterval);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting TimeInterval to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
@@ -30,8 +33,11 @@ public class TimeIntervalConverter implements AttributeConverter<TimeInterval, S
     @Override
     public TimeInterval convertToEntityAttribute(String timeIntervalJson) {
         try {
+            // Convert the JSON string to a TimeInterval object.
             return this.objectMapper.readValue(timeIntervalJson, TimeInterval.class);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting JSON to TimeInterval.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }

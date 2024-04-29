@@ -24,41 +24,59 @@ public class BudgetHistory {
     //=============================-Methods-==================================
 
     //-----------------------------Add-Budget---------------------------------
-    public void addBudget(Budget budget, LocalDateTime dateTime){
+    public void addBudget(Budget budget, LocalDateTime dateTime) {
+        // Add an item to the budgetHistoryMap with a given date.
         this.budgetHistoryMap.put(budget,dateTime);
     }
     //---------------------------Add-Budget-Now-------------------------------
-    public void addBudgetNow(Budget budget){
+    public void addBudgetNow(Budget budget) {
+        // Add an item to the budgetHistoryMap with the current date.
         this.budgetHistoryMap.put(budget, LocalDateTime.now());
     }
     //---------------------------Remove-Budget--------------------------------
-    public void removeBudget(Budget budget){
+    public void removeBudget(Budget budget) {
+        // Remove an item from the budgetHistoryMap.
         this.budgetHistoryMap.remove(budget);
     }
     //-------------------------Get-Budget-By-Time-----------------------------
-    public Budget getBudgetByTime(LocalDateTime dateTime ){
-        for(Map.Entry<Budget,LocalDateTime> budgetEntry : this.budgetHistoryMap.entrySet() ){
+    public Budget getBudgetByTime(LocalDateTime dateTime ) {
+        // Loop through the budgetHistoryMap to find the Budget that matches
+        // the given date.
+        for (Map.Entry<Budget, LocalDateTime> budgetEntry : this.budgetHistoryMap.entrySet() ){
             LocalDateTime entryDateTime = budgetEntry.getValue();
-            if (dateTime.equals(entryDateTime)){
+            // If the date matches, return the Budget.
+            if (dateTime.equals(entryDateTime)) {
                 return budgetEntry.getKey();
             }
         }
+        // If no Budget is found, return null.
         return null;
     }
     //-------------------------Get-Date-By-Budget-----------------------------
-    public LocalDateTime getDateTimeByBudget(Budget budget){
+    public LocalDateTime getDateTimeByBudget(Budget budget) {
+        // Return the date associated with a given Budget.
         return this.budgetHistoryMap.get(budget);
     }
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
+        // Check if the object references are the same. If they are, return
+        // true.
         if (this == obj) return true;
-        if (obj instanceof BudgetHistory comparedBudgetHistory){
+        // Check if the object is an instance of BudgetHistory. If it is,
+        // cast it to a BudgetHistory object.
+        if (obj instanceof BudgetHistory comparedBudgetHistory) {
+            // If id is not null, an equality check can be performed using
+            // that field.
             if (this.id != null) {
+                // Return whether all fields are equal.
                 return this.id.equals(comparedBudgetHistory.id);
             } else {
+                // If id is null, return whether all fields are equal except
+                // for the id field -- in this case, the budgetHistoryMap
+                // items.
                 return this.budgetHistoryMap.equals(comparedBudgetHistory.budgetHistoryMap);
             }
         }
@@ -66,11 +84,13 @@ public class BudgetHistory {
     }
     //------------------------------Hash-Code---------------------------------
     @Override
-    public int hashCode(){
+    public int hashCode() {
+        // Return the hashcode of the id field.
         return this.id.hashCode();
     }
     //------------------------------To-String---------------------------------
-
+    // TODO: Implement the toString method to print a representation of the
+    //       BudgetHistory object.
     //=============================-Getters-==================================
     public Long getId(){
         return this.id;
@@ -79,4 +99,10 @@ public class BudgetHistory {
         return this.budgetHistoryMap;
     }
     //=============================-Setters-==================================
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setBudgetHistoryMap(HashMap<Budget, LocalDateTime> budgetHistoryMap) {
+        this.budgetHistoryMap = budgetHistoryMap;
+    }
 }
