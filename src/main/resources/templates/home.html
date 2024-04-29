@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/html"
       dir="ltr">
+<!---------------------------------Metadata---------------------------------->
 <head>
     <meta charset="UTF-8">
     <title>Budget Buddy</title>
@@ -13,11 +14,10 @@
           th:href="@{/images/favicon/budget_buddy_favicon.ico}">
 </head>
 <body>
-
-
-<!--creating the top nav bar and its contents-->
+<!----------------------------------Nav-Bar---------------------------------->
 <nav>
     <section id="nav-items">
+        <!-----------------------Nav-To-Home-Page---------------------------->
         <a class="link-no-style" href="/">
             <div class="nav-item">
                 <h4 class="nav-text">
@@ -25,11 +25,13 @@
                 </h4>
             </div>
         </a>
+        <!-------------------------Nav-To-Premium---------------------------->
         <div class="nav-item">
             <h4 class="nav-text">
                 Premium
             </h4>
         </div>
+        <!--------------------------Nav-To-Budget---------------------------->
         <a class="link-no-style" href="/budget/">
             <div class="nav-item">
                 <h4 class="nav-text">
@@ -37,6 +39,7 @@
                 </h4>
             </div>
         </a>
+        <!--------------------------Nav-To-Account--------------------------->
         <a class="link-no-style" href="/user/">
             <div class="nav-item account-name-div">
                 <h4 class="nav-text account-name-text">
@@ -46,17 +49,16 @@
         </a>
     </section>
 </nav>
-
-
-<!--creating the title and box around it-->
+<!---------------------------Introduction-Headline--------------------------->
 <section id="headline-section" class="stripe">
     <div id="title-motto-div">
+        <!-------------------------Title------------------------------------->
         <div id="title-div">
             <h1 id="title-text">
                 BUDGET BUDDY
             </h1>
         </div>
-        <!--creating the motto and box around it-->
+        <!-- -----------------------Motto------------------------------------>
         <div id="motto-div">
             <h4 id="motto-text">
                 Data for your decisions
@@ -64,12 +66,11 @@
         </div>
     </div>
 </section>
-
-
-<!--creating and telling user the main purpose of Budget Buddy-->
+<!-------------------------------Promo-Section------------------------------->
 <section id="promo-section">
     <div id="promo-div">
         <div id="promo-text-div">
+            <!------------------Product-Description-------------------------->
             <p id="promo-text" class="indented">
                 Budget Buddy is a website that will be a service to anyone who
                 wants to manage their money. Anybody will be able to track
@@ -79,6 +80,7 @@
                 their walk with money.
             </p>
         </div>
+        <!-------------------------Product-Logo------------------------------>
         <div id="promo-logo-div">
             <img src="../static/images/budget_buddy_logo_cropped.jpg"
                  th:src="@{/images/budget_buddy_logo_cropped.jpg}"
@@ -87,21 +89,23 @@
         </div>
     </div>
 </section>
-
-
-<!--creating and telling user about how graphs can break down expenses-->
+<!-----------------------------Features-Section------------------------------>
 <section id="features-section">
     <div id="visualize-feature-with-product-name">
+        <!--------------------Visualize-Data-Headline------------------------->
         <div class="stripe" id="visualize-feature-stripe">
             <div id="visualize-data-title-div">
                 <h3 id="visualize-data-title-text">VISUALIZE YOUR DATA</h3>
             </div>
         </div>
+        <!--------------------Buddy-Breakdown-Product-Name------------------->
         <div id="visualize-product-name-div">
             <h4 id="product-name-visualize-text">Buddy Breakdown</h4>
         </div>
     </div>
+    <!---------------------------Pie-Chart-Showcase-------------------------->
     <div id="pie-with-text">
+        <!--------------------------Pie-Chart-------------------------------->
         <div id="pie-chart-container">
             <div id="feature-pie-chart-div">
                 <canvas id="feature-pie-chart">
@@ -109,9 +113,10 @@
                 </canvas>
             </div>
         </div>
-        <div id="buddy-breakdown-text-div">
-            <p id="buddy-breakdown-text" class="indented">
-                Unlock your potential with <b>Buddy Breakdown</b>. A feature
+        <!--------------------Breakdown-Buddy-Description-------------------->
+        <div id="breakdown-buddy-text-div">
+            <p id="breakdown-buddy-text" class="indented">
+                Unlock your potential with <b>Breakdown Buddy</b>! A feature
                 that allows members to see where all of their money is
                 going! Knowing where your money goes plays a huge part into
                 how you spend your money. A personal pie chart can show a
@@ -122,33 +127,37 @@
             </p>
         </div>
     </div>
-
-
-    <!--creating and telling user about how to start making a budget each month-->
+    <!-----------------------------Budgeting-Feature------------------------->
     <div id="budgeting-feature-with-product-name">
+        <!----------------------Budgeting-Data-Headline---------------------->
         <div class="stripe" id="budgeting-feature-stripe">
             <div id="budgeting-data-title-div">
                 <h3 id="budgeting-data-title-text">LAYING IT ALL OUT</h3>
             </div>
         </div>
+        <!----------------------Budget-Buddy-Product-Name-------------------->
         <div id="budgeting-product-name-div">
             <h4 id="product-name-budgeting-text">Budget Buddy</h4>
         </div>
     </div>
+    <!-----------------------------Bar-Chart-Showcase------------------------>
     <div id="bar-with-text">
+        <!---------------------Budget-Buddy-Description---------------------->
         <div id="budget-text-div">
             <p id="budget-text" class="indented">
                 Our goal is to help you grow in your own walk with money. One
-                way we can do this is through talking about budgeting. Budgeting
-                is a great way to tell yourself where money should be going each
-                month, but it is only up to you to hold yourself accountable to
-                that budget. Just because something is on sale or clearance,
-                does not mean that you can afford it in this month's budget. We
-                provide an easy way for members that can help them plan out where
-                money should be going each month. Maybe even help them start to
-                stash a little something on the side!
+                way we can do this is through talking about budgeting.
+                Budgeting is a great way to tell yourself where money should
+                be going each month, but it is only up to you to hold yourself
+                accountable to that budget. Just because something is on sale
+                or clearance, does not mean that you can afford it in this
+                month's budget. We provide an easy way for members that can
+                help them plan out where money should be going each month.
+                Maybe even help them start to stash a little something on the
+                side!
             </p>
         </div>
+        <!---------------------------Bar-Chart------------------------------->
         <div>
             <div id="bar-chart-container">
                 <div id="feature-bar-chart-div">
@@ -157,6 +166,7 @@
                     </canvas>
                 </div>
             </div>
+            <!---------------------Bill-Feather-Quote------------------------>
             <div id="quote-text-div">
                 <blockquote>
                     "A budget tells us what we can't afford, but it doesn't keep us
@@ -168,20 +178,20 @@
             </div>
         </div>
     </div>
-
-
-    <!--creating and telling user about how they can start saving money by budgeting-->
+    <!---------------------------History-Feature----------------------------->
     <div id="history-feature-with-product-name">
+        <!----------------------History-Data-Headline------------------------>
         <div class="stripe" id="history-feature-stripe">
             <div id="history-data-title-div">
                 <h3 id="history-data-title-text">LOOKING BACK AT THE PAST</h3>
             </div>
         </div>
+        <!---------------------History-Buddy-Product-Name-------------------->
         <div id="history-product-name-div">
             <h4 id="product-name-history-text">History Buddy</h4>
         </div>
     </div>
-
+    <!---------------------------Line-Chart-Showcase------------------------->
     <div id="line-with-text">
         <div id="line-chart-container">
             <div id="feature-line-chart-div">
@@ -190,28 +200,30 @@
                 </canvas>
             </div>
         </div>
+        <!---------------------History-Buddy-Description--------------------->
         <div id="history-text-div">
             <p id="history-text" class="indented">
-                Want to know how things are progressing? Now you can! Becoming a
-                member will let a user be able to see where they started and
-                where they are now. They will be able to see a history of their
-                income; expense entries; money spent in different categories;
-                and money saved each month in the different categories. Together,
-                we can learn from your history to help you grow better tomorrow.
+                Want to know how things are progressing? Now you can! Becoming
+                a member will let a user be able to see where they started and
+                where they are now. They will be able to see a history of
+                their income; expense entries; money spent in different
+                categories; and money saved each month in the different
+                categories. Together, we can learn from your history to help
+                you grow better tomorrow.
             </p>
         </div>
     </div>
 </section>
-
-
-<!--creating bottom bar of the website-->
+<!----------------------------------Footer----------------------------------->
 <footer id="footer">
     <section id="footer-section">
+        <!---------------------Budget-Buddy-Copyright------------------------>
         <div id="footer-text-div">
             <p id="footer-text">
                 &copy; 2024 Budget Buddy. <br> All rights reserved.
             </p>
         </div>
+        <!------------------------Terms-Of-Service--------------------------->
         <div id="footer-links-div">
             <a href="/terms" class="link-no-style">
                 <div id="terms-link-div">
@@ -221,9 +233,7 @@
         </div>
     </section>
 </footer>
-
-
-<!--telling the html what JSON files to look at-->
+<!----------------------------------Scripts---------------------------------->
 <script src="../static/script/homeScript.js" type="module"
         th:src="@{/script/homeScript.js}"></script>
 <script src="../static/script/globalScript.js"
