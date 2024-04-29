@@ -13,11 +13,9 @@
           th:href="@{/images/favicon/budget_buddy_favicon.ico}">
 </head>
 <body>
-<!--<div id="vine-navigator">-->
-<!--    <img src="../static/images/vine_2.png"-->
-<!--         alt="Vine"-->
-<!--         id="vine-navigator-img">-->
-<!--</div>-->
+
+
+<!--creating the top nav bar and its contents-->
 <nav>
     <section id="nav-items">
         <a class="link-no-style" href="/">
@@ -48,23 +46,17 @@
         </a>
     </section>
 </nav>
-<!--<div>-->
-<!--    <img src="../static/images/budget_buddy_logo_cropped.jpg"-->
-<!--         alt="Budget Buddy Logo"-->
-<!--         id="background-logo">-->
-<!--</div>-->
+
+
+<!--creating the title and box around it-->
 <section id="headline-section" class="stripe">
-    <!--    <div>-->
-    <!--        <img src="../static/images/budget_buddy_logo_cropped.jpg"-->
-    <!--             alt="Budget Buddy Logo"-->
-    <!--             id="promo-logo">-->
-    <!--    </div>-->
     <div id="title-motto-div">
         <div id="title-div">
             <h1 id="title-text">
                 BUDGET BUDDY
             </h1>
         </div>
+        <!--creating the motto and box around it-->
         <div id="motto-div">
             <h4 id="motto-text">
                 Data for your decisions
@@ -72,6 +64,9 @@
         </div>
     </div>
 </section>
+
+
+<!--creating and telling user the main purpose of Budget Buddy-->
 <section id="promo-section">
     <div id="promo-div">
         <div id="promo-text-div">
@@ -93,6 +88,8 @@
     </div>
 </section>
 
+
+<!--creating and telling user about how graphs can break down expenses-->
 <section id="features-section">
     <div id="visualize-feature-with-product-name">
         <div class="stripe" id="visualize-feature-stripe">
@@ -126,6 +123,8 @@
         </div>
     </div>
 
+
+    <!--creating and telling user about how to start making a budget each month-->
     <div id="budgeting-feature-with-product-name">
         <div class="stripe" id="budgeting-feature-stripe">
             <div id="budgeting-data-title-div">
@@ -169,6 +168,9 @@
             </div>
         </div>
     </div>
+
+
+    <!--creating and telling user about how they can start saving money by budgeting-->
     <div id="history-feature-with-product-name">
         <div class="stripe" id="history-feature-stripe">
             <div id="history-data-title-div">
@@ -201,6 +203,8 @@
     </div>
 </section>
 
+
+<!--creating bottom bar of the website-->
 <footer id="footer">
     <section id="footer-section">
         <div id="footer-text-div">
@@ -217,6 +221,9 @@
         </div>
     </section>
 </footer>
+
+
+<!--telling the html what JSON files to look at-->
 <script src="../static/script/homeScript.js" type="module"
         th:src="@{/script/homeScript.js}"></script>
 <script src="../static/script/globalScript.js"
@@ -227,3 +234,17 @@
 </noscript>
 </body>
 </html>
+
+
+/*'Visualize Your Data' title and stripe*/
+#visualize-feature-with-product-name {
+
+/*'Buddy Breakdown' title*/
+#visualize-product-name-div {
+
+/*format pie chart*/
+#pie-with-text {
+
+/*text about knowing where the money is going*/
+#buddy-breakdown-text-div {
+
