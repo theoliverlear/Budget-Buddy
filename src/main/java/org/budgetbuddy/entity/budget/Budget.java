@@ -136,7 +136,6 @@ public class Budget {
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
-
     /**
      * <h6>Check if two Budget objects are equal.</h6>
      *
@@ -171,7 +170,6 @@ public class Budget {
         return false;
     }
     //------------------------------Hash-Code---------------------------------
-
     /**
      * <h6>Get the hashcode of the Budget object.</h6>
      *
