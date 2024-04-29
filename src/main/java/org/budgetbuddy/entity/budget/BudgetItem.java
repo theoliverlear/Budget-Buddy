@@ -4,6 +4,15 @@ import jakarta.persistence.*;
 import org.budgetbuddy.convert.entity.category.CategoryConverter;
 import org.budgetbuddy.entity.category.Category;
 
+/**
+ * <h6>This class represents a BudgetItem.</h6>
+ *
+ * A BudgetItem is a single item in a User's Budget that represents a planned
+ * expense.
+ * @see Budget
+ * @see Category
+ * @see Entity
+ */
 @Entity
 public class BudgetItem {
     //============================-Variables-=================================
@@ -15,14 +24,30 @@ public class BudgetItem {
     @Convert(converter = CategoryConverter.class)
     Category category;
     //===========================-Constructors-===============================
+    /**
+     * <h6>Default constructor for a BudgetItem object.</h6>
+     */
     public BudgetItem() {
         this.name = "";
         this.amount = 0;
     }
+    /**
+     * <h6>Constructor for a BudgetItem object.</h6>
+     *
+     * @param name The name of the BudgetItem.
+     * @param amount The amount cost of the BudgetItem.
+     */
     public BudgetItem(String name, double amount) {
         this.name = name;
         this.amount = amount;
     }
+    /**
+     * <h6>Constructor for a BudgetItem object.</h6>
+     *
+     * @param name The name of the BudgetItem.
+     * @param amount The amount cost of the BudgetItem.
+     * @param category The Category of the BudgetItem.
+     */
     public BudgetItem(String name, double amount, Category category) {
         this.name = name;
         this.amount = amount;
@@ -33,6 +58,13 @@ public class BudgetItem {
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
+
+    /**
+     * <h6>Check if two BudgetItem objects are equal.</h6>
+     *
+     * @param obj The object to compare to.
+     * @return boolean Whether the objects are equal.
+     */
     @Override
     public boolean equals(Object obj) {
         // Check if the object references are the same. If they are, return
@@ -62,6 +94,12 @@ public class BudgetItem {
         return false;
     }
     //------------------------------Hash-Code---------------------------------
+
+    /**
+     * <h6>Get the hashcode of the BudgetItem object.</h6>
+     *
+     * @return int The hashcode of the BudgetItem object.
+     */
     @Override
     public int hashCode() {
         // If the BudgetItem id is not null, return the hashcode of the id
@@ -78,6 +116,12 @@ public class BudgetItem {
         }
     }
     //------------------------------To-String---------------------------------
+
+    /**
+     * <h6>Get the string representation of the BudgetItem object.</h6>
+     *
+     * @return String The string representation of the BudgetItem object.
+     */
     @Override
     public String toString() {
         return this.name + " - " + this.amount + " - " + this.category;
