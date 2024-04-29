@@ -1,5 +1,5 @@
 package org.budgetbuddy.convert.entity.holding.saving;
-
+//=================================-Imports-==================================
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.KeyDeserializer;
 import org.budgetbuddy.entity.holding.saving.Saving;
@@ -16,6 +16,7 @@ public class SavingKeyDeserializer extends KeyDeserializer {
     //--------------------------Deserialize-Key-------------------------------
     @Override
     public Saving deserializeKey(String key, DeserializationContext context) {
+        // Use a SavingConverter to convert the key to a Saving object.
         return this.savingConverter.convertToEntityAttribute(key);
     }
 }

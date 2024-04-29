@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/html"
       dir="ltr">
+<!---------------------------------Metadata---------------------------------->
 <head>
     <meta charset="UTF-8">
     <title>Budget Buddy</title>
@@ -13,8 +14,10 @@
           th:href="@{/images/favicon/budget_buddy_favicon.ico}">
 </head>
 <body>
+<!----------------------------------Nav-Bar---------------------------------->
 <nav>
     <section id="nav-items">
+        <!-----------------------Nav-To-Home-Page---------------------------->
         <a class="link-no-style" href="/">
             <div class="nav-item">
                 <h4 class="nav-text">
@@ -22,11 +25,13 @@
                 </h4>
             </div>
         </a>
+        <!-------------------------Nav-To-Premium---------------------------->
         <div class="nav-item">
             <h4 class="nav-text">
                 Premium
             </h4>
         </div>
+        <!--------------------------Nav-To-Budget---------------------------->
         <a class="link-no-style" href="/budget/">
             <div class="nav-item">
                 <h4 class="nav-text">
@@ -34,6 +39,7 @@
                 </h4>
             </div>
         </a>
+        <!--------------------------Nav-To-Account--------------------------->
         <a class="link-no-style" href="/user/">
             <div class="nav-item account-name-div">
                 <h4 class="nav-text account-name-text">
@@ -44,97 +50,140 @@
     </section>
 </nav>
 <main>
+    <!-----------------------Choose-Sign-Up-Or-Log-In------------------------>
     <section id="user-info-type-section">
+        <!-----------------------Sign-Up-Option------------------------------>
         <div class="user-info-type" id="sign-up-type">
             <h3 class="user-info-type-text">
                 Sign Up
             </h3>
         </div>
+        <!-----------------------Log-In-Option------------------------------->
         <div class="user-info-type" id="login-type">
             <h3 class="user-info-type-text">
                 Log In
             </h3>
         </div>
     </section>
+    <!-----------------------Sign-Up-And-Log-In-Sections--------------------->
     <section id="user-info-section">
+        <!-----------------------Sign-Up-Section----------------------------->
         <section class="user-info-section" id="sign-up-section">
             <section class="user-info-input-section" id="sign-up-info-section">
+                <!------------------Username-Input-Section------------------->
                 <div class="input-title-with-input" id="sign-up-username-div">
+                    <!-----------------Username-Title------------------------>
                     <div class="input-title-div">
                         <h4 class="input-title-text">
                             Username:
                         </h4>
                     </div>
+                    <!-----------------Username-Input------------------------>
                     <div class="input-div" id="sign-up-username-input-div">
-                        <input type="text" class="user-input" id="sign-up-username-input">
+                        <input type="text" class="user-input"
+                               id="sign-up-username-input">
                     </div>
                 </div>
+                <!------------------Password-Input-Section------------------->
                 <div class="input-title-with-input" id="sign-up-password-div">
+                    <!-----------------Password-Title------------------------>
                     <div class="input-title-div">
                         <h4 class="input-title-text">
                             Password:
                         </h4>
                     </div>
+                    <!-----------------Password-Input------------------------>
                     <div class="input-div" id="sign-up-password-input-div">
-                        <input type="password" class="user-input" id="sign-up-password-input">
+                        <input type="password" class="user-input"
+                               id="sign-up-password-input">
                     </div>
                 </div>
-                <div class="input-title-with-input" id="sign-up-confirm-password-div">
+                <!-----------------Confirm-Password-Input-Section------------>
+                <div class="input-title-with-input"
+                     id="sign-up-confirm-password-div">
+                    <!----------------Confirm-Password-Title----------------->
                     <div class="input-title-div">
                         <h4 class="input-title-text">
                             Confirm Password:
                         </h4>
                     </div>
-                    <div class="input-div" id="sign-up-confirm-password-input-div">
-                        <input type="password" class="user-input" id="sign-up-confirm-password-input">
+                    <!----------------Confirm-Password-Input----------------->
+                    <div class="input-div"
+                         id="sign-up-confirm-password-input-div">
+                        <input type="password" class="user-input"
+                               id="sign-up-confirm-password-input">
                     </div>
                 </div>
-                <div class="input-title-with-input" id="sign-up-terms-agree-div">
+                <!-----------------Terms-Agree-Input-Section----------------->
+                <div class="input-title-with-input"
+                     id="sign-up-terms-agree-div">
+                    <!----------------Terms-Agree-Title---------------------->
                     <div class="input-title-div">
                         <h5 class="input-title-text" id="terms-agree-text">
                             I agree to the terms and conditions:
                         </h5>
                     </div>
+                    <!----------------Terms-Agree-Input---------------------->
                     <div class="input-div" id="sign-up-terms-agree-input-div">
-                        <input type="checkbox" class="user-input-checkbox" id="sign-up-terms-agree-input">
+                        <input type="checkbox" class="user-input-checkbox"
+                               id="sign-up-terms-agree-input">
                     </div>
                 </div>
+                <!-------------------Sign-Up-Popup-Message------------------->
+                <!-- Note that this div is empty and not shown by default. It
+                     changes based on the user's input. -->
                 <div class="user-popup" id="sign-up-popup">
-                    <h5 class="user-popup-text" id="sign-up-user-popup-text"></h5>
+                    <h5 class="user-popup-text"
+                        id="sign-up-user-popup-text"></h5>
                 </div>
             </section>
+            <!------------------------Sign-Up-Button------------------------->
             <div id="sign-up-button" class="account-button">
                 <h4 class="account-button-text">
                     Sign Up
                 </h4>
             </div>
         </section>
+        <!------------------------Log-In-Section---------------------------->
         <section class="user-info-section" id="login-section">
             <section class="user-info-input-section" id="login-info-section">
+                <!---------------Username-Input-Section---------------------->
                 <div class="input-title-with-input" id="login-username-div">
+                    <!----------------Username-Title------------------------->
                     <div class="input-title-div">
                         <h4 class="input-title-text">
                             Username:
                         </h4>
                     </div>
+                    <!--------------Username-Input--------------------------->
                     <div class="input-div" id="login-username-input-div">
-                        <input type="text" class="user-input" id="login-username-input">
+                        <input type="text" class="user-input"
+                               id="login-username-input">
                     </div>
                 </div>
+                <!-----------------Password-Input-Section-------------------->
                 <div class="input-title-with-input" id="login-password-div">
+                    <!----------------Password-Title------------------------->
                     <div class="input-title-div">
                         <h4 class="input-title-text">
                             Password:
                         </h4>
                     </div>
+                    <!-----------------Password-Input------------------------>
                     <div class="input-div" id="login-password-input-div">
-                        <input type="password" class="user-input" id="login-password-input">
+                        <input type="password" class="user-input"
+                               id="login-password-input">
                     </div>
                 </div>
+                <!-------------------Log-In-Popup-Message-------------------->
+                <!-- Note that this div is empty and not shown by default. It
+                     changes based on the user's input. -->
                 <div class="user-popup" id="login-popup">
-                    <h5 class="user-popup-text" id="login-user-popup-text"></h5>
+                    <h5 class="user-popup-text"
+                        id="login-user-popup-text"></h5>
                 </div>
             </section>
+            <!-------------------------Log-In-Button------------------------->
             <div id="login-button" class="account-button">
                 <h4 class="account-button-text">
                     Log In
@@ -143,13 +192,16 @@
         </section>
     </section>
 </main>
+<!----------------------------------Footer----------------------------------->
 <footer id="footer">
     <section id="footer-section">
+        <!---------------------Budget-Buddy-Copyright------------------------>
         <div id="footer-text-div">
             <p id="footer-text">
                 &copy; 2024 Budget Buddy. <br> All rights reserved.
             </p>
         </div>
+        <!------------------------Terms-Of-Service--------------------------->
         <div id="footer-links-div">
             <a href="/terms" class="link-no-style">
                 <div id="terms-link-div">
@@ -159,9 +211,13 @@
         </div>
     </section>
 </footer>
+<!----------------------------------Scripts---------------------------------->
 <script src="../static/script/globalScript.js"
         th:src="@{/script/globalScript.js}"></script>
 <script src="../static/script/accountScript.js" type="module"
         th:src="@{/script/accountScript.js}"></script>
+<noscript>
+    <h3>JavaScript is required for this page to function properly.</h3>
+</noscript>
 </body>
 </html>

@@ -52,24 +52,40 @@ public class Finance {
     //------------------------------Equals------------------------------------
     @Override
     public boolean equals(Object obj) {
+        // Check if the object references are the same. If they are, return
+        // true.
         if (this == obj) return true;
+        // Check if the object is an instance of Finance. If it is, cast it
+        // to a Finance object.
         if (obj instanceof Finance finance) {
+            // Check if the fields of the Finance objects are equal.
             boolean incomeIsSame = this.income.equals(finance.income);
             boolean billsAreSame = this.bills.equals(finance.bills);
             boolean otherRevenueStreamsAreSame = this.otherRevenueStreams.equals(finance.otherRevenueStreams);
+            // If the Finance id is not null, an equality check can be
+            // performed using that field.
             if (this.id != null) {
+                // Return whether all fields are equal.
                 boolean idIsSame = this.id.equals(finance.id);
                 return idIsSame && incomeIsSame && billsAreSame && otherRevenueStreamsAreSame;
             } else {
+                // If the Finance id is null, return whether all fields are
+                // equal except for the id field.
                 return incomeIsSame && billsAreSame && otherRevenueStreamsAreSame;
             }
         }
+        // If we have reached this point, the objects are not instances of the
+        // same class and are not equal, so we return false.
         return false;
     }
     //------------------------------Hash-Code---------------------------------
-
+    @Override
+    public int hashCode() {
+        // Return the hashcode of the id field.
+        return this.id.hashCode();
+    }
     //------------------------------To-String---------------------------------
-
+    // TODO: Implement the toString method for the Finance class.
     //=============================-Getters-==================================
 
     //=============================-Setters-==================================
