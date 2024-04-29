@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/html"
       dir="ltr">
+<!---------------------------------Metadata---------------------------------->
 <head>
     <meta charset="UTF-8">
     <title>Budget | Budget Buddy</title>
@@ -13,8 +14,10 @@
           th:href="@{/images/favicon/budget_buddy_favicon.ico}">
 </head>
 <body>
+<!----------------------------------Nav-Bar---------------------------------->
 <nav>
     <section id="nav-items">
+        <!-----------------------Nav-To-Home-Page---------------------------->
         <a class="link-no-style" href="/">
             <div class="nav-item">
                 <h4 class="nav-text">
@@ -22,11 +25,13 @@
                 </h4>
             </div>
         </a>
+        <!-------------------------Nav-To-Premium---------------------------->
         <div class="nav-item">
             <h4 class="nav-text">
                 Premium
             </h4>
         </div>
+        <!--------------------------Nav-To-Budget---------------------------->
         <a class="link-no-style" href="/budget/">
             <div class="nav-item">
                 <h4 class="nav-text">
@@ -34,6 +39,7 @@
                 </h4>
             </div>
         </a>
+        <!--------------------------Nav-To-Account--------------------------->
         <a class="link-no-style" href="/user/">
             <div class="nav-item account-name-div">
                 <h4 class="nav-text account-name-text">
@@ -44,11 +50,6 @@
     </section>
 </nav>
 <main>
-    <!--
-    Title
-    List of Budget Items - Each item has a name, amount, and category. A button for edit and remove at the end
-    Add Budget Item - Input section for name, amount, and category with a button to add
-    -->
     <!----------------------------Budget-Title------------------------------->
     <section id="title-section" class="stripe">
         <div id="title-text-div">
@@ -57,6 +58,7 @@
             </h2>
         </div>
     </section>
+    <!----------------------------Budget-Graph------------------------------->
     <section id="graph-section">
         <div id="graph-container">
             <div id="budget-graph-div">
@@ -75,72 +77,90 @@
                     </h4>
                 </div>
             </div>
-            <!-----------------Input-Budget-Item----------------------------->
+            <!-------------------Input-Budget-Item--------------------------->
             <div class="item-input" id="item-inputer">
+                <!----------------Input-Item-Name---------------------------->
                 <div class="budget-input-info">
                     <div class="input-with-title">
+                        <!-----------Item-Name-Title------------------------->
                         <div class="budget-input-title-div">
                             <h4 class="input-title-text">Item Name</h4>
                         </div>
+                        <!-----------Item-Name-Input------------------------->
                         <div class="budget-item-input-div">
                             <input type="text" class="budget-item-input"
                                    id="item-name-input">
                         </div>
                     </div>
                 </div>
+                <!----------------Input-Item-Cost---------------------------->
                 <div class="budget-input-info">
                     <div class="input-with-title">
+                        <!-----------Item-Cost-Title------------------------->
                         <div class="budget-input-title-div">
                             <h4 class="input-title-text">Cost</h4>
                         </div>
+                        <!-----------Item-Cost-Input------------------------->
                         <div class="budget-item-input-div">
                             <input type="text" class="budget-item-input"
                                    id="item-cost-input">
                         </div>
                     </div>
                 </div>
+                <!----------------Input-Item-Category------------------------>
                 <div class="budget-input-info">
                     <div class="input-with-title">
+                        <!-----------Item-Category-Title--------------------->
                         <div class="budget-input-title-div">
                             <h4 class="input-title-text">Category</h4>
                         </div>
+                        <!-----------Item-Category-Input--------------------->
                         <div class="budget-item-input-div">
                             <input type="text" class="budget-item-input"
                                    id="item-category-input">
                         </div>
                     </div>
                 </div>
+                <!------------------Add-Button------------------------------->
                 <div class="budget-item-button" id="add-button">
                     <h4 class="budget-item-button-text">
                         Add
                     </h4>
                 </div>
             </div>
-            <!-----------------Budget-Item-List------------------------------>
+            <!---------------Example-Budget-Item-List------------------------>
+            <!-- This is a just a template to refer back to when creating new
+                 budget items. It is not displayed on the page. -->
             <div class="budget-item" id="template-item">
                 <div class="budget-item-info">
+                    <!-------------Budget-Item-Name-------------------------->
                     <div class="budget-item-name">
                         <h4 class="budget-item-name-text">
                             Item Name
                         </h4>
                     </div>
+                    <!-------------Budget-Item-Amount------------------------>
                     <div class="budget-item-amount">
                         <h4 class="budget-item-amount-text">
                             $0.00
                         </h4>
                     </div>
+                    <!-------------Budget-Item-Category---------------------->
                     <div class="budget-item-category">
                         <h4 class="budget-item-category-text">
                             Category
                         </h4>
                     </div>
                 </div>
+                <!-----------------Budget-Item-Buttons----------------------->
                 <div class="budget-item-buttons">
+                    <!-----------Edit-Budget-Item-Button--------------------->
                     <div class="budget-item-button edit-budget-item-button">
                         <h4 class="budget-item-button-text">
                             Edit
                         </h4>
                     </div>
+                    <!-----------Remove-Budget-Item-Button------------------->
                     <div class="budget-item-button remove-budget-item-button">
                         <h4 class="budget-item-button-text">
                             Remove
@@ -151,13 +171,16 @@
         </div>
     </section>
 </main>
+<!----------------------------------Footer----------------------------------->
 <footer id="footer">
     <section id="footer-section">
+        <!---------------------Budget-Buddy-Copyright------------------------>
         <div id="footer-text-div">
             <p id="footer-text">
                 &copy; 2024 Budget Buddy. <br> All rights reserved.
             </p>
         </div>
+        <!------------------------Terms-Of-Service--------------------------->
         <div id="footer-links-div">
             <a href="/terms" class="link-no-style">
                 <div id="terms-link-div">
@@ -167,6 +190,7 @@
         </div>
     </section>
 </footer>
+<!----------------------------------Scripts---------------------------------->
 <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.1.2/chroma.min.js"></script>
 <script src="../static/script/colorScript.js"
         type="module"
@@ -177,5 +201,8 @@
         th:src="@{/script/budgetScript.js}"
         type="module"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<noscript>
+    <h3>JavaScript is required for this page to function properly.</h3>
+</noscript>
 </body>
 </html>
