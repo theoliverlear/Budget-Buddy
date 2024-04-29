@@ -373,3 +373,24 @@
         transform: translateY(0);
     }
 }
+
+
+/*setting screen dimensions for different devices*/
+/* devices for width <= 767px */
+@media (max-width: 767px) {
+    .column{
+        width: 100%;
+    }
+}
+/* devices for width >= 768px and <= 1023px */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .column{
+        width: 50%;
+    }
+}
+/* devices for width >= 1024px */
+@media (min-width: 1024px) {
+    .column{
+        width: 25%;
+    }
+}
