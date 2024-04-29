@@ -182,7 +182,7 @@
 
 
 /*text about knowing where the money is going*/
-#buddy-breakdown-text-div {
+#breakdown-buddy-text-div {
     width: calc(((20vw + 20vh) / 2) + 10em);
     padding: calc(((2vw + 2vh) / 2) + 2em);
     border-radius: calc(((1vw + 1vh) / 2) + 1em);
