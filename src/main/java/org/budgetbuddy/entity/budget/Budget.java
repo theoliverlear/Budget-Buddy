@@ -7,6 +7,14 @@ import org.budgetbuddy.convert.entity.budget.BudgetKeyDeserializer;
 
 import java.util.ArrayList;
 
+/**
+ * <h6>This class represents a User's Budget.</h6>
+ *
+ * A Budget is a collection of BudgetItems that represent the User's planned
+ * spending.
+ * @see BudgetItem
+ * @see Entity
+ */
 @Entity
 @JsonDeserialize(keyUsing = BudgetKeyDeserializer.class)
 public class Budget {
@@ -17,26 +25,52 @@ public class Budget {
     @Convert(converter = BudgetItemsArrayListConverter.class)
     ArrayList<BudgetItem> budgetItems;
     //===========================-Constructors-===============================
+    /**
+     * <h6>Default constructor for a Budget object.</h6>
+     */
     public Budget() {
         this.budgetItems = new ArrayList<>();
     }
+    /**
+     * <h6>Constructor for a Budget object.</h6>
+     *
+     * @param budgetItems The list of BudgetItems to add to the Budget.
+     */
     public Budget(ArrayList<BudgetItem> budgetItems) {
         this.budgetItems = budgetItems;
     }
     //=============================-Methods-==================================
 
     //--------------------------Add-Budget-Items------------------------------
+    /**
+     * <h6>Add a BudgetItem to the Budget.</h6>
+     *
+     * @param budgetItem The BudgetItem to add to the Budget.
+     */
     public void addBudgetItem(BudgetItem budgetItem) {
         // Add the budget item to the list of BudgetItems.
         this.budgetItems.add(budgetItem);
     }
     //-------------------------Remove-Budget-Item-----------------------------
+    /**
+     * <h6>Remove a BudgetItem from the Budget.</h6>
+     *
+     * @param budgetItem The BudgetItem to remove from the Budget.
+     * @return Whether the BudgetItem was removed successfully.
+     */
     public boolean removeBudgetItem(BudgetItem budgetItem) {
         // Remove the budget item from the list of BudgetItems. Return whether
         // the budget item was removed successfully.
         return this.budgetItems.remove(budgetItem);
     }
     //-------------------------Update-Budget-Item-----------------------------
+    /**
+     * <h6>Update a BudgetItem in the Budget.</h6>
+     *
+     * @param updatedBudgetItem The updated BudgetItem to replace the existing
+     *                          BudgetItem.
+     * @return Whether the BudgetItem was updated successfully.
+     */
     public boolean updateBudgetItem(BudgetItem updatedBudgetItem) {
         // Loop through the list of BudgetItems to find the one that matches
         // the name of the item to update.
@@ -54,6 +88,14 @@ public class Budget {
         return false;
     }
     //-------------------------Update-Budget-Item-----------------------------
+    /**
+     * <h6>Update a BudgetItem in the Budget.</h6>
+     *
+     * @param updatedBudgetItem The updated BudgetItem to replace the existing
+     *                          BudgetItem.
+     * @param newBudgetItemName The new name for the BudgetItem.
+     * @return Whether the BudgetItem was updated successfully.
+     */
     public boolean updateBudgetItem(BudgetItem updatedBudgetItem, String newBudgetItemName) {
         // Loop through the list of BudgetItems to find the one that matches
         // the name of the item to update.
@@ -72,6 +114,12 @@ public class Budget {
         return false;
     }
     //----------------------Get-Budget-Item-By-Title--------------------------
+    /**
+     * <h6>Get a BudgetItem from the Budget by its name.</h6>
+     *
+     * @param budgetItemName The name of the BudgetItem to get.
+     * @return The BudgetItem with the given name.
+     */
     public BudgetItem getBudgetItemByTitle(String budgetItemName) {
         // Loop through the list of BudgetItems to find the one that matches
         // the name of the item to get.
@@ -88,6 +136,13 @@ public class Budget {
     //============================-Overrides-=================================
 
     //------------------------------Equals------------------------------------
+
+    /**
+     * <h6>Check if two Budget objects are equal.</h6>
+     *
+     * @param obj The object to compare to the Budget object.
+     * @return boolean Whether the two objects are equal.
+     */
     @Override
     public boolean equals(Object obj) {
         // Check if the object references are the same. If they are, return
@@ -116,6 +171,13 @@ public class Budget {
         return false;
     }
     //------------------------------Hash-Code---------------------------------
+
+    /**
+     * <h6>Get the hashcode of the Budget object.</h6>
+     *
+     * Creates a hashcode based on the id field of the Budget object.
+     * @return int The hashcode of the Budget object.
+     */
     @Override
     public int hashCode() {
         // Return the hashcode of the id field.
