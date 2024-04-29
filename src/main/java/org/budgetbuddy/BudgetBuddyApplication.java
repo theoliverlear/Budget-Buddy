@@ -22,6 +22,7 @@ public class BudgetBuddyApplication {
     //=============================-Getters-==================================
 
     //=============================-Setters-==================================
+
     //===============================-Main-===================================
     public static void main(String[] args) {
         SpringApplication.run(BudgetBuddyApplication.class, args);

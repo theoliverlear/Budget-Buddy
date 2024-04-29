@@ -28,13 +28,19 @@ public class SavingHistory {
     }
     //=============================-Methods-==================================
 
+    //-----------------------------Add-Saving---------------------------------
     public void addSaving(Saving saving, LocalDateTime time) {
+        // Add an item to the savingHistoryMap with a given date.
         this.savingHistoryMap.put(saving, time);
     }
+    //---------------------------Add-Saving-Now-------------------------------
     public void addSavingNow(Saving saving) {
+        // Add an item to the savingHistoryMap with the current date.
         this.savingHistoryMap.put(saving, LocalDateTime.now());
     }
+    //---------------------------Remove-Saving--------------------------------
     public void removeSaving(Saving saving) {
+        // Remove an item from the savingHistoryMap.
         this.savingHistoryMap.remove(saving);
     }
     //============================-Overrides-=================================
@@ -42,11 +48,20 @@ public class SavingHistory {
     //------------------------------Equals------------------------------------
     @Override
     public boolean equals(Object obj) {
+        // Check if the object references are the same. If they are, return
+        // true.
         if (this == obj) return true;
+        // Check if the object is an instance of SavingHistory. If it is,
+        // cast it to a SavingHistory object.
         if (obj instanceof SavingHistory comparedSavingHistory) {
+            // Check if the fields of the SavingHistory objects are equal.
             if (this.id != null) {
+                // If the SavingHistory id is not null, an equality check can
+                // be performed using that field.
                 return this.id.equals(comparedSavingHistory.id);
             } else {
+                // If the SavingHistory id is null, return whether all fields
+                // are equal except for the id field.
                 return this.savingHistoryMap.equals(comparedSavingHistory.savingHistoryMap);
             }
         }
@@ -55,10 +70,11 @@ public class SavingHistory {
     //------------------------------Hash-Code---------------------------------
     @Override
     public int hashCode() {
+        // Return the hashcode of the id field.
         return this.id.hashCode();
     }
     //------------------------------To-String---------------------------------
-
+    // TODO: Implement the toString method for the SavingHistory class.
     //=============================-Getters-==================================
 
     //=============================-Setters-==================================

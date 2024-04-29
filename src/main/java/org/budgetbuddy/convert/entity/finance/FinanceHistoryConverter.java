@@ -21,8 +21,11 @@ public class FinanceHistoryConverter implements AttributeConverter<FinanceHistor
     @Override
     public String convertToDatabaseColumn(FinanceHistory financeHistory) {
         try {
+            // Convert the FinanceHistory to a JSON string.
             return this.objectMapper.writeValueAsString(financeHistory);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting finance history to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
@@ -31,8 +34,11 @@ public class FinanceHistoryConverter implements AttributeConverter<FinanceHistor
     @Override
     public FinanceHistory convertToEntityAttribute(String financeHistoryJson) {
         try {
+            // Convert the JSON string to a FinanceHistory object.
             return this.objectMapper.readValue(financeHistoryJson, FinanceHistory.class);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting JSON to finance history.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }

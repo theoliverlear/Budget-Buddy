@@ -20,8 +20,11 @@ public class ExpenseConverter implements AttributeConverter<Expense, String> {
     @Override
     public String convertToDatabaseColumn(Expense expense) {
         try {
+            // Convert the Expense to a JSON string.
             return this.objectMapper.writeValueAsString(expense);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting expense to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
@@ -30,8 +33,11 @@ public class ExpenseConverter implements AttributeConverter<Expense, String> {
     @Override
     public Expense convertToEntityAttribute(String expenseJson) {
         try {
+            // Convert the JSON string to an Expense object.
             return this.objectMapper.readValue(expenseJson, Expense.class);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting JSON to expense.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
