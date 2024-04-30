@@ -1,3 +1,4 @@
+//================================-Variables-=================================
 const pieChartElement = document.getElementById('feature-pie-chart').getContext('2d');
 const pieChart = new Chart(pieChartElement, {
     type: 'pie',
@@ -32,11 +33,6 @@ const pieChart = new Chart(pieChartElement, {
         }
     }
 });
-// const pieChartElement = document.getElementById('feature-pie-chart');
-// const featuresSection = document.getElementById('features-section');
-// featuresSection.style.display = 'none';
-
-
 const barChartElement = document.getElementById('feature-bar-chart').getContext('2d');
 const barChart = new Chart(barChartElement, {
     type: 'bar',
@@ -69,8 +65,6 @@ const barChart = new Chart(barChartElement, {
         }
     }
 });
-
-
 const lineChartElement = document.getElementById('feature-line-chart').getContext('2d');
 const lineChart = new Chart(lineChartElement, {
     type: 'line',
