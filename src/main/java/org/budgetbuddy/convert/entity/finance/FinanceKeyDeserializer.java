@@ -16,6 +16,7 @@ public class FinanceKeyDeserializer extends KeyDeserializer {
     //--------------------------Deserialize-Key-------------------------------
     @Override
     public Finance deserializeKey(String key, DeserializationContext context) {
+        // Use a FinanceConverter to convert the key to a Finance object.
         return this.financeConverter.convertToEntityAttribute(key);
     }
 }

@@ -67,15 +67,23 @@ public class Category {
     //------------------------------Equals------------------------------------
     @Override
     public boolean equals(Object obj) {
+        // Check if the object references are the same. If they are, return
+        // true.
         if (this == obj) return true;
+        // Check if the object is an instance of Category. If it is, cast it
+        // to a Category object.
         if (obj instanceof Category category) {
+            // Check if the fields of the Category objects are equal.
             return this.title.equals(category.title);
         }
+        // If we have reached this point, the objects are not instances of the
+        // same class and are not equal, so we return false.
         return false;
     }
     //------------------------------Hash-Code---------------------------------
     @Override
     public int hashCode() {
+        // Return the hashcode of the title field.
         return this.title.hashCode();
     }
     //------------------------------To-String---------------------------------

@@ -46,6 +46,8 @@ public class TimeInterval {
     public String determineIntervalType() {
         // NOTE: Switch statements do not work with double values. A long
         //       if/else chain is easiest alternative.
+        // Look for common triggers per year values to determine the
+        // appropriate name for the interval type.
         if (this.triggersPerYear == 365) {
             return "Daily";
         } else if (this.triggersPerYear == 52) {
@@ -73,20 +75,29 @@ public class TimeInterval {
     //------------------------------Equals------------------------------------
     @Override
     public boolean equals(Object obj) {
+        // Check if the object references are the same. If they are, return
+        // true.
         if (this == obj) return true;
+        // Check if the object is an instance of TimeInterval. If it is, cast
+        // it to a TimeInterval object.
         if (obj instanceof TimeInterval timeInterval) {
+            // Check if the fields of the TimeInterval objects are equal.
             return this.triggersPerYear == timeInterval.triggersPerYear;
         }
+        // If we have reached this point, the objects are not instances of the
+        // same class and are not equal, so we return false.
         return false;
     }
     //------------------------------Hash-Code---------------------------------
     @Override
     public int hashCode() {
+        // Return the hashcode of the triggers per year.
         return Double.hashCode(this.triggersPerYear);
     }
     //------------------------------To-String---------------------------------
     @Override
     public String toString() {
+        // Return a formatted string with the triggers per year.
         return "Occurs %f times per year".formatted(this.triggersPerYear);
     }
     //=============================-Getters-==================================

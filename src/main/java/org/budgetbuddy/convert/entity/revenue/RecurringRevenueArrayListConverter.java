@@ -23,8 +23,11 @@ public class RecurringRevenueArrayListConverter implements AttributeConverter<Ar
     @Override
     public String convertToDatabaseColumn(ArrayList<RecurringRevenue> recurringRevenues) {
         try {
+            // Convert the recurring revenues to a JSON string.
             return this.objectMapper.writeValueAsString(recurringRevenues);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting recurring revenues to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
@@ -33,11 +36,16 @@ public class RecurringRevenueArrayListConverter implements AttributeConverter<Ar
     @Override
     public ArrayList<RecurringRevenue> convertToEntityAttribute(String recurringRevenuesJson) {
         try {
+            // If the JSON string is null, return an empty list to indicate an
+            // empty recurring revenues list.
             if (recurringRevenuesJson == null) {
                 return new ArrayList<>();
             }
+            // Convert the JSON string to a recurring revenues ArrayList.
             return this.objectMapper.readValue(recurringRevenuesJson, new TypeReference<>() {});
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting JSON to" +
                                              " recurring revenues ArrayList.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);

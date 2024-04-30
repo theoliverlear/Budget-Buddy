@@ -1,8 +1,7 @@
 package org.budgetbuddy.communication.request;
-
+//=================================-Imports-==================================
 import lombok.Data;
 
-//=================================-Imports-==================================
 @Data
 public class UserRequest {
     //============================-Variables-=================================

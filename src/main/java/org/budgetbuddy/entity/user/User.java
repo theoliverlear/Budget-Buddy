@@ -164,8 +164,11 @@ public class User {
     //------------------------------Equals------------------------------------
     @Override
     public boolean equals(Object obj) {
+        // Check if the object references are the same. If they are, return
+        // true.
         if (this == obj) return true;
         if (obj instanceof User comparedUser) {
+            // Check if the fields of the User objects are equal.
             boolean sameUsername = this.username.equals(comparedUser.username);
             boolean samePassword = this.safePassword.equals(comparedUser.safePassword);
             boolean sameCurrentBudget = this.currentBudget.equals(comparedUser.currentBudget);
@@ -179,6 +182,8 @@ public class User {
             boolean sameSavingHistory = this.savingHistory.equals(comparedUser.savingHistory);
             boolean sameTaxHistory = this.taxHistory.equals(comparedUser.taxHistory);
             if (this.id != null) {
+                // If the User id is not null, an equality check can be
+                // performed using that field.
                 boolean sameId = this.id.equals(comparedUser.id);
                 return sameId && sameUsername && samePassword &&
                         sameCurrentBudget && sameBudgetHistory &&
@@ -186,6 +191,8 @@ public class User {
                         && sameFinanceHistory && samePurchaseHistory &&
                         sameCurrentSavings && sameSavingHistory && sameTaxHistory;
             } else {
+                // If the User id is null, return whether all fields are equal
+                // except for the id field.
                 return sameUsername && samePassword &&
                         sameCurrentBudget && sameBudgetHistory &&
                         sameCurrentDebt && sameDebtHistory && sameCurrentFinance
@@ -193,12 +200,25 @@ public class User {
                         sameCurrentSavings && sameSavingHistory && sameTaxHistory;
             }
         }
+        // If we have reached this point, the objects are not instances of the
+        // same class and are not equal, so we return false.
         return false;
     }
     //------------------------------Hash-Code---------------------------------
-
+    @Override
+    public int hashCode() {
+        // If the User id is not null, return the hashcode of the id field.
+        if (this.id != null) {
+            return this.id.hashCode();
+        } else {
+            // If the User id is null, return the hashcode of the username
+            // field -- which will also be unique.
+            return this.username.hashCode();
+        }
+    }
     //------------------------------To-String---------------------------------
-
+    // TODO: Implement the toString method for the User class. NOTE: Do not
+    //       include password information in the toString method.
     //=============================-Getters-==================================
     // Due to the extensive number of fields, getters are created with Lombok.
     //=============================-Setters-==================================

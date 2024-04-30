@@ -18,6 +18,8 @@ public class BudgetHistoryTest {
     @Test
     public void testBudgetHistoryNotNull(){
         this.testBudgetHistory = new BudgetHistory();
+        //test will pass as long as our testBudgetHistory object is not null.
+        //passing means our object has been instantiated correctly
         assertNotNull(this.testBudgetHistory);
 
     }
