@@ -20,8 +20,11 @@ public class FinanceConverter implements AttributeConverter<Finance, String> {
     @Override
     public String convertToDatabaseColumn(Finance finance) {
         try {
+            // Convert the Finance to a JSON string.
             return this.objectMapper.writeValueAsString(finance);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting finance to JSON.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }
@@ -30,8 +33,11 @@ public class FinanceConverter implements AttributeConverter<Finance, String> {
     @Override
     public Finance convertToEntityAttribute(String financeJson) {
         try {
+            // Convert the JSON string to a Finance object.
             return this.objectMapper.readValue(financeJson, Finance.class);
         } catch (JsonProcessingException ex) {
+            // If an error occurs, throw a runtime exception to stop the
+            // program from using invalid data.
             final String EXCEPTION_MESSAGE = "Error converting JSON to finance.";
             throw new RuntimeException(EXCEPTION_MESSAGE, ex);
         }

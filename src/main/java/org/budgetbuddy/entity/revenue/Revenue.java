@@ -32,26 +32,39 @@ public class Revenue {
     //------------------------------Equals------------------------------------
     @Override
     public boolean equals(Object obj) {
+        // Check if the object references are the same. If they are, return
+        // true.
         if (this == obj) return true;
+        // Check if the object is an instance of Revenue. If it is, cast it
+        // to a Revenue object.
         if (obj instanceof Revenue comparedRevenue) {
+            // Check if the fields of the Revenue objects are equal.
             if (this.id != null) {
+                // If the Revenue id is not null, an equality check can be
+                // performed using that field.
                 return this.id.equals(comparedRevenue.id);
             } else {
+                // If the Revenue id is null, return whether all fields are
+                // equal except for the id field.
                 boolean nameIsSame = this.name.equals(comparedRevenue.name);
                 boolean amountIsSame = this.amount == comparedRevenue.amount;
                 return nameIsSame && amountIsSame;
             }
         }
+        // If we have reached this point, the objects are not instances of the
+        // same class and are not equal, so we return false.
         return false;
     }
     //------------------------------Hash-Code---------------------------------
     @Override
     public int hashCode() {
+        // Return the hashcode of the id field.
         return this.id.hashCode();
     }
     //------------------------------To-String---------------------------------
     @Override
     public String toString() {
+        // Return a string representation of the Revenue name and amount.
         return "%s: $%.2f".formatted(this.name, this.amount);
     }
     //=============================-Getters-==================================

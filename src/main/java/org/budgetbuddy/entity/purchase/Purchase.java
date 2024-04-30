@@ -42,14 +42,21 @@ public class Purchase {
     //------------------------------Equals------------------------------------
     @Override
     public boolean equals(Object obj) {
+        // Check if the object references are the same. If they are, return
+        // true.
         if (this == obj) return true;
+        // Check if the object is an instance of Purchase. If it is, cast it
+        // to a Purchase object.
         if (obj instanceof Purchase purchase) {
+            // Check if the fields of the Purchase objects are equal.
             boolean idIsSame = this.id.equals(purchase.id);
             boolean nameIsSame = this.name.equals(purchase.name);
             boolean priceIsSame = this.price == purchase.price;
             boolean categoryIsSame = this.category.equals(purchase.category);
             return idIsSame && nameIsSame && priceIsSame && categoryIsSame;
         }
+        // If we have reached this point, the objects are not instances of the
+        // same class and are not equal, so we return false.
         return false;
     }
     //------------------------------Hash-Code---------------------------------
@@ -57,6 +64,8 @@ public class Purchase {
     //------------------------------To-String---------------------------------
     @Override
     public String toString() {
+        // Return a formatted string with the Purchase name, price, and
+        // category.
         return "%s: $%.2f - %s".formatted(this.name, this.price, this.category);
     }
     //=============================-Getters-==================================

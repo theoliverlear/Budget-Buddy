@@ -38,10 +38,13 @@ public class BudgetControllerTest {
         assertNotNull(this.mockMvc);
     }
     //------------------------Test-Budget-Homepage----------------------------
+
+    //this method will test the /budget mapping from BudgetController.java
     @Test
     public void testBudget() throws Exception{
         this.mockMvc.perform(get("/budget/")
                         .with(csrf()))
+                        //tests that status code is as expected
                         .andExpect(status().isOk());
     }
     //------------------------Test-Add-Budget-Item----------------------------
@@ -54,5 +57,12 @@ public class BudgetControllerTest {
                         .content(this.objectMapper.writeValueAsString(budgetItemRequest)))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Sucsess"));
+    }
+    //------------------------Test-Get-Budget-Item----------------------------
+    @Test
+    public void testGetBudget() throws Exception {
+        this.mockMvc.perform(get("/budget/get")
+                        .with(csrf()))
+                .andExpect(status().isOk());
     }
 }

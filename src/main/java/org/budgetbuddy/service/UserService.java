@@ -37,7 +37,10 @@ public class UserService {
         this.savingRepository = savingRepository;
     }
     //=============================-Methods-==================================
+
+    //----------------------------User-Exists---------------------------------
     public boolean userExists(String username) {
+        // Check if a user exists by the given username.
         return this.userRepository.existsByUsername(username);
     }
     //============================-Overrides-=================================

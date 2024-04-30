@@ -18,6 +18,9 @@ public class BudgetBuddyConfig {
     //--------------------------Get-Data-Source-------------------------------
     @Bean
     public DataSource getDataSource() {
+        // Retrieve credentials from environment variables. Create a
+        // DataSource object using the retrieved credentials. This will be
+        // used to connect to the database.
         final String DB_USERNAME = System.getenv("DB_USERNAME");
         final String DB_PASSWORD = System.getenv("DB_PASSWORD");
         final String DB_URL = System.getenv("DB_URL");
